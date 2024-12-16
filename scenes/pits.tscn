@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbnfvq0xc1nuk"]
+
+[ext_resource type="Script" path="res://scripts/pits.gd" id="1_awdxc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_467l5"]
+
+[node name="Pits" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_awdxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_467l5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

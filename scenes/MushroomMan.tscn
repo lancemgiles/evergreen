@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://pa32rusqhci2"]
+
+[ext_resource type="Script" path="res://scripts/mushroom_man.gd" id="1_n5aew"]
+[ext_resource type="Texture2D" uid="uid://cge334depjww2" path="res://assets/platformer_metroidvania asset pack v1.01/enemies sprites/mushroom/mushroom_walk_anim_strip_8.png" id="1_p4u4c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqsb7"]
+atlas = ExtResource("1_p4u4c")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg3rq"]
+atlas = ExtResource("1_p4u4c")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skhhh"]
+atlas = ExtResource("1_p4u4c")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asqyb"]
+atlas = ExtResource("1_p4u4c")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0syb8"]
+atlas = ExtResource("1_p4u4c")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cs7f"]
+atlas = ExtResource("1_p4u4c")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyfik"]
+atlas = ExtResource("1_p4u4c")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cv7h"]
+atlas = ExtResource("1_p4u4c")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yft3q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqsb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tg3rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skhhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asqyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0syb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cs7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyfik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cv7h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsuap"]
+radius = 7.0
+
+[node name="MushroomMan" type="AnimatableBody2D"]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_n5aew")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yft3q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xsuap")
