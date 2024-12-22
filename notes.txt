@@ -1,0 +1,11 @@
+ 
+experimenting with different tile sizes:
+
+
+same tiles with 16x16 and 16x24 character feels nice but looks a little strange - the character feels very small for the world, the jumps would be extremely large
+16x16 tiles with a 32x32 character feels nice and looks decent (keeping in mind that the player will actually be much thinner but that gives space for animation)
+16x16 tiles are too small for characters over 32x32. 32x48 cannot navigate without changes to the level. The character also looks too large on screen.
+32x32 tiles feel very large. jump would need to be recalibrated. 32x48 sprite feels too small, assuming 64x64 would be better. Zoom and jump can be corrected to accomodate this, but this begs the question why? Will larger tiles and sprites actually look better
+doing some research into the topic: larger tiles essentially force a larger character. the larger the sprite, the more complex the animation. a 32x32 sprite can change by one pixel and that be enough, not the case in 64x64. Considering my skill level in pixel art and animation, sticking to smaller sizes will be better.
+Conclusion: use 16x16 tiles, 32x32 sprites (keeping in mind that the character should be about 16 wide, but animation will vary, this will let the sprite feel less on a grid)
+

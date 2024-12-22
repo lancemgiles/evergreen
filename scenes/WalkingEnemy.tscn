@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://bbacl0rg65cqc"]
+
+[ext_resource type="Script" path="res://scripts/walking_enemy.gd" id="1_qhbia"]
+[ext_resource type="Texture2D" uid="uid://x0dydjhhldbx" path="res://assets/enemies/blob.png" id="2_sla3n"]
+[ext_resource type="Texture2D" uid="uid://coi0ujnh771xw" path="res://assets/enemies/blob-soothed.png" id="3_8d75t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkvmi"]
+atlas = ExtResource("2_sla3n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjf52"]
+atlas = ExtResource("2_sla3n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q40of"]
+atlas = ExtResource("3_8d75t")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ym1e"]
+atlas = ExtResource("3_8d75t")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yft3q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkvmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjf52")
+}],
+"loop": true,
+"name": &"blob-angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q40of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ym1e")
+}],
+"loop": true,
+"name": &"blob-happy",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vl0jh"]
+size = Vector2(11, 7)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iy1l0"]
+radius = 6.0
+height = 14.0
+
+[node name="WalkingEnemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_qhbia")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9.53674e-07, -1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_yft3q")
+animation = &"blob-angry"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_vl0jh")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_iy1l0")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
