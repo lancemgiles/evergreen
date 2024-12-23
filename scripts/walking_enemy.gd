@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var distance = 100
 @export var gravity = 1600
 @export var knockback_force = 20
+@export var bounciness = 1.5
 
 @onready var start_x = position.x
 @onready var target_x = position.x + distance
@@ -55,9 +56,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				body.position.x += knockback_force
 			elif current_direction == -1:
 				body.position.x -= knockback_force
-			$Area2D.collision_mask = 5
+			$Hitbox.collision_mask = 5
 			$Timer.start(0.8)
 
 
 func _on_timer_timeout() -> void:
-	$Area2D.collision_mask = 2
+	$Hitbox.collision_mask = 2
+
+func _on_bounce_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		body.velocity.y = body.jump_height * bounciness

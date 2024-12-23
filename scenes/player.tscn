@@ -1,20 +1,47 @@
-[gd_scene load_steps=28 format=3 uid="uid://rcgw8842bow3"]
+[gd_scene load_steps=40 format=3 uid="uid://rcgw8842bow3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4osts"]
 [ext_resource type="Texture2D" uid="uid://n1u86tw2mcv3" path="res://assets/Main Characters/cedar-04-damage-fim.png" id="2_ful4r"]
+[ext_resource type="Texture2D" uid="uid://diou76wl3awk4" path="res://assets/Main Characters/cedar-04-death-fim.png" id="3_e8h23"]
 [ext_resource type="Texture2D" uid="uid://byad7o2yjqlpn" path="res://assets/Main Characters/cedar-04-float-fim.png" id="5_lyerg"]
 [ext_resource type="Texture2D" uid="uid://d4nrvhyepxcul" path="res://assets/Main Characters/cedar-04-idle-fim.png" id="6_e0v85"]
 [ext_resource type="Texture2D" uid="uid://bf1x4hl5ofl5a" path="res://assets/Main Characters/cedar-04-sooth-fim.png" id="10_nit4c"]
 [ext_resource type="Texture2D" uid="uid://dd0f8swb4bvbm" path="res://assets/Main Characters/cedar-04-walk-fim.png" id="11_wri7l"]
+[ext_resource type="Texture2D" uid="uid://diuvc6enrbam6" path="res://assets/icons/hourglass.png" id="12_4aqle"]
+[ext_resource type="FontFile" uid="uid://ci4hy5h1ty1og" path="res://assets/Agave/AgaveNerdFontMono-Regular.ttf" id="13_0gsrx"]
+[ext_resource type="Texture2D" uid="uid://2p0bufvmud6a" path="res://assets/Main Characters/cedar-04-portrait-48x48.png" id="14_rwmn1"]
 [ext_resource type="Texture2D" uid="uid://rri60nd8bpap" path="res://assets/Items/token-01.png" id="16_4ijgf"]
 [ext_resource type="Script" path="res://GUI/health.gd" id="16_8c5qq"]
 [ext_resource type="Script" path="res://GUI/score.gd" id="16_dfdsh"]
 [ext_resource type="Texture2D" uid="uid://cii4w1b6jjj3g" path="res://assets/Items/sap.png" id="17_6gur8"]
 [ext_resource type="FontFile" uid="uid://cjeggffpppohb" path="res://assets/Agave/AgaveNerdFont-Regular.ttf" id="18_cmcsi"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qwrd8"]
+radius = 24.4
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpv2a"]
 atlas = ExtResource("2_ful4r")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yx5g"]
+atlas = ExtResource("3_e8h23")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3bsr"]
+atlas = ExtResource("3_e8h23")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e458y"]
+atlas = ExtResource("3_e8h23")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52m4s"]
+atlas = ExtResource("3_e8h23")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q3uq"]
+atlas = ExtResource("3_e8h23")
+region = Rect2(512, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfp4e"]
 atlas = ExtResource("6_e0v85")
@@ -73,6 +100,26 @@ animations = [{
 "loop": false,
 "name": &"damage",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yx5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3bsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e458y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52m4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q3uq")
+}],
+"loop": false,
+"name": &"death",
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -135,8 +182,42 @@ animations = [{
 radius = 9.0
 height = 28.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qwrd8"]
-radius = 24.4
+[sub_resource type="Animation" id="Animation_0lje1"]
+resource_name = "ui_visibility"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver/Menu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vsk2m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver/Menu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ewaxr"]
+_data = {
+"RESET": SubResource("Animation_vsk2m"),
+"ui_visibility": SubResource("Animation_0lje1")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -144,13 +225,23 @@ collision_mask = 61
 platform_on_leave = 2
 script = ExtResource("1_4osts")
 
+[node name="SoothCast2D" type="ShapeCast2D" parent="."]
+enabled = false
+shape = SubResource("CircleShape2D_qwrd8")
+target_position = Vector2(0, 0)
+collision_mask = 16
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5e53w")
-animation = &"jump"
+animation = &"death"
+frame_progress = 0.988175
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_lxpba")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -213,14 +304,255 @@ theme_override_fonts/font = ExtResource("18_cmcsi")
 text = "0"
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+[node name="Time" type="ColorRect" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 60.0
+offset_right = -10.0
+offset_bottom = 100.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+color = Color(0.270588, 0.0196078, 0.341176, 0.407843)
+script = ExtResource("16_dfdsh")
 
-[node name="SoothCast2D" type="ShapeCast2D" parent="."]
-enabled = false
-shape = SubResource("CircleShape2D_qwrd8")
-target_position = Vector2(0, 0)
-collision_mask = 16
+[node name="Sprite2D" type="Sprite2D" parent="UI/Time"]
+position = Vector2(29, 20)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("12_4aqle")
+
+[node name="Label" type="Label" parent="UI/Time"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -6.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_0gsrx")
+text = "0"
+vertical_alignment = 1
+
+[node name="Level" type="ColorRect" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 20.0
+offset_right = -10.0
+offset_bottom = 60.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+color = Color(0.270588, 0.0196078, 0.341176, 0.407843)
+script = ExtResource("16_dfdsh")
+
+[node name="Label" type="Label" parent="UI/Level"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -8.0
+offset_right = 67.0
+offset_bottom = 14.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_0gsrx")
+text = "Level"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="UI/Level"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -8.0
+offset_right = 36.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_0gsrx")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Menu" type="ColorRect" parent="GameOver"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.268617, 0.456033, 0.747968, 1)
+
+[node name="Container" type="ColorRect" parent="GameOver/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 27.0
+offset_right = -39.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8, 0.611765, 0.87451, 0.741176)
+
+[node name="Label" type="Label" parent="GameOver/Menu/Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_top = 52.0
+offset_right = 391.0
+offset_bottom = 91.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("18_cmcsi")
+theme_override_font_sizes/font_size = 30
+text = "Game over"
+
+[node name="Border" type="ColorRect" parent="GameOver/Menu/Container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.309804, 0.176471, 0.458824, 0.772549)
+
+[node name="TimeCompleted" type="ColorRect" parent="GameOver/Menu/Container"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -95.0
+offset_right = 50.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Label" type="Label" parent="GameOver/Menu/Container/TimeCompleted"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 210.0
+offset_right = 546.0
+offset_bottom = 27.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_cmcsi")
+theme_override_font_sizes/font_size = 26
+text = "Time: "
+
+[node name="Value" type="Label" parent="GameOver/Menu/Container/TimeCompleted"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -668.0
+offset_right = -268.0
+offset_bottom = 27.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.580392, 0.984314, 0.682353, 0.956863)
+theme_override_fonts/font = ExtResource("13_0gsrx")
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="Score" type="ColorRect" parent="GameOver/Menu/Container"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -75.0
+offset_right = 50.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOver/Menu/Container/Score"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 210.0
+offset_top = 40.0
+offset_right = 354.0
+offset_bottom = 67.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_cmcsi")
+theme_override_font_sizes/font_size = 26
+text = "Score:"
+
+[node name="Value" type="Label" parent="GameOver/Menu/Container/Score"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -668.0
+offset_top = 40.0
+offset_right = -268.0
+offset_bottom = 67.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.714045, 0.919369, 0.962179, 0.956863)
+theme_override_fonts/font = ExtResource("13_0gsrx")
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="RetryButton" type="Button" parent="GameOver/Menu/Container"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 265.0
+offset_top = -205.0
+offset_right = 525.0
+offset_bottom = -115.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.808196, 0.944057, 0.416054, 0.956863)
+theme_override_fonts/font = ExtResource("18_cmcsi")
+theme_override_font_sizes/font_size = 25
+text = "Try again?"
+
+[node name="Sprite2D" type="Sprite2D" parent="GameOver/Menu"]
+position = Vector2(718, 357)
+scale = Vector2(4.75, 4.75)
+texture = ExtResource("14_rwmn1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_ewaxr")
+}
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameOver/Menu/Container/RetryButton" to="." method="_on_retry_button_pressed"]

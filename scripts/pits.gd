@@ -13,3 +13,4 @@ func _on_body_entered(body: Node2D) -> void:
 
 func respawn():
 	player.position = checkpoint_manager.last_location
+	player.score_down(100)
