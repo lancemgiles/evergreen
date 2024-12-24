@@ -329,7 +329,6 @@ tile_set = SubResource("TileSet_kxgnk")
 [node name="Player" parent="." instance=ExtResource("6_aje1g")]
 position = Vector2(62, -68)
 speed = 150
-lives = 1
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -372,9 +371,10 @@ autoplay = "RESET"
 
 [node name="WalkingEnemy" parent="." instance=ExtResource("10_257lx")]
 position = Vector2(67, -1276)
+speed = 50
 
 [node name="pickup" parent="." instance=ExtResource("11_4e4pj")]
-position = Vector2(130, -35)
+position = Vector2(103, -35)
 
 [node name="pickup9" parent="." instance=ExtResource("11_4e4pj")]
 position = Vector2(75, -371)
@@ -412,8 +412,9 @@ position = Vector2(58, -1317)
 pickup = 0
 
 [node name="WalkingEnemy2" parent="." instance=ExtResource("10_257lx")]
-position = Vector2(169, -36)
+position = Vector2(35, -371)
 speed = 50
+distance = 111
 
 [node name="Bouncer" parent="." instance=ExtResource("12_347dm")]
 position = Vector2(119, -1355)

@@ -182,6 +182,21 @@ animations = [{
 radius = 9.0
 height = 28.0
 
+[sub_resource type="Animation" id="Animation_vsk2m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver/Menu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_0lje1"]
 resource_name = "ui_visibility"
 length = 0.5
@@ -196,21 +211,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_vsk2m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameOver/Menu:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ewaxr"]
@@ -233,8 +233,7 @@ collision_mask = 16
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5e53w")
-animation = &"death"
-frame_progress = 0.988175
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -553,6 +552,85 @@ libraries = {
 "": SubResource("AnimationLibrary_ewaxr")
 }
 
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+
+[node name="Menu" type="ColorRect" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.513726, 0.25098, 0.25098, 1)
+
+[node name="Container" type="ColorRect" parent="PauseMenu/Menu"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 25.0
+offset_right = 1113.0
+offset_bottom = 605.0
+color = Color(0.588235, 0.270588, 0.270588, 1)
+
+[node name="Label" type="Label" parent="PauseMenu/Menu/Container"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 23.0
+offset_right = 584.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("18_cmcsi")
+theme_override_font_sizes/font_size = 35
+text = "Pause"
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/Menu/Container"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 100.0
+offset_right = 785.0
+offset_bottom = 180.0
+theme_override_fonts/font = ExtResource("18_cmcsi")
+theme_override_font_sizes/font_size = 25
+text = "Resume"
+
+[node name="SaveButton" type="Button" parent="PauseMenu/Menu/Container"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 202.0
+offset_right = 785.0
+offset_bottom = 282.0
+theme_override_fonts/font = ExtResource("18_cmcsi")
+theme_override_font_sizes/font_size = 25
+text = "Save Game"
+
+[node name="LoadButton" type="Button" parent="PauseMenu/Menu/Container"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 309.0
+offset_right = 785.0
+offset_bottom = 389.0
+theme_override_fonts/font = ExtResource("18_cmcsi")
+theme_override_font_sizes/font_size = 25
+text = "Load Game"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/Menu/Container"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 413.0
+offset_right = 785.0
+offset_bottom = 493.0
+theme_override_fonts/font = ExtResource("18_cmcsi")
+theme_override_font_sizes/font_size = 25
+text = "Quit Level"
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/Menu"]
+position = Vector2(170, 172)
+scale = Vector2(4.75, 4.75)
+texture = ExtResource("14_rwmn1")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOver/Menu/Container/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Menu/Container/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Menu/Container/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Menu/Container/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Menu/Container/QuitButton" to="." method="_on_quit_button_pressed"]

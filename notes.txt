@@ -9,3 +9,11 @@ same tiles with 16x16 and 16x24 character feels nice but looks a little strange 
 doing some research into the topic: larger tiles essentially force a larger character. the larger the sprite, the more complex the animation. a 32x32 sprite can change by one pixel and that be enough, not the case in 64x64. Considering my skill level in pixel art and animation, sticking to smaller sizes will be better.
 Conclusion: use 16x16 tiles, 32x32 sprites (keeping in mind that the character should be about 16 wide, but animation will vary, this will let the sprite feel less on a grid)
 
+
+features to add:
+one-way platforms (to drop down, make a scene with a static body with a collision shape set to one-way, and make a function to drop down position.y (ray cast to check the platform is a one-way))
+turn moving platforms into creatures that must be soothed to ride
+add lives so the player can die a few times before getting a game over, make better use of the checkpoints
+toy with gravity and jump settings, as well as speed (more speed and space to run could be fun - may need to adjust the walk animation though)
+double jump powerup
+animations for pickups and checkpoints (particle effect?)
