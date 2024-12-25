@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://eyx56aykbud2"]
+
+[ext_resource type="Texture2D" uid="uid://cqrbiax1k101c" path="res://assets/Terrain/dangerous-ground.png" id="1_iqkb4"]
+[ext_resource type="Script" path="res://scripts/dangerous_tiles.gd" id="2_yd54p"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1njyk"]
+texture = ExtResource("1_iqkb4")
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_gf01t"]
+physics_layer_0/collision_layer = 64
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_1njyk")
+
+[node name="DangerousTiles" type="TileMapLayer" groups=["Danger"]]
+tile_set = SubResource("TileSet_gf01t")
+script = ExtResource("2_yd54p")

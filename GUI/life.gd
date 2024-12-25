@@ -4,3 +4,4 @@ extends ColorRect
 
 func update_lives(lives, _max_lives):
 	label.text = str(lives)
+	Global.lives = lives

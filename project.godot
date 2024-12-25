@@ -28,6 +28,7 @@ window/stretch/mode="viewport"
 
 Player=""
 Enemies=""
+Danger=""
 
 [input]
 
@@ -65,6 +66,7 @@ pause={
 2d_physics/layer_4="checkpoint"
 2d_physics/layer_5="enemy"
 2d_physics/layer_6="item"
+2d_physics/layer_7="danger"
 
 [rendering]
 

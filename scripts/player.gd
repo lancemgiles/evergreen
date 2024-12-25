@@ -10,11 +10,11 @@ var current_direction = 0
 
 signal update_health(health, max_health)
 var max_health = 3
-var health = 2
+var health = 3
 
 signal update_lives(lives, max_lives)
-var max_lives = 5
-var lives = 1
+var max_lives = 3
+var lives = 2
 
 signal update_score(score)
 var score = 0
@@ -41,6 +41,7 @@ func _physics_process(delta):
 	move_and_slide()
 	player_animations()
 	sooth()
+	terrain_damage()
 
 func _process(_delta):
 	if velocity.x > 0: # Moving right
@@ -58,7 +59,6 @@ func _input(event):
 	if Input.is_action_just_pressed("sooth"):
 		Global.is_soothing = true
 		$AnimatedSprite2D.play("sooth")
-		$SoothCast2D.enabled = true
 	if event.is_action_pressed("jump") and is_on_floor():
 		velocity.y = jump_height
 		$AnimatedSprite2D.play("jump")
@@ -111,7 +111,6 @@ func take_damage(damage_health, damage_score):
 func lose_life():
 	lives -= 1
 	update_lives.emit(lives, max_lives)
-
 	if lives >= 0:
 		respawn()
 	else:
@@ -208,3 +207,18 @@ func _on_load_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+
+func terrain_damage():
+	if $HurtCast.is_colliding():
+		var target = $HurtCast.get_collider(0)
+		if target != null && target.is_in_group("Danger"):
+			take_damage(1, 0)
+			var collision_x = $HurtCast.get_collision_point(0).x
+			
+			var collision_y = $HurtCast.get_collision_point(0).y - 10
+			if collision_x >= position.x:
+					position.x -= 20
+			elif collision_x < position.x:
+				position.x += 20
+			if collision_y > position.y:
+				velocity.y = jump_height

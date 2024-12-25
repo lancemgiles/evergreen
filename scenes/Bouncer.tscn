@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccjjkqsp4tjtv"]
+[gd_scene load_steps=9 format=3 uid="uid://ccjjkqsp4tjtv"]
 
 [ext_resource type="Script" path="res://scripts/bouncer.gd" id="1_7i4r2"]
-[ext_resource type="Texture2D" uid="uid://s173hncgd1iq" path="res://assets/Terrain/bark-16x16-extras.png" id="1_i5ict"]
+[ext_resource type="Texture2D" uid="uid://y5lggnfwb1xg" path="res://assets/Items/bouncy-mushroom.png" id="2_enhqx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_eyg61"]
 bounce = 10.0
@@ -10,53 +10,27 @@ absorbent = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp3j0"]
 size = Vector2(14, 13)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6v5m7"]
-texture = ExtResource("1_i5ict")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m481"]
+atlas = ExtResource("2_enhqx")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="TileSet" id="TileSet_30sxn"]
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 2
-sources/0 = SubResource("TileSetAtlasSource_6v5m7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qgs8"]
+atlas = ExtResource("2_enhqx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3s7a1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m481")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qgs8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r81lw"]
 size = Vector2(14, 2)
@@ -69,9 +43,10 @@ script = ExtResource("1_7i4r2")
 position = Vector2(8, -6.5)
 shape = SubResource("RectangleShape2D_tp3j0")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 2, 0, 3, 0, 0, 0)
-tile_set = SubResource("TileSet_30sxn")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -8)
+sprite_frames = SubResource("SpriteFrames_3s7a1")
+frame_progress = 0.704306
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
