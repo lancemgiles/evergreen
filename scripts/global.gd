@@ -4,7 +4,7 @@ const SAVE_PATH = "user://savegame.save"
 
 var current_scene_name
 
-enum Pickups {HEALTH, SCORE}
+enum Pickups {HEALTH, SCORE, LIFE}
 
 var is_jumping = false
 var is_soothing = false

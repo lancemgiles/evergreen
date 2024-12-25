@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var gravity = 1600
 @export var knockback_force = 20
 @export var bounciness = 1.5
+@export var damage_health = 1
+@export var damage_score = 50
 
 @onready var start_x = position.x
 @onready var target_x = position.x + distance
@@ -51,7 +53,7 @@ func move_to(current, target, step):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if current_state == State.ANGRY:
 		if body.name == "Player":
-			body.take_damage()
+			body.take_damage(damage_health, damage_score)
 			if current_direction == 1:
 				body.position.x += knockback_force
 			elif current_direction == -1:

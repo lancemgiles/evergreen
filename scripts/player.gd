@@ -9,9 +9,12 @@ var last_direction = 0
 var current_direction = 0
 
 signal update_health(health, max_health)
-var max_health = 4
-var health = 4
-var is_hurt = false
+var max_health = 3
+var health = 2
+
+signal update_lives(lives, max_lives)
+var max_lives = 5
+var lives = 1
 
 signal update_score(score)
 var score = 0
@@ -25,9 +28,12 @@ func _ready():
 	current_direction = 1
 	update_health.connect($UI/Health.update_health)
 	update_score.connect($UI/Score.update_score)
+	update_lives.connect($UI/Life.update_lives)
 	$UI/Health/Label.text = str(health)
-	checkpoint_manager = get_parent().get_node("CheckpointManager")
+	$UI/Life/Label.text = str(lives)	
 	update_level_label()
+	
+	checkpoint_manager = get_parent().get_node("CheckpointManager")
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
@@ -90,22 +96,40 @@ func sooth():
 					target.current_state = target.State.HAPPY
 					score_up(100)
 
-func take_damage():
+func take_damage(damage_health, damage_score):
+	set_physics_process(false)
+	$Timer.start()
+	score_down(damage_score)
+
 	if health > 0:
-		health = health - 1
+		health = health - damage_health
 		update_health.emit(health, max_health)
 		$AnimatedSprite2D.play("damage")
-		set_physics_process(false)
-		$Timer.start()
-		is_hurt = true
-		score_down(50)
 	if health <= 0:
 		$AnimatedSprite2D.play("death")
+
+func lose_life():
+	lives -= 1
+	update_lives.emit(lives, max_lives)
+
+	if lives >= 0:
+		respawn()
+	else:
+		get_tree().paused = true
+		$GameOver/Menu.visible = true
+		$AnimationPlayer.play("ui_visibility")
+		$UI.visible = false
+		final_score_and_time()
+		$GameOver/Menu/Container/TimeCompleted/Value.text = str(Global.final_time)
+		$GameOver/Menu/Container/Score/Value.text = str(Global.final_score)
 
 func respawn():
 	position = checkpoint_manager.last_location
 	score_down(100)
-	
+	if health <= 0:
+		health += 1
+		update_health.emit(health, max_health)
+
 func score_up(count):
 	score += count
 	update_score.emit(score)
@@ -126,6 +150,12 @@ func add_pickup(pickup):
 			
 	if pickup == Global.Pickups.SCORE:
 		if pickup == Global.Pickups.SCORE:
+			score_up(100)
+			
+	if pickup == Global.Pickups.LIFE:
+		if lives < max_lives:
+			lives += 1
+			update_lives.emit(lives, max_lives)
 			score_up(100)
 
 func update_time_and_label():
@@ -149,17 +179,9 @@ func final_score_and_time():
 func _on_animated_sprite_2d_animation_finished():
 	set_physics_process(true)
 	$SoothCast2D.enabled = false
-	is_hurt = false
 
 	if $AnimatedSprite2D.animation == "death":
-		#respawn()
-		get_tree().paused = true
-		$GameOver/Menu.visible = true
-		$AnimationPlayer.play("ui_visibility")
-		$UI.visible = false
-		final_score_and_time()
-		$GameOver/Menu/Container/TimeCompleted/Value.text = str(Global.final_time)
-		$GameOver/Menu/Container/Score/Value.text = str(Global.final_score)
+		lose_life()
 
 func _on_timer_timeout() -> void:
 	set_physics_process(true)	
