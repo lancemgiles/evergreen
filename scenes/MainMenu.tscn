@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bjb78ayih21lt" path="res://assets/main-menu-01.png" id="2_xxnwa"]
 
 [node name="MainMenu" type="CanvasLayer"]
-process_mode = 3
 script = ExtResource("1_67w5c")
 
 [node name="Menu" type="ColorRect" parent="."]
+process_mode = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -60,6 +60,16 @@ theme_override_fonts/font = ExtResource("2_10mjk")
 theme_override_font_sizes/font_size = 25
 text = "Load Game"
 
+[node name="Controls" type="Button" parent="Menu/Container"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 385.0
+offset_right = 175.0
+offset_bottom = 452.0
+theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_font_sizes/font_size = 25
+text = "Controls"
+
 [node name="QuitButton" type="Button" parent="Menu/Container"]
 layout_mode = 0
 offset_left = 14.0
@@ -70,6 +80,108 @@ theme_override_fonts/font = ExtResource("2_10mjk")
 theme_override_font_sizes/font_size = 25
 text = "Quit"
 
+[node name="Instructions" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+
+[node name="Menu" type="ColorRect" parent="Instructions"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.580392, 0.2, 1)
+
+[node name="Container" type="ColorRect" parent="Instructions/Menu"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 1080.0
+offset_bottom = 580.0
+color = Color(0.337255, 0.741176, 0.356863, 1)
+
+[node name="Label" type="Label" parent="Instructions/Menu/Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 65.0
+offset_right = 400.0
+offset_bottom = 410.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_font_sizes/font_size = 25
+text = "Cedar's lute sooths the beasts [enter].
+
+The sound of Cedar's magic bell propels him through
+the air [space].
+
+Walk [\"a\", \"d\"]
+
+Pause [esc]"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="Instructions/Menu/Container"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="Intro" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+
+[node name="Menu" type="ColorRect" parent="Intro"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.580392, 0.2, 1)
+
+[node name="Container" type="ColorRect" parent="Intro/Menu"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 1080.0
+offset_bottom = 580.0
+color = Color(0.337255, 0.741176, 0.356863, 1)
+
+[node name="AcceptButton" type="Button" parent="Intro/Menu/Container"]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 510.0
+offset_right = 577.0
+offset_bottom = 560.0
+theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_font_sizes/font_size = 31
+text = "Continue"
+
+[node name="Label" type="Label" parent="Intro/Menu/Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 65.0
+offset_right = 400.0
+offset_bottom = 410.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_font_sizes/font_size = 25
+text = "Cedar has sensed that creatures of the Tree have grown restless.
+Surely, this must indicate something has happened.
+
+Sooth the creatures and seek the top of
+the Tree for the cause of the disturbance."
+horizontal_alignment = 1
+
 [connection signal="pressed" from="Menu/Container/NewButton" to="." method="_on_new_button_pressed"]
 [connection signal="pressed" from="Menu/Container/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="Menu/Container/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="Menu/Container/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Instructions/Menu/Container/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Intro/Menu/Container/AcceptButton" to="." method="_on_accept_button_pressed"]

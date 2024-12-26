@@ -1,24 +1,25 @@
-[gd_scene load_steps=23 format=4 uid="uid://buj17m13ntxfh"]
+[gd_scene load_steps=24 format=4 uid="uid://ci8cadrl72o45"]
 
-[ext_resource type="Texture2D" uid="uid://dtfon3x2tanos" path="res://assets/Background/grass-bg-2.png" id="1_ym0iw"]
-[ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="2_bni0f"]
-[ext_resource type="Texture2D" uid="uid://bebj4ommkbaj" path="res://assets/Background/tree-2-base.png" id="2_eki1j"]
-[ext_resource type="Texture2D" uid="uid://bj5q60yq6t203" path="res://assets/Terrain/bark-16x16x5-fim.png" id="2_jconv"]
-[ext_resource type="Texture2D" uid="uid://s173hncgd1iq" path="res://assets/Terrain/bark-16x16-extras.png" id="3_a4tnx"]
-[ext_resource type="Texture2D" uid="uid://d0jgqqs3r1hr8" path="res://assets/Terrain/vines.png" id="4_eq12e"]
-[ext_resource type="PackedScene" uid="uid://rcgw8842bow3" path="res://scenes/player.tscn" id="5_qli08"]
-[ext_resource type="Texture2D" uid="uid://c6ciho7pulmxx" path="res://assets/Terrain/bark-16x16-fim-02.png" id="6_640ru"]
-[ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="6_iv85t"]
-[ext_resource type="Script" path="res://scripts/checkpoint_manager.gd" id="7_0kh43"]
-[ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="8_uy8yo"]
-[ext_resource type="PackedScene" uid="uid://bbacl0rg65cqc" path="res://scenes/WalkingEnemy.tscn" id="9_u3kje"]
-[ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/Bouncer.tscn" id="10_yiwdj"]
-[ext_resource type="PackedScene" uid="uid://bo8i2h3ef2t04" path="res://scenes/checkpoint.tscn" id="11_blsy7"]
-[ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/change_scene.tscn" id="12_6evec"]
-[ext_resource type="PackedScene" uid="uid://eyx56aykbud2" path="res://scenes/dangerous_tiles.tscn" id="16_e5b3i"]
+[ext_resource type="Texture2D" uid="uid://dtfon3x2tanos" path="res://assets/Background/grass-bg-2.png" id="1_okwgu"]
+[ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="2_orv87"]
+[ext_resource type="Texture2D" uid="uid://bebj4ommkbaj" path="res://assets/Background/tree-2-base.png" id="3_dyj5i"]
+[ext_resource type="Texture2D" uid="uid://c6ciho7pulmxx" path="res://assets/Terrain/bark-16x16-fim-02.png" id="4_uoysl"]
+[ext_resource type="Texture2D" uid="uid://s173hncgd1iq" path="res://assets/Terrain/bark-16x16-extras.png" id="5_gbu0b"]
+[ext_resource type="Texture2D" uid="uid://bj5q60yq6t203" path="res://assets/Terrain/bark-16x16x5-fim.png" id="6_pi024"]
+[ext_resource type="Texture2D" uid="uid://d0jgqqs3r1hr8" path="res://assets/Terrain/vines.png" id="7_454om"]
+[ext_resource type="Script" path="res://scripts/checkpoint_manager.gd" id="8_bkec2"]
+[ext_resource type="PackedScene" uid="uid://bo8i2h3ef2t04" path="res://scenes/checkpoint.tscn" id="9_ygevb"]
+[ext_resource type="PackedScene" uid="uid://rcgw8842bow3" path="res://scenes/player.tscn" id="10_fgqyh"]
+[ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="11_iiko2"]
+[ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="12_gox1j"]
+[ext_resource type="PackedScene" uid="uid://bbacl0rg65cqc" path="res://scenes/WalkingEnemy.tscn" id="13_hy8gh"]
+[ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/Bouncer.tscn" id="14_eciot"]
+[ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/change_scene.tscn" id="15_manwn"]
+[ext_resource type="PackedScene" uid="uid://ci8cadrl72o45" path="res://scenes/Level_2.tscn" id="16_11rga"]
+[ext_resource type="PackedScene" uid="uid://eyx56aykbud2" path="res://scenes/dangerous_tiles.tscn" id="17_okj55"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oswgq"]
-texture = ExtResource("6_640ru")
+texture = ExtResource("4_uoysl")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.875, -8, -8, -5.375, -8, 1.25, 8, 0.875, 8, -8)
 1:0/0 = 0
@@ -119,9 +120,12 @@ texture = ExtResource("6_640ru")
 6:4/0 = 0
 6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.25, -8, -8, -5.375, -8, 3.375, -3.875, 3.125, -0.875, -1, 0.875, -6.25, 0.125, -8)
 6:4/0/physics_layer_0/polygon_0/one_way = true
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, -2.375, -8, 8, 0.625, 8, 3.625, 3.75, 3.625, -0.125, 1.375, -2.125)
+6:3/0/physics_layer_0/polygon_0/one_way = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sox4y"]
-texture = ExtResource("3_a4tnx")
+texture = ExtResource("5_gbu0b")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -2, 1.375, -1.875, -8, 8, -1.125, 8)
 1:0/0 = 0
@@ -176,7 +180,7 @@ texture = ExtResource("3_a4tnx")
 6:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xlioa"]
-texture = ExtResource("2_jconv")
+texture = ExtResource("6_pi024")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, -1.5, -8, -1.625, -8, -3.84375, -3.9375, -8)
 1:0/0 = 0
@@ -209,7 +213,7 @@ texture = ExtResource("2_jconv")
 4:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6b05u"]
-texture = ExtResource("4_eq12e")
+texture = ExtResource("7_454om")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
@@ -232,7 +236,7 @@ sources/0 = SubResource("TileSetAtlasSource_oswgq")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ksxl"]
 size = Vector2(20, 1196)
 
-[node name="Main" type="Node2D"]
+[node name="Level_1" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.2, 0.2)
@@ -241,7 +245,7 @@ repeat_times = 4
 
 [node name="Grass" type="Sprite2D" parent="Parallax2D"]
 position = Vector2(376, -257)
-texture = ExtResource("1_ym0iw")
+texture = ExtResource("1_okwgu")
 
 [node name="Parallax2D2" type="Parallax2D" parent="."]
 repeat_size = Vector2(0, 540)
@@ -249,24 +253,24 @@ repeat_times = 4
 
 [node name="Bark" type="Sprite2D" parent="Parallax2D2"]
 position = Vector2(376, -249)
-texture = ExtResource("2_bni0f")
+texture = ExtResource("2_orv87")
 
 [node name="tree-base" type="Sprite2D" parent="."]
 position = Vector2(376, -92)
-texture = ExtResource("2_eki1j")
+texture = ExtResource("3_dyj5i")
 
 [node name="surfaces-walls" type="TileMapLayer" parent="."]
 position = Vector2(600, -603)
-tile_map_data = PackedByteArray("AADg/yMAAAADAAAAAADh/yMAAAADAAAAAADi/yMAAAADAAAAAADj/yMAAAABAAAAAADk/yMAAAADAAAAAADl/yMAAAADAAAAAADm/yMAAAADAAAAAADn/yMAAAADAAAAAADo/yMAAAABAAAAAADp/yMAAAADAAAAAADq/yMAAAACAAAAAADr/yMAAAACAAAAAADs/yMAAAADAAAAAADt/yMAAAAEAAAAAADz/yMAAAAAAAEAAAD0/yMAAAACAAAAAAD1/yMAAAADAAAAAAD2/yMAAAABAAAAAAD3/yMAAAADAAAAAAD4/yMAAAADAAAAAAD5/yMAAAABAAAAAAD6/yMAAAABAAAAAAD7/yMAAAAEAAEAAAADACMAAAAAAAMAAAAEACMAAAADAAAAAAAFACMAAAACAAAAAAAGACMAAAADAAAAAAAHACMAAAAEAAIAAAAGAB8AAAACAAUAAAAHAB8AAAAAAAQAAAAAABkAAAAEAAIAAAD//xkAAAACAAAAAAD+/xkAAAACAAAAAAD9/xkAAAADAAAAAAD8/xkAAAABAAAAAAD7/xkAAgAAAAAAAAD4/xYAAAACAAEAAAD1/xQAAAACAAEAAADy/xIAAAACAAEAAAD1/xoAAAAAAAAAAAD2/xoAAAAEAAAAAADw/xoAAQAAAAEAAADx/xoAAAAEAAIAAADo/xkAAAAAAAAAAADp/xkAAAACAAAAAADq/xkAAAACAAAAAADr/xkAAAADAAAAAADs/xkAAAAEAAIAAAD//yEAAAAAAAIAAAAAACEAAAAEAAIAAAAEABwAAAACAAUAAAD0/w0AAgAAAAAAAAD1/w0AAAABAAAAAAD2/w0AAAAEAAEAAAD5/woAAgAAAAAAAAD6/woAAAACAAAAAAD7/woAAAAEAAMAAADi/wQAAAACAAEAAADg/wAAAAAEAAAAAADc/wAAAAAAAAAAAADd/wAAAAABAAAAAADe/wAAAAADAAAAAADf/wAAAAABAAAAAAD8/wYAAAACAAEAAAAAAAQAAAACAAAAAAABAAQAAAACAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAEAAQAAAACAAAAAAAFAAQAAAAEAAEAAAD//wQAAAAAAAIAAADj/wgAAAAAAAIAAADk/wgAAAABAAAAAADl/wgAAAADAAAAAADm/wgAAAACAAAAAADn/wgAAAAEAAMAAADt/wcAAAAAAAMAAADu/wcAAAACAAAAAADv/wcAAAAEAAEAAADx/wQAAAADAAEAAAD1/wIAAQAAAAQAAAD5/wEAAAACAAEAAAAGAAAAAAAAAAAAAAAHAAAAAAAEAAEAAAAEAP3/AAAEAAMAAAADAP3/AAABAAAAAAACAP3/AAAAAAIAAADk//3/AAAAAAEAAADl//3/AAADAAAAAADm//3/AAAEAAAAAADq/wAAAAAAAAAAAADr/wAAAAACAAAAAADs/wAAAAAEAAEAAAAAAPn/AAAEAAIAAAD///n/AAAAAAIAAAD9//b/AAACAAEAAAD5//P/AAAEAAEAAAD4//P/AAACAAAAAAD3//P/AAAAAAAAAADy/wQAAAABAAEAAADz/w4AAAACAAEAAADd/yMAAAABAAAAAADe/yMAAAACAAAAAADf/yMAAAADAAAAAADc/yMAAAAAAAAAAADy/x8AAAADAAUAAADx/x8AAAAEAAQAAADw/x8AAAABAAQAAADv/x8AAAAAAAQAAADu/x8AAAACAAUAAAAIAB8AAAAAAAYAAAAIAB4AAAAAAAUAAAAJAB4AAAAGAAQAAAAJAB0AAAAEAAUAAAAJABwAAAABAAUAAAAIABwAAAADAAQAAAAHABwAAAAEAAYAAAAGABwAAAADAAYAAAAFABwAAAACAAYAAAA=")
+tile_map_data = PackedByteArray("AADg/yMAAAADAAAAAADh/yMAAAADAAAAAADi/yMAAAADAAAAAADj/yMAAAABAAAAAADk/yMAAAADAAAAAADl/yMAAAADAAAAAADm/yMAAAADAAAAAADn/yMAAAADAAAAAADo/yMAAAABAAAAAADp/yMAAAADAAAAAADq/yMAAAACAAAAAADr/yMAAAACAAAAAADs/yMAAAADAAAAAADt/yMAAAAEAAAAAADz/yMAAAAAAAEAAAD0/yMAAAACAAAAAAD1/yMAAAADAAAAAAD2/yMAAAABAAAAAAD3/yMAAAADAAAAAAD4/yMAAAADAAAAAAD5/yMAAAABAAAAAAD6/yMAAAABAAAAAAD7/yMAAAAEAAEAAAADACMAAAAAAAMAAAAEACMAAAADAAAAAAAFACMAAAACAAAAAAAGACMAAAADAAAAAAAHACMAAAAEAAIAAAAGAB8AAAACAAUAAAAHAB8AAAAAAAQAAAAAABkAAAAEAAIAAAD//xkAAAACAAAAAAD+/xkAAAACAAAAAAD9/xkAAAADAAAAAAD8/xkAAAABAAAAAAD7/xkAAgAAAAAAAAD4/xYAAAACAAEAAAD1/xQAAAACAAEAAADy/xIAAAACAAEAAAD1/xoAAAACAAUAAAD2/xoAAAABAAQAAADw/xoAAQAAAAEAAADx/xoAAAAEAAIAAADo/xkAAAAAAAAAAADp/xkAAAACAAAAAADq/xkAAAACAAAAAADr/xkAAAADAAAAAADs/xkAAAAEAAIAAAD//yEAAAAAAAIAAAAAACEAAAAEAAIAAAAEABwAAAACAAUAAAD0/w0AAAAAAAUAAAD1/w0AAAABAAQAAAD2/w0AAAAGAAQAAAD5/woAAgAAAAAAAAD6/woAAAACAAAAAAD7/woAAAAEAAMAAADi/wQAAAACAAEAAADg/wAAAAAEAAAAAADc/wAAAAAAAAAAAADd/wAAAAABAAAAAADe/wAAAAADAAAAAADf/wAAAAABAAAAAAD8/wYAAAACAAEAAAAAAAQAAAACAAAAAAABAAQAAAACAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAEAAQAAAACAAAAAAAFAAQAAAAEAAEAAAD//wQAAAAAAAIAAADj/wgAAAAAAAIAAADk/wgAAAABAAAAAADl/wgAAAADAAAAAADm/wgAAAACAAAAAADn/wgAAAAEAAMAAADt/wcAAAAAAAMAAADu/wcAAAACAAAAAADv/wcAAAAEAAEAAADx/wQAAAADAAEAAAD1/wIAAQAAAAQAAAD5/wEAAAADAAEAAAAGAAAAAAAAAAAAAAAHAAAAAAAEAAEAAAAEAP3/AAADAAUAAAADAP3/AAABAAQAAAACAP3/AAACAAUAAADk//3/AAAAAAEAAADl//3/AAADAAAAAADm//3/AAAEAAAAAADq/wAAAAAAAAAAAADr/wAAAAACAAAAAADs/wAAAAAEAAEAAAAAAPn/AAAEAAIAAAD///n/AAAAAAIAAAD9//b/AAACAAEAAAD5//P/AAAEAAEAAAD4//P/AAACAAAAAAD3//P/AAAAAAAAAADy/wQAAAABAAEAAADz/w4AAAACAAUAAADd/yMAAAABAAAAAADe/yMAAAACAAAAAADf/yMAAAADAAAAAADc/yMAAAAAAAAAAADy/x8AAAADAAUAAADx/x8AAAAEAAQAAADw/x8AAAABAAQAAADv/x8AAAAAAAQAAADu/x8AAAACAAUAAAAIAB8AAAAAAAYAAAAIAB4AAAAAAAUAAAAJAB4AAAAGAAQAAAAJAB0AAAAEAAUAAAAJABwAAAABAAUAAAAIABwAAAADAAQAAAAHABwAAAAEAAYAAAAGABwAAAADAAYAAAAFABwAAAACAAYAAAD0/w4AAAAAAAYAAAD2/wwAAAAGAAMAAAD6/wEAAAAEAAEAAAD3/xoAAAADAAUAAAA=")
 tile_set = SubResource("TileSet_kxgnk")
 
 [node name="CheckpointManager" type="Node" parent="."]
-script = ExtResource("7_0kh43")
+script = ExtResource("8_bkec2")
 
-[node name="Checkpoint" parent="." instance=ExtResource("11_blsy7")]
+[node name="Checkpoint" parent="." instance=ExtResource("9_ygevb")]
 position = Vector2(60, -602)
 
-[node name="Player" parent="." instance=ExtResource("5_qli08")]
+[node name="Player" parent="." instance=ExtResource("10_fgqyh")]
 unique_name_in_owner = true
 position = Vector2(134, -68)
 speed = 150
@@ -281,80 +285,81 @@ limit_right = 912
 limit_bottom = 32
 limit_smoothed = true
 
-[node name="Pits" parent="." instance=ExtResource("6_iv85t")]
+[node name="Pits" parent="." instance=ExtResource("11_iiko2")]
 position = Vector2(408, 84)
 scale = Vector2(51.4546, -7.39888)
 metadata/danger = true
 
-[node name="pickup" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(352, -115)
 
-[node name="pickup13" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup13" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(663, -52)
 
-[node name="pickup16" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup16" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(134, -551)
 pickup = 2
 
-[node name="pickup2" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup2" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(600, -84)
 pickup = 0
 
-[node name="pickup3" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup3" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(384, -323)
 
-[node name="pickup14" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup14" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(455, -257)
 
-[node name="pickup4" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup4" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(252, -294)
 
-[node name="pickup5" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup5" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(252, -381)
 
-[node name="pickup6" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup6" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(252, -465)
 
-[node name="pickup7" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup7" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(431, -579)
 
-[node name="pickup15" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup15" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(656, -658)
 pickup = 0
 
-[node name="pickup8" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup8" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(477, -878)
 
-[node name="pickup9" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup9" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(477, -931)
 
-[node name="pickup10" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup10" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(477, -982)
 
-[node name="pickup11" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup11" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(477, -1036)
 
-[node name="pickup12" parent="." instance=ExtResource("8_uy8yo")]
+[node name="pickup12" parent="." instance=ExtResource("12_gox1j")]
 position = Vector2(477, -1091)
 
-[node name="WalkingEnemy" parent="." instance=ExtResource("9_u3kje")]
+[node name="WalkingEnemy" parent="." instance=ExtResource("13_hy8gh")]
 position = Vector2(408, -52)
 speed = 50
 distance = 118
 
-[node name="WalkingEnemy2" parent="." instance=ExtResource("9_u3kje")]
+[node name="WalkingEnemy2" parent="." instance=ExtResource("13_hy8gh")]
 position = Vector2(600, -547)
 speed = 50
 distance = 84
 
-[node name="Bouncer" parent="." instance=ExtResource("10_yiwdj")]
+[node name="Bouncer" parent="." instance=ExtResource("14_eciot")]
 position = Vector2(244, -203)
 
-[node name="Bouncer2" parent="." instance=ExtResource("10_yiwdj")]
+[node name="Bouncer2" parent="." instance=ExtResource("14_eciot")]
 position = Vector2(469, -811)
 
-[node name="ChangeScene" parent="." instance=ExtResource("12_6evec")]
+[node name="ChangeScene" parent="." instance=ExtResource("15_manwn")]
 position = Vector2(122, -1146)
+next_level = ExtResource("16_11rga")
 
 [node name="Borderss" type="StaticBody2D" parent="."]
 collision_mask = 2
@@ -367,5 +372,5 @@ shape = SubResource("RectangleShape2D_2ksxl")
 position = Vector2(840, -579)
 shape = SubResource("RectangleShape2D_2ksxl")
 
-[node name="DangerousTiles" parent="." instance=ExtResource("16_e5b3i")]
+[node name="DangerousTiles" parent="." instance=ExtResource("17_okj55")]
 position = Vector2(8, -11)

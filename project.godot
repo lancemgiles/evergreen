@@ -23,6 +23,7 @@ Global="*res://scripts/global.gd"
 
 window/size/mode=2
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://assets/purple_pointer.png"
 
 [global_group]
 
@@ -71,3 +72,5 @@ pause={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

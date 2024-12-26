@@ -17,3 +17,12 @@ add lives so the player can die a few times before getting a game over, make bet
 toy with gravity and jump settings, as well as speed (more speed and space to run could be fun - may need to adjust the walk animation though)
 double jump powerup
 animations for pickups and checkpoints (particle effect?)
+
+
+loading bug
+Can start a new game as expected. When trying to load:
+the game has already set the current level to be one, so it shows the instruction screen
+but it then loads level 2 but because the instruction screen isn't meant to come up, it can't be interacted with
+so when the player calls to get the current level number, it is doing this for the level it is currently in
+using an onready var doesn't seem to change this. the player enters the scene tree and I guess this happens before the global script updates the level number
+Rather than bust my ass on getting this just right, maybe I should rethink how the instruction screen works. it could be a scene that is only started from the main menu, as I don't think the controls are complex enough for someone to need more than one viewing of this. that way, I can bypass needing to check levels at all and instead tie it to the new game button or make it its own scene, and then use it's continue button to actually load the level.

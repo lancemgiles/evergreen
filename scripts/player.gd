@@ -24,6 +24,8 @@ var level_start_time = Time.get_ticks_msec()
 
 var checkpoint_manager
 
+@onready var current_level = Global.get_current_level_number()
+
 func _ready():
 	current_direction = 1
 	update_health.connect($UI/Health.update_health)
@@ -31,9 +33,10 @@ func _ready():
 	update_lives.connect($UI/Life.update_lives)
 	$UI/Health/Label.text = str(health)
 	$UI/Life/Label.text = str(lives)	
-	update_level_label()
-	
 	checkpoint_manager = get_parent().get_node("CheckpointManager")
+	
+	await get_tree().create_timer(0.2).timeout
+	update_level_label()
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
@@ -51,11 +54,17 @@ func _process(_delta):
 		current_direction = -1
 		$AnimatedSprite2D.flip_h = true
 	update_time_and_label()
+	
+	if get_tree().paused == true:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	elif get_tree().paused == false:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _input(event):
 	if Input.is_action_pressed("pause"):
-		get_tree().paused = true
 		$PauseMenu.visible = true
+		get_tree().paused = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.is_action_just_pressed("sooth"):
 		Global.is_soothing = true
 		$AnimatedSprite2D.play("sooth")
@@ -121,6 +130,7 @@ func lose_life():
 		final_score_and_time()
 		$GameOver/Menu/Container/TimeCompleted/Value.text = str(Global.final_time)
 		$GameOver/Menu/Container/Score/Value.text = str(Global.final_score)
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func respawn():
 	position = checkpoint_manager.last_location
@@ -162,7 +172,7 @@ func update_time_and_label():
 	$UI/Time/Label.text = str(round(time_passed)) + "s"
 	
 func update_level_label():
-	var current_level = Global.get_current_level_number()
+	current_level = Global.get_current_level_number()
 	if current_level != -1:
 		level.text = " " + str(current_level)
 	else:
@@ -186,12 +196,12 @@ func _on_timer_timeout() -> void:
 	set_physics_process(true)	
 
 func _on_retry_button_pressed() -> void:
-	get_tree().paused = false
 	$GameOver/Menu.visible = false
+	get_tree().paused = false
 	get_tree().reload_current_scene()
+	
 
 func _on_resume_button_pressed() -> void:
-	print(OS.get_user_data_dir())
 	get_tree().paused = false
 	$PauseMenu.visible = false
 
@@ -203,7 +213,8 @@ func _on_load_button_pressed() -> void:
 	if current_scene:
 		current_scene.queue_free()
 	Global.load_game()
-	get_tree().paused = false
+	#if Global.get_current_level_number() > 1:
+		#get_tree().paused = false
 
 func _on_quit_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")

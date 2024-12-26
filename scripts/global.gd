@@ -11,16 +11,15 @@ var is_soothing = false
 
 var final_score
 var final_time
-var lives
 
 func _ready():
 	var scene_name = get_tree().get_current_scene().name
 	current_scene_name = clean_scene_name(scene_name)
 
-func get_current_level_number():
-	if current_scene_name == "Main" || current_scene_name == "MainMenu":
+func get_current_level_number():	
+	if current_scene_name == "MainMenu":
 		return 1
-	elif current_scene_name.begins_with("Main_"):
+	elif current_scene_name.begins_with("Level_"):
 		var level_number = current_scene_name.get_slice("_", 1).to_int()
 		return level_number
 	else:
@@ -30,7 +29,6 @@ func get_current_level_number():
 func save_game():
 	var save_file = ConfigFile.new()
 	save_file.set_value("level", "current_level", "res://scenes/" + Global.current_scene_name + ".tscn")
-	save_file.set_value("lives", "lives", lives)
 	var err = save_file.save(SAVE_PATH)
 	if err != OK:
 		print("An error occurred while saving the game.")
@@ -43,16 +41,14 @@ func load_game():
 	
 	if err == OK:
 		print("Loading game.")
-		var saved_level = save_file.get_value("level", "current_level", "res://scenes/Main.tscn")
+		var saved_level = save_file.get_value("level", "current_level", "res://scenes/Level_1.tscn")
 		var new_scene_resource = load(saved_level)
 		var new_scene = new_scene_resource.instantiate()
 		get_tree().get_root().add_child(new_scene)
 		get_tree().current_scene = new_scene
 		current_scene_name = get_tree().get_current_scene().name
 		clean_scene_name(current_scene_name)
-		var saved_lives = save_file.get_value("lives", "lives", lives)
-		print(get_tree().get_root())
-		%Player.update_lives.emit(save_file.get_value("level", "level", lives), 5)
+		get_tree().paused = false
 	else:
 		print("An error occurred while loading the game.")
 
