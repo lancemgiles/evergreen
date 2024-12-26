@@ -3,6 +3,7 @@ extends CanvasLayer
 func _ready():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	BackgroundMusic.play()
 
 func _on_new_button_pressed() -> void:
 	
@@ -38,7 +39,6 @@ func _on_accept_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	$Instructions.hide()
-
 
 func _on_controls_pressed() -> void:
 	$Instructions.show()

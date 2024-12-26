@@ -37,6 +37,8 @@ func _ready():
 	
 	await get_tree().create_timer(0.2).timeout
 	update_level_label()
+	if BackgroundMusic.is_playing() == false:
+		BackgroundMusic.play()
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
@@ -131,6 +133,7 @@ func lose_life():
 		$GameOver/Menu/Container/TimeCompleted/Value.text = str(Global.final_time)
 		$GameOver/Menu/Container/Score/Value.text = str(Global.final_score)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		BackgroundMusic.loop = false
 
 func respawn():
 	position = checkpoint_manager.last_location
@@ -199,7 +202,6 @@ func _on_retry_button_pressed() -> void:
 	$GameOver/Menu.visible = false
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-	
 
 func _on_resume_button_pressed() -> void:
 	get_tree().paused = false
