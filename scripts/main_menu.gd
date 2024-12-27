@@ -3,7 +3,8 @@ extends CanvasLayer
 func _ready():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	BackgroundMusic.play()
+	if BackgroundMusic.is_playing() == false:
+		BackgroundMusic.play()
 
 func _on_new_button_pressed() -> void:
 	

@@ -1,10 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://rcgw8842bow3"]
+[gd_scene load_steps=51 format=3 uid="uid://rcgw8842bow3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4osts"]
 [ext_resource type="Texture2D" uid="uid://n1u86tw2mcv3" path="res://assets/Main Characters/cedar-04-damage-fim.png" id="2_ful4r"]
 [ext_resource type="Texture2D" uid="uid://diou76wl3awk4" path="res://assets/Main Characters/cedar-04-death-fim.png" id="3_e8h23"]
 [ext_resource type="Texture2D" uid="uid://byad7o2yjqlpn" path="res://assets/Main Characters/cedar-04-float-fim.png" id="5_lyerg"]
 [ext_resource type="Texture2D" uid="uid://d4nrvhyepxcul" path="res://assets/Main Characters/cedar-04-idle-fim.png" id="6_e0v85"]
+[ext_resource type="Texture2D" uid="uid://d0lwxlntsx4nn" path="res://assets/Terrain/grass-particle-1.png" id="8_qmtpv"]
 [ext_resource type="Texture2D" uid="uid://bf1x4hl5ofl5a" path="res://assets/Main Characters/cedar-04-sooth-fim.png" id="10_nit4c"]
 [ext_resource type="Texture2D" uid="uid://dd0f8swb4bvbm" path="res://assets/Main Characters/cedar-04-walk-fim.png" id="11_wri7l"]
 [ext_resource type="Texture2D" uid="uid://diuvc6enrbam6" path="res://assets/icons/hourglass.png" id="12_4aqle"]
@@ -17,6 +18,12 @@
 [ext_resource type="Script" path="res://GUI/score.gd" id="16_dfdsh"]
 [ext_resource type="Texture2D" uid="uid://cii4w1b6jjj3g" path="res://assets/Items/sap.png" id="17_6gur8"]
 [ext_resource type="FontFile" uid="uid://cjeggffpppohb" path="res://assets/Agave/AgaveNerdFont-Regular.ttf" id="18_cmcsi"]
+[ext_resource type="AudioStream" uid="uid://dtmfu1hpup01r" path="res://assets/Audio/bell.ogg" id="18_k61v7"]
+[ext_resource type="AudioStream" uid="uid://ds87n3u3nabei" path="res://assets/Audio/cedar_lute.ogg" id="19_hhffx"]
+[ext_resource type="AudioStream" uid="uid://c0ypcat4hbc5p" path="res://assets/Audio/damage.ogg" id="20_7j6r4"]
+[ext_resource type="AudioStream" uid="uid://bbm1ktmmi7vbs" path="res://assets/Audio/health_pickup.ogg" id="21_posq6"]
+[ext_resource type="AudioStream" uid="uid://ca083il6nl1e1" path="res://assets/Audio/life_pickup.ogg" id="22_austi"]
+[ext_resource type="AudioStream" uid="uid://28bcsnbd18qk" path="res://assets/Audio/score_pickup.ogg" id="23_efoic"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qwrd8"]
 radius = 24.4
@@ -180,6 +187,12 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d3800"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(8, 1, 1)
+gravity = Vector3(0, 98, 0)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lxpba"]
 radius = 9.0
 height = 28.0
@@ -239,6 +252,18 @@ collision_mask = 16
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5e53w")
 animation = &"idle"
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="JumpParticles" type="GPUParticles2D" parent="Effects"]
+position = Vector2(0, 17)
+emitting = false
+amount = 6
+amount_ratio = 0.6709
+process_material = SubResource("ParticleProcessMaterial_d3800")
+texture = ExtResource("8_qmtpv")
+lifetime = 0.5
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -677,6 +702,32 @@ target_position = Vector2(0, 2)
 max_results = 20
 collision_mask = 64
 collide_with_areas = true
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="FloatSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("18_k61v7")
+area_mask = 2
+
+[node name="SoothSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("19_hhffx")
+area_mask = 2
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("20_7j6r4")
+area_mask = 2
+
+[node name="HealthSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("21_posq6")
+area_mask = 2
+
+[node name="LifeSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("22_austi")
+area_mask = 2
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("23_efoic")
+area_mask = 2
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

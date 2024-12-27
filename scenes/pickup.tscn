@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://dukjq6ijh5oi3"]
+[gd_scene load_steps=20 format=3 uid="uid://dukjq6ijh5oi3"]
 
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="1_qrm0k"]
 [ext_resource type="Texture2D" uid="uid://xi83iofptmyu" path="res://assets/Items/sap-animated.png" id="2_pbg1p"]
 [ext_resource type="Texture2D" uid="uid://47c3tla8c3bj" path="res://assets/Items/glowing-mushroom-01.png" id="3_5r8t5"]
 [ext_resource type="Texture2D" uid="uid://uxuc001v1ens" path="res://assets/Items/token-01-animated.png" id="4_5kps7"]
+[ext_resource type="Texture2D" uid="uid://bi0u1x4otsgxg" path="res://assets/Items/mushroom_particle-1.png" id="5_7u4ee"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eftui"]
 
@@ -102,6 +103,12 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_va80p"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector3(0, -5, 0)
+
 [node name="pickup" type="Area2D"]
 collision_layer = 32
 collision_mask = 2
@@ -114,5 +121,12 @@ shape = SubResource("CircleShape2D_eftui")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kr8tb")
 animation = &"score"
+
+[node name="LifeParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -2)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_va80p")
+texture = ExtResource("5_7u4ee")
+lifetime = 0.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

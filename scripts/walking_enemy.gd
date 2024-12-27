@@ -36,19 +36,21 @@ func _process(delta):
 			target_x = start_x
 			$AnimatedSprite2D.flip_h = true
 
-func move_to(current, target, step):
-	var new = current
-	if new < target:
-		new += step
+func move_to(current_position, target_position, step_size):
+	var new_position = current_position
+	# target is to the right
+	if new_position < target_position:
+		new_position += step_size
 		current_direction = 1
-		if new > target:
-			new = target
+		if new_position > target_position:
+			new_position = target_position
 	else:
-		new -= step
+		# target is to the left
+		new_position -= step_size
 		current_direction = -1
-		if new < target:
-			new = target
-	return new
+		if new_position < target_position:
+			new_position = target_position
+	return new_position
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if current_state == State.ANGRY:
@@ -60,7 +62,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				body.position.x -= knockback_force
 			$Hitbox.collision_mask = 5
 			$Timer.start(0.8)
-
 
 func _on_timer_timeout() -> void:
 	$Hitbox.collision_mask = 2

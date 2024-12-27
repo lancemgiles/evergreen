@@ -70,10 +70,13 @@ func _input(event):
 	if Input.is_action_just_pressed("sooth"):
 		Global.is_soothing = true
 		$AnimatedSprite2D.play("sooth")
+		$Audio/SoothSound.play()
 	if event.is_action_pressed("jump") and is_on_floor():
 		velocity.y = jump_height
 		$AnimatedSprite2D.play("jump")
 		Global.is_jumping = true
+		$Audio/FloatSound.play()
+		$Effects/JumpParticles.emitting = true
 	else:
 		Global.is_jumping = false
 		Global.is_soothing = false
@@ -88,7 +91,6 @@ func horizontal_movement():
 func player_animations():
 	if is_on_floor():
 		if Input.is_action_pressed("left") && Global.is_jumping == false:
-			
 			$AnimatedSprite2D.play("walk")
 		if Input.is_action_pressed("right") && Global.is_jumping == false:
 			
@@ -111,13 +113,29 @@ func take_damage(damage_health, damage_score):
 	set_physics_process(false)
 	$Timer.start()
 	score_down(damage_score)
-
+	$Audio/DamageSound.play()
 	if health > 0:
 		health = health - damage_health
 		update_health.emit(health, max_health)
 		$AnimatedSprite2D.play("damage")
 	if health <= 0:
 		$AnimatedSprite2D.play("death")
+
+func terrain_damage():
+	if $HurtCast.is_colliding():
+		var y_offset = 10
+		var x_knockback = 20
+		var target = $HurtCast.get_collider(0)
+		if target != null && target.is_in_group("Danger"):
+			take_damage(1, 0)
+			var collision_x = $HurtCast.get_collision_point(0).x
+			var collision_y = $HurtCast.get_collision_point(0).y - y_offset
+			if collision_x >= position.x:
+					position.x -= x_knockback
+			elif collision_x < position.x:
+				position.x += x_knockback
+			if collision_y > position.y:
+				velocity.y = jump_height
 
 func lose_life():
 	lives -= 1
@@ -156,6 +174,7 @@ func score_down(count):
 func add_pickup(pickup):
 	if pickup == Global.Pickups.HEALTH:
 		score_up(50)
+		$Audio/HealthSound.play()
 		if health < max_health:
 			health += 1
 			update_health.emit(health, max_health)
@@ -163,12 +182,14 @@ func add_pickup(pickup):
 	if pickup == Global.Pickups.SCORE:
 		if pickup == Global.Pickups.SCORE:
 			score_up(100)
+			$Audio/ScoreSound.play()
 			
 	if pickup == Global.Pickups.LIFE:
 		if lives < max_lives:
 			lives += 1
 			update_lives.emit(lives, max_lives)
 			score_up(100)
+			$Audio/LifeSound.play()
 
 func update_time_and_label():
 	var time_passed = (Time.get_ticks_msec() - level_start_time) / 1000.0
@@ -215,23 +236,6 @@ func _on_load_button_pressed() -> void:
 	if current_scene:
 		current_scene.queue_free()
 	Global.load_game()
-	#if Global.get_current_level_number() > 1:
-		#get_tree().paused = false
 
 func _on_quit_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
-
-func terrain_damage():
-	if $HurtCast.is_colliding():
-		var target = $HurtCast.get_collider(0)
-		if target != null && target.is_in_group("Danger"):
-			take_damage(1, 0)
-			var collision_x = $HurtCast.get_collision_point(0).x
-			
-			var collision_y = $HurtCast.get_collision_point(0).y - 10
-			if collision_x >= position.x:
-					position.x -= 20
-			elif collision_x < position.x:
-				position.x += 20
-			if collision_y > position.y:
-				velocity.y = jump_height
