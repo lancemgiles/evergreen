@@ -40,6 +40,7 @@ func _ready():
 	if BackgroundMusic.is_playing() == false:
 		BackgroundMusic.play()
 
+
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	horizontal_movement()
@@ -154,11 +155,7 @@ func lose_life():
 		BackgroundMusic.loop = false
 
 func respawn():
-	print("before checkpoint respawn, global position is:")
-	print(global_position)
 	position = checkpoint_manager.last_location
-	print("after:")
-	print(global_position)
 	score_down(100)
 	if health <= 0:
 		health += 1
@@ -231,10 +228,6 @@ func _on_retry_button_pressed() -> void:
 func _on_resume_button_pressed() -> void:
 	get_tree().paused = false
 	$PauseMenu.visible = false
-
-func _on_save_button_pressed() -> void:
-	Global.save_game()
-	_on_resume_button_pressed()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
