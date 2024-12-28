@@ -1,16 +1,16 @@
 [gd_scene load_steps=51 format=3 uid="uid://rcgw8842bow3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4osts"]
-[ext_resource type="Texture2D" uid="uid://n1u86tw2mcv3" path="res://assets/Main Characters/cedar-04-damage-fim.png" id="2_ful4r"]
-[ext_resource type="Texture2D" uid="uid://diou76wl3awk4" path="res://assets/Main Characters/cedar-04-death-fim.png" id="3_e8h23"]
-[ext_resource type="Texture2D" uid="uid://byad7o2yjqlpn" path="res://assets/Main Characters/cedar-04-float-fim.png" id="5_lyerg"]
-[ext_resource type="Texture2D" uid="uid://d4nrvhyepxcul" path="res://assets/Main Characters/cedar-04-idle-fim.png" id="6_e0v85"]
+[ext_resource type="Texture2D" uid="uid://n1u86tw2mcv3" path="res://assets/Characters/cedar-04-damage-fim.png" id="2_ful4r"]
+[ext_resource type="Texture2D" uid="uid://diou76wl3awk4" path="res://assets/Characters/cedar-04-death-fim.png" id="3_e8h23"]
+[ext_resource type="Texture2D" uid="uid://byad7o2yjqlpn" path="res://assets/Characters/cedar-04-float-fim.png" id="5_lyerg"]
+[ext_resource type="Texture2D" uid="uid://d4nrvhyepxcul" path="res://assets/Characters/cedar-04-idle-fim.png" id="6_e0v85"]
 [ext_resource type="Texture2D" uid="uid://d0lwxlntsx4nn" path="res://assets/Terrain/grass-particle-1.png" id="8_qmtpv"]
-[ext_resource type="Texture2D" uid="uid://bf1x4hl5ofl5a" path="res://assets/Main Characters/cedar-04-sooth-fim.png" id="10_nit4c"]
-[ext_resource type="Texture2D" uid="uid://dd0f8swb4bvbm" path="res://assets/Main Characters/cedar-04-walk-fim.png" id="11_wri7l"]
+[ext_resource type="Texture2D" uid="uid://bf1x4hl5ofl5a" path="res://assets/Characters/cedar-04-sooth-fim.png" id="10_nit4c"]
+[ext_resource type="Texture2D" uid="uid://dd0f8swb4bvbm" path="res://assets/Characters/cedar-04-walk-fim.png" id="11_wri7l"]
 [ext_resource type="Texture2D" uid="uid://diuvc6enrbam6" path="res://assets/icons/hourglass.png" id="12_4aqle"]
 [ext_resource type="FontFile" uid="uid://ci4hy5h1ty1og" path="res://assets/Agave/AgaveNerdFontMono-Regular.ttf" id="13_0gsrx"]
-[ext_resource type="Texture2D" uid="uid://2p0bufvmud6a" path="res://assets/Main Characters/cedar-04-portrait-48x48.png" id="14_rwmn1"]
+[ext_resource type="Texture2D" uid="uid://2p0bufvmud6a" path="res://assets/Characters/cedar-04-portrait-48x48.png" id="14_rwmn1"]
 [ext_resource type="Script" path="res://GUI/life.gd" id="15_17kly"]
 [ext_resource type="Texture2D" uid="uid://rri60nd8bpap" path="res://assets/Items/token-01.png" id="16_4ijgf"]
 [ext_resource type="Script" path="res://GUI/health.gd" id="16_8c5qq"]
@@ -660,7 +660,7 @@ text = "Pause"
 layout_mode = 0
 offset_left = 50.0
 offset_top = 202.0
-offset_right = 251.0
+offset_right = 277.0
 offset_bottom = 262.0
 theme_override_fonts/font = ExtResource("18_cmcsi")
 theme_override_font_sizes/font_size = 25
@@ -670,27 +670,17 @@ text = "Resume"
 layout_mode = 0
 offset_left = 50.0
 offset_top = 289.0
-offset_right = 251.0
+offset_right = 277.0
 offset_bottom = 349.0
 theme_override_fonts/font = ExtResource("18_cmcsi")
 theme_override_font_sizes/font_size = 25
-text = "Save Game"
-
-[node name="LoadButton" type="Button" parent="PauseMenu/Menu/Container"]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 382.0
-offset_right = 251.0
-offset_bottom = 442.0
-theme_override_fonts/font = ExtResource("18_cmcsi")
-theme_override_font_sizes/font_size = 25
-text = "Load Game"
+text = "Save & Continue"
 
 [node name="QuitButton" type="Button" parent="PauseMenu/Menu/Container"]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 473.0
-offset_right = 251.0
+offset_right = 277.0
 offset_bottom = 533.0
 theme_override_fonts/font = ExtResource("18_cmcsi")
 theme_override_font_sizes/font_size = 25
@@ -735,5 +725,4 @@ area_mask = 2
 [connection signal="pressed" from="GameOver/Menu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Container/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Container/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="PauseMenu/Menu/Container/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Container/QuitButton" to="." method="_on_quit_button_pressed"]

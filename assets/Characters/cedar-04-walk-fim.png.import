@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf1x4hl5ofl5a"
-path="res://.godot/imported/cedar-04-sooth-fim.png-1203e385308965447d3b424614742a98.ctex"
+uid="uid://dd0f8swb4bvbm"
+path="res://.godot/imported/cedar-04-walk-fim.png-10f9e91c4300dc05e7f964e6f29f06fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Main Characters/cedar-04-sooth-fim.png"
-dest_files=["res://.godot/imported/cedar-04-sooth-fim.png-1203e385308965447d3b424614742a98.ctex"]
+source_file="res://assets/Characters/cedar-04-walk-fim.png"
+dest_files=["res://.godot/imported/cedar-04-walk-fim.png-10f9e91c4300dc05e7f964e6f29f06fa.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n1u86tw2mcv3"
-path="res://.godot/imported/cedar-04-damage-fim.png-93c5725c917c63434ad36ed54a787fc8.ctex"
+uid="uid://diou76wl3awk4"
+path="res://.godot/imported/cedar-04-death-fim.png-9a71b1d677fa01ba725407016533d527.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Main Characters/cedar-04-damage-fim.png"
-dest_files=["res://.godot/imported/cedar-04-damage-fim.png-93c5725c917c63434ad36ed54a787fc8.ctex"]
+source_file="res://assets/Characters/cedar-04-death-fim.png"
+dest_files=["res://.godot/imported/cedar-04-death-fim.png-9a71b1d677fa01ba725407016533d527.ctex"]
 
 [params]
 

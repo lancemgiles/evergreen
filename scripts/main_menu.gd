@@ -7,12 +7,8 @@ func _ready():
 		BackgroundMusic.play()
 
 func _on_new_button_pressed() -> void:
-	
 	set_process(false)
 	$Intro.show()
-	
-	#if Global.get_current_level_number() > 1:
-	#get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_load_button_pressed() -> void:
@@ -20,8 +16,6 @@ func _on_load_button_pressed() -> void:
 	if current_scene:
 		current_scene.queue_free()
 	Global.load_game()
-	#if is_inside_tree():
-		#get_tree().paused = false
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
@@ -39,7 +33,7 @@ func _on_accept_button_pressed() -> void:
 	Global.current_scene_name = new_scene.name
 
 func _on_back_button_pressed() -> void:
-	$Instructions.hide()
+	$Controls.hide()
 
-func _on_controls_pressed() -> void:
-	$Instructions.show()
+func _on_controls_button_pressed() -> void:
+	$Controls.show()

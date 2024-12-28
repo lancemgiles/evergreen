@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1dvro02nhta6"]
+
+[ext_resource type="AudioStream" uid="uid://bvp0pw086om76" path="res://assets/Audio/song_1.ogg" id="1_do5xi"]
+[ext_resource type="Script" path="res://scripts/background_music.gd" id="2_asxeh"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_do5xi")
+volume_db = -63.624
+autoplay = true
+script = ExtResource("2_asxeh")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

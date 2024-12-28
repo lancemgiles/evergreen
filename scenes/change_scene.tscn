@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/change_scene.gd" id="1_pt0n3"]
 [ext_resource type="FontFile" uid="uid://cjeggffpppohb" path="res://assets/Agave/AgaveNerdFont-Regular.ttf" id="2_aw0af"]
-[ext_resource type="Texture2D" uid="uid://2p0bufvmud6a" path="res://assets/Main Characters/cedar-04-portrait-48x48.png" id="3_2s75g"]
+[ext_resource type="Texture2D" uid="uid://2p0bufvmud6a" path="res://assets/Characters/cedar-04-portrait-48x48.png" id="3_2s75g"]
 [ext_resource type="FontFile" uid="uid://ci4hy5h1ty1og" path="res://assets/Agave/AgaveNerdFontMono-Regular.ttf" id="3_12pys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7dh1"]

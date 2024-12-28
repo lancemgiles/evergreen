@@ -38,7 +38,7 @@ func save_game():
 func load_game():
 	var save_file = ConfigFile.new()
 	var err = save_file.load(SAVE_PATH)
-	
+
 	if err == OK:
 		print("Loading game.")
 		var saved_level = save_file.get_value("level", "current_level", "res://scenes/Level_1.tscn")

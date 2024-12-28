@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byad7o2yjqlpn"
-path="res://.godot/imported/cedar-04-float-fim.png-448ab6b9c0a0d152ef55f0375f7e13b9.ctex"
+uid="uid://dst3pi1fihr23"
+path="res://.godot/imported/Desappearing (96x96).png-e7745a05d85d3dfb53f1582ab3589224.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Main Characters/cedar-04-float-fim.png"
-dest_files=["res://.godot/imported/cedar-04-float-fim.png-448ab6b9c0a0d152ef55f0375f7e13b9.ctex"]
+source_file="res://assets/Characters/Desappearing (96x96).png"
+dest_files=["res://.godot/imported/Desappearing (96x96).png-e7745a05d85d3dfb53f1582ab3589224.ctex"]
 
 [params]
 

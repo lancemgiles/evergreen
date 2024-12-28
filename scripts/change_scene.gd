@@ -25,4 +25,4 @@ func _on_continue_button_pressed() -> void:
 	Global.current_scene_name = scene_name
 
 func _on_quit_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

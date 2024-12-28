@@ -3,7 +3,7 @@ extends Area2D
 var checkpoint_manager
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	checkpoint_manager = get_parent().get_node("CheckpointManager")
+	checkpoint_manager = get_parent().get_parent().get_node("CheckpointManager")
 	$AnimatedSprite2D.play("default")
 
 func _on_body_entered(body: Node2D) -> void:
@@ -13,5 +13,5 @@ func _on_body_entered(body: Node2D) -> void:
 		$SaveSound.play()
 		
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	$SaveParticles.emitting = false

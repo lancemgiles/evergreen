@@ -154,7 +154,11 @@ func lose_life():
 		BackgroundMusic.loop = false
 
 func respawn():
+	print("before checkpoint respawn, global position is:")
+	print(global_position)
 	position = checkpoint_manager.last_location
+	print("after:")
+	print(global_position)
 	score_down(100)
 	if health <= 0:
 		health += 1
@@ -230,12 +234,7 @@ func _on_resume_button_pressed() -> void:
 
 func _on_save_button_pressed() -> void:
 	Global.save_game()
-
-func _on_load_button_pressed() -> void:
-	var current_scene = get_tree().current_scene
-	if current_scene:
-		current_scene.queue_free()
-	Global.load_game()
+	_on_resume_button_pressed()
 
 func _on_quit_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

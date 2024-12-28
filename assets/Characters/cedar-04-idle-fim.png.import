@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd0f8swb4bvbm"
-path="res://.godot/imported/cedar-04-walk-fim.png-e2b875c4b17298dda49a14c1431dd931.ctex"
+uid="uid://d4nrvhyepxcul"
+path="res://.godot/imported/cedar-04-idle-fim.png-23f9034efb1fc86db3b57a8ba4c61aec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Main Characters/cedar-04-walk-fim.png"
-dest_files=["res://.godot/imported/cedar-04-walk-fim.png-e2b875c4b17298dda49a14c1431dd931.ctex"]
+source_file="res://assets/Characters/cedar-04-idle-fim.png"
+dest_files=["res://.godot/imported/cedar-04-idle-fim.png-23f9034efb1fc86db3b57a8ba4c61aec.ctex"]
 
 [params]
 

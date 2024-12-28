@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4nrvhyepxcul"
-path="res://.godot/imported/cedar-04-idle-fim.png-159b8b6efc42663b5d8c1ca47a2effc0.ctex"
+uid="uid://n1u86tw2mcv3"
+path="res://.godot/imported/cedar-04-damage-fim.png-e56fe26c0fec7214b889c365ed05adad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Main Characters/cedar-04-idle-fim.png"
-dest_files=["res://.godot/imported/cedar-04-idle-fim.png-159b8b6efc42663b5d8c1ca47a2effc0.ctex"]
+source_file="res://assets/Characters/cedar-04-damage-fim.png"
+dest_files=["res://.godot/imported/cedar-04-damage-fim.png-e56fe26c0fec7214b889c365ed05adad.ctex"]
 
 [params]
 
