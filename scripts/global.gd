@@ -15,8 +15,6 @@ var final_time
 func _ready():
 	var scene_name = get_tree().get_current_scene().name
 	current_scene_name = clean_scene_name(scene_name)
-	print("global current scene name")
-	print(Global.current_scene_name)
 
 func get_current_level_number():	
 	if current_scene_name == "MainMenu":
