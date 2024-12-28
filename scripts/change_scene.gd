@@ -17,6 +17,7 @@ func _on_body_entered(body: Node2D) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_continue_button_pressed() -> void:
+	Global.save_game()
 	get_tree().paused = false
 	$UI/Menu.visible = false
 	get_tree().change_scene_to_packed(next_level)
@@ -26,3 +27,7 @@ func _on_continue_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_save_continue_button_2_pressed() -> void:
+	Global.save_game()
+	_on_continue_button_pressed()

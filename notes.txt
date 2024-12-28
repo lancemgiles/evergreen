@@ -26,3 +26,14 @@ but it then loads level 2 but because the instruction screen isn't meant to come
 so when the player calls to get the current level number, it is doing this for the level it is currently in
 using an onready var doesn't seem to change this. the player enters the scene tree and I guess this happens before the global script updates the level number
 Rather than bust my ass on getting this just right, maybe I should rethink how the instruction screen works. it could be a scene that is only started from the main menu, as I don't think the controls are complex enough for someone to need more than one viewing of this. that way, I can bypass needing to check levels at all and instead tie it to the new game button or make it its own scene, and then use it's continue button to actually load the level.
+
+features to add:
+one-way platforms (to drop down, make a scene with a static body with a collision shape set to one-way, and make a function to drop down position.y (ray cast to check the platform is a one-way))
+turn moving platforms into creatures that must be soothed to ride
+double jump powerup
+another move (dash?)
+save score, health, and lives
+max lives and health increase
+larger creature taming mini-game? puzzle to get to an item the creature wants (Cedar can't sooth anything while carrying something, and the item is lost if he is hurt and drops it - nonessential for progression but a cool side thing to do - like to unlock a moving platform shortcut)?
+different kinds of enemies (since they will share a lot, maybe a state machine is the best way to handle them)
+traps (falling platforms, areas that cannot be moved through easily, slick areas, sticky areas)

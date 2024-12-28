@@ -83,6 +83,7 @@ amount = 16
 process_material = SubResource("ParticleProcessMaterial_elh3l")
 texture = SubResource("AnimatedTexture_7dq5o")
 lifetime = 0.7
+explosiveness = 0.44
 collision_base_size = 0.0
 
 [node name="SaveSound" type="AudioStreamPlayer2D" parent="."]

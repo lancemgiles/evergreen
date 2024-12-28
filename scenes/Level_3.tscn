@@ -63,7 +63,7 @@ sources/0 = SubResource("TileSetAtlasSource_8ul82")
 size = Vector2(14, 1267)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eo1ui"]
-size = Vector2(961, 12)
+size = Vector2(1088, 12)
 
 [node name="Level_3" type="Node2D"]
 
@@ -132,7 +132,7 @@ position = Vector2(1000, -88)
 shape = SubResource("RectangleShape2D_1tda3")
 
 [node name="Top" type="CollisionShape2D" parent="Borders"]
-position = Vector2(475.5, -725)
+position = Vector2(456, -725)
 shape = SubResource("RectangleShape2D_eo1ui")
 
 [editable path="Pits"]

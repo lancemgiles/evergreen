@@ -203,9 +203,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -484.0
+offset_left = -131.0
 offset_top = -77.0
-offset_right = -224.0
+offset_right = 129.0
 offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -213,6 +213,24 @@ theme_override_colors/font_color = Color(0.808196, 0.944057, 0.416054, 0.956863)
 theme_override_fonts/font = ExtResource("2_aw0af")
 theme_override_font_sizes/font_size = 25
 text = "Continue"
+
+[node name="SaveContinueButton2" type="Button" parent="UI/Menu/Container"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -77.0
+offset_right = -240.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.808196, 0.944057, 0.416054, 0.956863)
+theme_override_fonts/font = ExtResource("2_aw0af")
+theme_override_font_sizes/font_size = 25
+text = "Save & Continue"
 
 [node name="QuitButton" type="Button" parent="UI/Menu/Container"]
 layout_mode = 1
@@ -244,4 +262,5 @@ libraries = {
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="pressed" from="UI/Menu/Container/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="UI/Menu/Container/SaveContinueButton2" to="." method="_on_save_continue_button_2_pressed"]
 [connection signal="pressed" from="UI/Menu/Container/QuitButton" to="." method="_on_quit_button_pressed"]

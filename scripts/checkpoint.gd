@@ -11,7 +11,6 @@ func _on_body_entered(body: Node2D) -> void:
 		checkpoint_manager.last_location = $RespawnPoint.global_position
 		$SaveParticles.emitting = true
 		$SaveSound.play()
-		
 
 func _on_body_exited(_body: Node2D) -> void:
 	$SaveParticles.emitting = false
