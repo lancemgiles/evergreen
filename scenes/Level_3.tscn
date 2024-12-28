@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cm4dw5oai5k5m"]
+[gd_scene load_steps=13 format=4 uid="uid://cm4dw5oai5k5m"]
 
 [ext_resource type="Texture2D" uid="uid://dgdopgwg6alwh" path="res://assets/Background/grass-and-sky-bg-2.png" id="2_6albt"]
 [ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="3_xtwyb"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://rcgw8842bow3" path="res://scenes/player.tscn" id="5_1b6x3"]
 [ext_resource type="Script" path="res://scripts/checkpoint_manager.gd" id="6_2j1ah"]
 [ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="7_etfv8"]
+[ext_resource type="Texture2D" uid="uid://cwmxjlqhb1gh4" path="res://assets/shadow.png" id="8_klu56"]
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="8_l7lyp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ul82"]
@@ -90,7 +91,7 @@ tile_map_data = PackedByteArray("AAAGABAAAAACAAAAAAAHABAAAAACAAAAAAAIABAAAAACAAA
 tile_set = SubResource("TileSet_nscv5")
 
 [node name="Player" parent="." instance=ExtResource("5_1b6x3")]
-position = Vector2(728, 160)
+position = Vector2(160, 177)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -108,7 +109,7 @@ position = Vector2(0, 558)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" parent="Pits" index="0"]
-position = Vector2(500, -9)
+position = Vector2(458, -3)
 
 [node name="Bouncers" type="Node2D" parent="."]
 
@@ -134,5 +135,14 @@ shape = SubResource("RectangleShape2D_1tda3")
 [node name="Top" type="CollisionShape2D" parent="Borders"]
 position = Vector2(456, -725)
 shape = SubResource("RectangleShape2D_eo1ui")
+one_way_collision = true
+
+[node name="Shadows" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Shadows"]
+position = Vector2(479.5, 58)
+scale = Vector2(12.1094, 12)
+texture = ExtResource("8_klu56")
 
 [editable path="Pits"]
