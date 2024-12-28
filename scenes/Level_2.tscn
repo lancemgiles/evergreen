@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="10_1rtao"]
 [ext_resource type="Script" path="res://scripts/checkpoint_manager.gd" id="11_jwmwn"]
 [ext_resource type="PackedScene" uid="uid://bvwa1tp82rkm0" path="res://scenes/moving_platform.tscn" id="12_hm4v4"]
-[ext_resource type="PackedScene" uid="uid://bbacl0rg65cqc" path="res://scenes/walking_enemy.tscn" id="13_2vpkp"]
+[ext_resource type="PackedScene" uid="uid://bbacl0rg65cqc" path="res://scenes/walking_bouncy_enemy.tscn" id="13_2vpkp"]
 [ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="14_uitgg"]
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="15_j0qct"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/change_scene.tscn" id="16_vgsfy"]

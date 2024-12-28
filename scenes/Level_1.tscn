@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://rcgw8842bow3" path="res://scenes/player.tscn" id="10_vsham"]
 [ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="11_5uxbh"]
 [ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="12_6b0h1"]
-[ext_resource type="PackedScene" uid="uid://bbacl0rg65cqc" path="res://scenes/walking_enemy.tscn" id="13_5vk3y"]
+[ext_resource type="PackedScene" uid="uid://bbacl0rg65cqc" path="res://scenes/walking_bouncy_enemy.tscn" id="13_5vk3y"]
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="14_oswq5"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/change_scene.tscn" id="15_unqsk"]
 
