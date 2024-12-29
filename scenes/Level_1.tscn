@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://rcgw8842bow3" path="res://scenes/player.tscn" id="10_a2bv8"]
 [ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="11_k3lva"]
 [ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="12_jurfb"]
-[ext_resource type="PackedScene" uid="uid://bbacl0rg65cqc" path="res://scenes/walking_bouncy_enemy.tscn" id="13_mtuvy"]
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="14_gplyf"]
+[ext_resource type="PackedScene" uid="uid://cgne82pxb7rhf" path="res://scenes/small_blob.tscn" id="14_pvfjl"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="15_51b66"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oswgq"]
@@ -331,13 +331,13 @@ position = Vector2(510, -451)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="WalkingEnemy" parent="Enemies" instance=ExtResource("13_mtuvy")]
-position = Vector2(408, -52)
+[node name="SmallBlob" parent="Enemies" instance=ExtResource("14_pvfjl")]
+position = Vector2(410, -53)
 speed = 50
 distance = 118
 
-[node name="WalkingEnemy2" parent="Enemies" instance=ExtResource("13_mtuvy")]
-position = Vector2(600, -547)
+[node name="SmallBlob2" parent="Enemies" instance=ExtResource("14_pvfjl")]
+position = Vector2(600, -548)
 speed = 50
 distance = 84
 

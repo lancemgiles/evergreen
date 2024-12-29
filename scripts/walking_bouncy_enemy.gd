@@ -1,3 +1,5 @@
+class_name WalkingBouncyEnemy
+
 extends CharacterBody2D
 
 @export var speed = 100
@@ -21,9 +23,9 @@ func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	match current_mood:
 		Mood.ANGRY:
-			$AnimatedSprite2D.play("blob-angry")
+			$AnimatedSprite2D.play("angry")
 		Mood.HAPPY:
-			$AnimatedSprite2D.play("blob-happy")
+			$AnimatedSprite2D.play("happy")
 	move_and_slide()
 
 func _process(delta):
@@ -52,7 +54,14 @@ func move_to(current_position, target_position, step_size):
 			new_position = target_position
 	return new_position
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_timer_timeout() -> void:
+	$Hitbox.collision_mask = 2
+
+func _on_bounce_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		body.velocity.y = body.jump_height * bounciness
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
 	if current_mood == Mood.ANGRY:
 		if body.name == "Player":
 			body.take_damage(damage_health, damage_score)
@@ -62,10 +71,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				body.position.x -= knockback_force
 			$Hitbox.collision_mask = 5
 			$Timer.start(0.8)
-
-func _on_timer_timeout() -> void:
-	$Hitbox.collision_mask = 2
-
-func _on_bounce_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		body.velocity.y = body.jump_height * bounciness
