@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dldqfgp2a8lih"]
 
-[ext_resource type="Script" path="res://scripts/change_scene.gd" id="1_pt0n3"]
-[ext_resource type="FontFile" uid="uid://cjeggffpppohb" path="res://assets/Agave/AgaveNerdFont-Regular.ttf" id="2_aw0af"]
-[ext_resource type="Texture2D" uid="uid://2p0bufvmud6a" path="res://assets/Characters/cedar-04-portrait-48x48.png" id="3_2s75g"]
-[ext_resource type="FontFile" uid="uid://ci4hy5h1ty1og" path="res://assets/Agave/AgaveNerdFontMono-Regular.ttf" id="3_12pys"]
+[ext_resource type="Script" path="res://scripts/level_end.gd" id="1_t7lga"]
+[ext_resource type="FontFile" uid="uid://cjeggffpppohb" path="res://assets/Agave/AgaveNerdFont-Regular.ttf" id="2_dnv6h"]
+[ext_resource type="FontFile" uid="uid://ci4hy5h1ty1og" path="res://assets/Agave/AgaveNerdFontMono-Regular.ttf" id="3_pilmi"]
+[ext_resource type="Texture2D" uid="uid://2p0bufvmud6a" path="res://assets/Characters/cedar-04-portrait-48x48.png" id="4_2xdek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7dh1"]
 size = Vector2(648, 20)
@@ -45,12 +45,12 @@ _data = {
 "ui_visibility": SubResource("Animation_lda74")
 }
 
-[node name="ChangeScene" type="Area2D"]
+[node name="LevelEnd" type="Area2D"]
 process_mode = 3
 collision_mask = 2
-script = ExtResource("1_pt0n3")
+script = ExtResource("1_t7lga")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Finishline" type="CollisionShape2D" parent="."]
 position = Vector2(314, 0)
 shape = SubResource("RectangleShape2D_p7dh1")
 
@@ -88,7 +88,7 @@ offset_top = 52.0
 offset_right = 391.0
 offset_bottom = 91.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_aw0af")
+theme_override_fonts/font = ExtResource("2_dnv6h")
 theme_override_font_sizes/font_size = 30
 text = "Level complete"
 
@@ -130,7 +130,7 @@ offset_left = 210.0
 offset_right = 546.0
 offset_bottom = 27.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_aw0af")
+theme_override_fonts/font = ExtResource("2_dnv6h")
 theme_override_font_sizes/font_size = 26
 text = "Time: "
 
@@ -147,7 +147,7 @@ offset_bottom = 27.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.580392, 0.984314, 0.682353, 0.956863)
-theme_override_fonts/font = ExtResource("3_12pys")
+theme_override_fonts/font = ExtResource("3_pilmi")
 theme_override_font_sizes/font_size = 25
 text = "0"
 
@@ -174,7 +174,7 @@ offset_top = 40.0
 offset_right = 354.0
 offset_bottom = 67.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_aw0af")
+theme_override_fonts/font = ExtResource("2_dnv6h")
 theme_override_font_sizes/font_size = 26
 text = "Score:"
 
@@ -192,7 +192,7 @@ offset_bottom = 67.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.714045, 0.919369, 0.962179, 0.956863)
-theme_override_fonts/font = ExtResource("3_12pys")
+theme_override_fonts/font = ExtResource("3_pilmi")
 theme_override_font_sizes/font_size = 25
 text = "0"
 
@@ -210,7 +210,7 @@ offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.808196, 0.944057, 0.416054, 0.956863)
-theme_override_fonts/font = ExtResource("2_aw0af")
+theme_override_fonts/font = ExtResource("2_dnv6h")
 theme_override_font_sizes/font_size = 25
 text = "Continue"
 
@@ -228,7 +228,7 @@ offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.808196, 0.944057, 0.416054, 0.956863)
-theme_override_fonts/font = ExtResource("2_aw0af")
+theme_override_fonts/font = ExtResource("2_dnv6h")
 theme_override_font_sizes/font_size = 25
 text = "Save & Continue"
 
@@ -246,14 +246,14 @@ offset_bottom = -18.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.807843, 0.945098, 0.415686, 0.956863)
-theme_override_fonts/font = ExtResource("2_aw0af")
+theme_override_fonts/font = ExtResource("2_dnv6h")
 theme_override_font_sizes/font_size = 25
 text = "Quit"
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/Menu"]
 position = Vector2(713, 328)
 scale = Vector2(4.75, 4.75)
-texture = ExtResource("3_2s75g")
+texture = ExtResource("4_2xdek")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

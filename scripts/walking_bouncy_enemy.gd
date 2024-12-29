@@ -11,18 +11,18 @@ extends CharacterBody2D
 @onready var start_x = position.x
 @onready var target_x = position.x + distance
 
-enum State {ANGRY, HAPPY}
-var current_state = State.ANGRY
+enum Mood {ANGRY, HAPPY}
+var current_mood = Mood.ANGRY
 
 # 1 is right, -1 is left, 0 is none
 var current_direction = 0
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
-	match current_state:
-		State.ANGRY:
+	match current_mood:
+		Mood.ANGRY:
 			$AnimatedSprite2D.play("blob-angry")
-		State.HAPPY:
+		Mood.HAPPY:
 			$AnimatedSprite2D.play("blob-happy")
 	move_and_slide()
 
@@ -53,7 +53,7 @@ func move_to(current_position, target_position, step_size):
 	return new_position
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if current_state == State.ANGRY:
+	if current_mood == Mood.ANGRY:
 		if body.name == "Player":
 			body.take_damage(damage_health, damage_score)
 			if current_direction == 1:

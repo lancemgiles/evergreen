@@ -1,32 +1,32 @@
 [gd_scene load_steps=30 format=4 uid="uid://ci8cadrl72o45"]
 
-[ext_resource type="Texture2D" uid="uid://dtfon3x2tanos" path="res://assets/Background/grass-bg-2.png" id="1_82m5y"]
-[ext_resource type="Texture2D" uid="uid://dgdopgwg6alwh" path="res://assets/Background/grass-and-sky-bg-2.png" id="2_b7pxs"]
-[ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="2_ifpgo"]
-[ext_resource type="PackedScene" uid="uid://bo8i2h3ef2t04" path="res://scenes/checkpoint.tscn" id="3_771ny"]
-[ext_resource type="Texture2D" uid="uid://cqrbiax1k101c" path="res://assets/Terrain/dangerous-ground.png" id="4_xb15c"]
-[ext_resource type="Texture2D" uid="uid://s173hncgd1iq" path="res://assets/Terrain/bark-16x16-extras.png" id="5_bjmru"]
-[ext_resource type="Texture2D" uid="uid://bj5q60yq6t203" path="res://assets/Terrain/bark-16x16x5-fim.png" id="6_xxusi"]
-[ext_resource type="Texture2D" uid="uid://c6ciho7pulmxx" path="res://assets/Terrain/bark-16x16-fim-02.png" id="7_8u7qn"]
-[ext_resource type="Texture2D" uid="uid://d0jgqqs3r1hr8" path="res://assets/Terrain/vines.png" id="8_87nny"]
-[ext_resource type="PackedScene" uid="uid://rcgw8842bow3" path="res://scenes/player.tscn" id="9_j1vac"]
-[ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="10_1rtao"]
-[ext_resource type="Script" path="res://scripts/checkpoint_manager.gd" id="11_jwmwn"]
-[ext_resource type="PackedScene" uid="uid://bvwa1tp82rkm0" path="res://scenes/moving_platform.tscn" id="12_hm4v4"]
-[ext_resource type="PackedScene" uid="uid://bbacl0rg65cqc" path="res://scenes/walking_bouncy_enemy.tscn" id="13_2vpkp"]
-[ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="14_uitgg"]
-[ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="15_j0qct"]
-[ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/change_scene.tscn" id="16_vgsfy"]
+[ext_resource type="Texture2D" uid="uid://dtfon3x2tanos" path="res://assets/Background/grass-bg-2.png" id="1_a2nrq"]
+[ext_resource type="Texture2D" uid="uid://dgdopgwg6alwh" path="res://assets/Background/grass-and-sky-bg-2.png" id="2_wpcfq"]
+[ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="3_ye2px"]
+[ext_resource type="PackedScene" uid="uid://bo8i2h3ef2t04" path="res://scenes/checkpoint.tscn" id="4_mmgcb"]
+[ext_resource type="Texture2D" uid="uid://cqrbiax1k101c" path="res://assets/Terrain/dangerous-ground.png" id="5_w1c4b"]
+[ext_resource type="Texture2D" uid="uid://s173hncgd1iq" path="res://assets/Terrain/bark-16x16-extras.png" id="6_w2huq"]
+[ext_resource type="Texture2D" uid="uid://bj5q60yq6t203" path="res://assets/Terrain/bark-16x16x5-fim.png" id="7_r88ae"]
+[ext_resource type="Texture2D" uid="uid://c6ciho7pulmxx" path="res://assets/Terrain/bark-16x16-fim-02.png" id="8_wbe23"]
+[ext_resource type="Texture2D" uid="uid://d0jgqqs3r1hr8" path="res://assets/Terrain/vines.png" id="9_dyili"]
+[ext_resource type="PackedScene" uid="uid://rcgw8842bow3" path="res://scenes/player.tscn" id="10_lr7ar"]
+[ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="11_ag4oh"]
+[ext_resource type="Script" path="res://scripts/checkpoint_manager.gd" id="12_vluxv"]
+[ext_resource type="PackedScene" uid="uid://bvwa1tp82rkm0" path="res://scenes/moving_platform.tscn" id="13_k08p0"]
+[ext_resource type="PackedScene" uid="uid://bbacl0rg65cqc" path="res://scenes/walking_bouncy_enemy.tscn" id="14_66ops"]
+[ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="15_koehh"]
+[ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="16_1cc28"]
+[ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="17_c6byy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nq6yy"]
-texture = ExtResource("4_xb15c")
+texture = ExtResource("5_w1c4b")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
 1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sox4y"]
-texture = ExtResource("5_bjmru")
+texture = ExtResource("6_w2huq")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -2, 1.375, -1.875, -8, 8, -1.125, 8)
 1:0/0 = 0
@@ -79,7 +79,7 @@ texture = ExtResource("5_bjmru")
 6:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xlioa"]
-texture = ExtResource("6_xxusi")
+texture = ExtResource("7_r88ae")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, -1.5, -8, -1.625, -8, -3.84375, -3.9375, -8)
 1:0/0 = 0
@@ -112,7 +112,7 @@ texture = ExtResource("6_xxusi")
 4:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h6h0r"]
-texture = ExtResource("7_8u7qn")
+texture = ExtResource("8_wbe23")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.625, -8, -8, -4, -8, 3.5, 8, 3.875, 8, -8)
 1:0/0 = 0
@@ -221,7 +221,7 @@ texture = ExtResource("7_8u7qn")
 6:6/0/physics_layer_0/polygon_0/one_way = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6b05u"]
-texture = ExtResource("8_87nny")
+texture = ExtResource("9_dyili")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
@@ -329,14 +329,14 @@ limit_end = Vector2(912, 256)
 
 [node name="Grass" type="Sprite2D" parent="Backgrounds/Parallax2DGrass"]
 position = Vector2(370, 153)
-texture = ExtResource("1_82m5y")
+texture = ExtResource("1_a2nrq")
 
 [node name="Parallax2DGrassAndSky" type="Parallax2D" parent="Backgrounds"]
 scroll_scale = Vector2(0.2, 0.2)
 
 [node name="Grass_And_Sky" type="Sprite2D" parent="Backgrounds/Parallax2DGrassAndSky"]
 position = Vector2(370, -81)
-texture = ExtResource("2_b7pxs")
+texture = ExtResource("2_wpcfq")
 
 [node name="Parallax2DBark" type="Parallax2D" parent="Backgrounds"]
 scroll_offset = Vector2(-5, -161)
@@ -347,14 +347,14 @@ limit_end = Vector2(912, 256)
 
 [node name="Bark" type="Sprite2D" parent="Backgrounds/Parallax2DBark"]
 position = Vector2(377, -194)
-texture = ExtResource("2_ifpgo")
+texture = ExtResource("3_ye2px")
 
 [node name="Checkpoints" type="Node" parent="."]
 
-[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("3_771ny")]
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("4_mmgcb")]
 position = Vector2(271, -985)
 
-[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("3_771ny")]
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("4_mmgcb")]
 position = Vector2(66, -538)
 
 [node name="surfaces-walls" type="TileMapLayer" parent="."]
@@ -362,7 +362,7 @@ position = Vector2(600, -603)
 tile_map_data = PackedByteArray("AADc/yQAAwAAAAIAAADd/yQAAwACAAAAAADe/yQAAwADAAAAAADf/yQAAwABAAAAAADg/yQAAwABAAAAAADh/yQAAwABAAAAAADi/yQAAwADAAAAAADj/yQAAwACAAAAAADk/yQAAwADAAAAAADl/yQAAwABAAAAAADm/yQAAwABAAAAAADn/yQAAwADAAAAAADo/yQAAwACAAAAAADk/yAAAwAAAAIAAADl/yAAAwABAAAAAADm/yAAAwAEAAAAAADo/x0AAwACAAUAAADp/x0AAwABAAQAAADq/x0AAwADAAUAAADj/xkAAwACAAUAAADk/xkAAwAEAAQAAADx/xYAAwADAAAAAADw/xYAAwAAAAMAAADf/xYAAwABAAAAAADt/xQAAwABAAAAAADs/xQAAwABAAAAAADk/xMAAwADAAAAAADl/xMAAwAEAAIAAADi/w8AAwADAAAAAADh/w8AAwABAAAAAADg/w8AAwACAAAAAADf/w8AAwACAAAAAADe/w8AAwADAAAAAADd/w8AAwACAAAAAADe/xYAAwAAAAEAAADj/xMAAwAAAAMAAADr/xQAAwAAAAEAAADy/xYAAwAEAAEAAADu/xQAAwAEAAEAAADg/xYAAwAEAAAAAADj/w8AAwAEAAIAAADv/wMAAwAAAAEAAADw/wMAAwAEAAIAAADd/wQAAwACAAYAAADe/wQAAwADAAYAAADf/wQAAwAEAAYAAADg/wQAAwADAAUAAADn/wEAAwACAAAAAADm/wEAAwAAAAIAAADo/wEAAwAEAAAAAADn/wsAAwAEAAAAAADm/wsAAwAAAAIAAADj/wcAAwADAAUAAADi/wcAAwADAAQAAADh/wcAAwACAAUAAADt/+j/AwADAAUAAADp/+j/AwABAAYAAADs/+j/AwAEAAYAAADr/+j/AwADAAYAAADq/+j/AwACAAYAAADq/xEAAwADAAUAAADp/xEAAwADAAQAAADo/xEAAwACAAUAAAAAABoAAwAAAAMAAAABABoAAwABAAAAAAACABoAAwAEAAIAAAD7/yMAAwACAAAAAAD8/yMAAwAEAAMAAAD6/yMAAwAAAAAAAADp/yQAAwADAAAAAADq/yQAAwABAAAAAADr/yQAAwAEAAAAAADi//3/AwAEAAMAAADh//3/AwADAAAAAADg//3/AwAAAAEAAADj//n/AwAAAAEAAADk//n/AwAEAAEAAADp//n/AwAAAAAAAADq//n/AwACAAAAAADr//n/AwACAAAAAADs//n/AwAEAAAAAADu//f/AwAAAAEAAADv//f/AwADAAAAAADy/+//AwAEAAAAAADf/+j/AwAAAAMAAADg/+j/AwABAAAAAADh/+j/AwAEAAMAAADc/9j/AwAAAAIAAADd/9j/AwACAAAAAADe/9j/AwADAAAAAADf/9j/AwADAAAAAADg/9j/AwACAAAAAADh/9j/AwADAAAAAADi/9j/AwADAAAAAADj/9j/AwADAAAAAADk/9j/AwADAAAAAADl/9j/AwACAAAAAADm/9j/AwAEAAIAAADo/+T/AwAEAAYAAADn/+T/AwADAAYAAADm/+T/AwACAAYAAADp/+D/AwAAAAIAAADq/+D/AwABAAAAAADr/+D/AwACAAAAAADs/+D/AwAEAAMAAADu/97/AwAGAAQAAADv/93/AwAEAAQAAADw/9z/AwAEAAUAAADr/9r/AwADAAUAAADq/9r/AwAAAAQAAADp/9r/AwACAAUAAADw//f/AwAEAAEAAADx//P/AwAAAAMAAADy//P/AwADAAAAAADz//P/AwABAAAAAAD0//P/AwABAAAAAAD1//P/AwAEAAEAAADx/+//AwAAAAMAAADk/+D/AwACAAEAAADc/wQAAwACAAUAAADc/w8AAwAAAAAAAADe/9T/AwABAAQAAADc/9T/AwACAAUAAADd/9T/AwACAAQAAADi/9H/AwAAAAAAAADw/93/AwAGAAQAAADl/xkAAwADAAUAAADp/+f/AwABAAUAAADo/+f/AwAAAAUAAADo/+j/AwAAAAYAAADn/+j/AwACAAQAAADm/+j/AwAFAAQAAADm/+f/AwAEAAUAAADm/+b/AwABAAUAAADl/+b/AwAFAAQAAADl/+X/AwAEAAUAAADl/+T/AwAFAAUAAADp/+T/AwADAAUAAADd/+b/AwADAAUAAADc/+b/AwAAAAQAAADb/+b/AwABAAYAAADb/+X/AwABAAUAAADa/+X/AwAFAAYAAADd/+P/AwACAAUAAADe/+P/AwADAAUAAADg/+H/AwADAAEAAADh/+H/AwABAAEAAADt/97/AwACAAUAAADu/93/AwAFAAUAAADw/9v/AwAGAAMAAADj/9H/AwAEAAAAAADf/9T/AwAEAAQAAADg/9T/AwAAAAQAAADh/9T/AwADAAQAAADi/9T/AwABAAQAAADj/9T/AwAAAAQAAADk/9T/AwAAAAQAAADl/9T/AwADAAUAAAA=")
 tile_set = SubResource("TileSet_kxgnk")
 
-[node name="Player" parent="." instance=ExtResource("9_j1vac")]
+[node name="Player" parent="." instance=ExtResource("10_lr7ar")]
 z_index = 1
 position = Vector2(75, -56)
 speed = 150
@@ -377,27 +377,27 @@ limit_right = 912
 limit_bottom = 32
 limit_smoothed = true
 
-[node name="Pits" parent="." instance=ExtResource("10_1rtao")]
+[node name="Pits" parent="." instance=ExtResource("11_ag4oh")]
 position = Vector2(368, 136)
 scale = Vector2(48.2146, -7.39888)
 metadata/danger = true
 
 [node name="CheckpointManager" type="Node" parent="."]
-script = ExtResource("11_jwmwn")
+script = ExtResource("12_vluxv")
 
 [node name="MovingPlatforms" type="Node2D" parent="."]
 
-[node name="MovingPlatform3" parent="MovingPlatforms" instance=ExtResource("12_hm4v4")]
+[node name="MovingPlatform3" parent="MovingPlatforms" instance=ExtResource("13_k08p0")]
 position = Vector2(563, -865)
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_clyqb")
 
-[node name="MovingPlatform" parent="MovingPlatforms" instance=ExtResource("12_hm4v4")]
+[node name="MovingPlatform" parent="MovingPlatforms" instance=ExtResource("13_k08p0")]
 position = Vector2(600, -934)
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_clyqb")
 
-[node name="MovingPlatform2" parent="MovingPlatforms" instance=ExtResource("12_hm4v4")]
+[node name="MovingPlatform2" parent="MovingPlatforms" instance=ExtResource("13_k08p0")]
 position = Vector2(399, -34)
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_clyqb")
@@ -410,58 +410,58 @@ autoplay = "RESET"
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="WalkingEnemy2" parent="Enemies" instance=ExtResource("13_2vpkp")]
+[node name="WalkingEnemy2" parent="Enemies" instance=ExtResource("14_66ops")]
 position = Vector2(35, -371)
 speed = 50
 distance = 111
 
-[node name="WalkingEnemy" parent="Enemies" instance=ExtResource("13_2vpkp")]
+[node name="WalkingEnemy" parent="Enemies" instance=ExtResource("14_66ops")]
 position = Vector2(67, -1276)
 speed = 50
 
 [node name="Pickups" type="Node" parent="."]
 
-[node name="pickup2" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup2" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(127, -1397)
 pickup = 0
 
-[node name="pickup4" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup4" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(370, -360)
 
-[node name="pickup11" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup11" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(161, -1123)
 
-[node name="pickup" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(27, -1029)
 pickup = 2
 
-[node name="pickup12" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup12" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(479, -957)
 pickup = 2
 
-[node name="pickup10" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup10" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(375, -972)
 
-[node name="pickup9" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup9" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(75, -371)
 
-[node name="pickup3" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup3" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(527, -52)
 
-[node name="pickup5" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup5" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(238, -210)
 
-[node name="pickup6" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup6" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(624, -199)
 pickup = 2
 
-[node name="pickup7" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup7" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(344, -563)
 
-[node name="pickup8" parent="Pickups" instance=ExtResource("14_uitgg")]
+[node name="pickup8" parent="Pickups" instance=ExtResource("15_koehh")]
 position = Vector2(375, -883)
 
-[node name="ChangeScene" parent="." instance=ExtResource("16_vgsfy")]
+[node name="ChangeScene" parent="." instance=ExtResource("16_1cc28")]
 position = Vector2(42, -1623)
 next_level_number = "3"
 
@@ -478,13 +478,13 @@ shape = SubResource("RectangleShape2D_nuno8")
 
 [node name="Bouncers" type="Node2D" parent="."]
 
-[node name="Bouncer3" parent="Bouncers" instance=ExtResource("15_j0qct")]
+[node name="Bouncer3" parent="Bouncers" instance=ExtResource("17_c6byy")]
 position = Vector2(360, -250)
 
-[node name="Bouncer2" parent="Bouncers" instance=ExtResource("15_j0qct")]
+[node name="Bouncer2" parent="Bouncers" instance=ExtResource("17_c6byy")]
 position = Vector2(227, -136)
 
-[node name="Bouncer" parent="Bouncers" instance=ExtResource("15_j0qct")]
+[node name="Bouncer" parent="Bouncers" instance=ExtResource("17_c6byy")]
 position = Vector2(119, -1355)
 
 [connection signal="body_entered" from="Checkpoints/Checkpoint2" to="Player" method="_on_checkpoint_body_entered"]

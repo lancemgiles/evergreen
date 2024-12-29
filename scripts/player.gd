@@ -106,8 +106,8 @@ func sooth():
 		if $SoothCast2D.is_colliding():
 			var target = $SoothCast2D.get_collider(0)
 			if target != null && target.is_in_group("Enemies"):
-				if target.current_state == target.State.ANGRY:
-					target.current_state = target.State.HAPPY
+				if target.current_mood == target.Mood.ANGRY:
+					target.current_mood = target.Mood.HAPPY
 					score_up(100)
 
 func take_damage(damage_health, damage_score):

@@ -1,38 +1,38 @@
 [gd_scene load_steps=15 format=3 uid="uid://dfojy52nenh80"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_67w5c"]
-[ext_resource type="FontFile" uid="uid://cjeggffpppohb" path="res://assets/Agave/AgaveNerdFont-Regular.ttf" id="2_10mjk"]
-[ext_resource type="Texture2D" uid="uid://bjb78ayih21lt" path="res://assets/main-menu-01.png" id="2_xxnwa"]
-[ext_resource type="Texture2D" uid="uid://cii4w1b6jjj3g" path="res://assets/Items/sap.png" id="4_fld61"]
-[ext_resource type="Texture2D" uid="uid://47c3tla8c3bj" path="res://assets/Items/glowing-mushroom-01.png" id="5_bpfb1"]
-[ext_resource type="Texture2D" uid="uid://rri60nd8bpap" path="res://assets/Items/token-01.png" id="6_3absl"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_j0eea"]
+[ext_resource type="Texture2D" uid="uid://bjb78ayih21lt" path="res://assets/main-menu-01.png" id="2_tvjx2"]
+[ext_resource type="FontFile" uid="uid://cjeggffpppohb" path="res://assets/Agave/AgaveNerdFont-Regular.ttf" id="3_ub27k"]
+[ext_resource type="Texture2D" uid="uid://cii4w1b6jjj3g" path="res://assets/Items/sap.png" id="4_c7d1j"]
+[ext_resource type="Texture2D" uid="uid://47c3tla8c3bj" path="res://assets/Items/glowing-mushroom-01.png" id="5_gvsb2"]
+[ext_resource type="Texture2D" uid="uid://rri60nd8bpap" path="res://assets/Items/token-01.png" id="6_kcaot"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tsjrr"]
-atlas = ExtResource("5_bpfb1")
+atlas = ExtResource("5_gvsb2")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jxx47"]
-atlas = ExtResource("5_bpfb1")
+atlas = ExtResource("5_gvsb2")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6os1f"]
-atlas = ExtResource("5_bpfb1")
+atlas = ExtResource("5_gvsb2")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2gg6"]
-atlas = ExtResource("5_bpfb1")
+atlas = ExtResource("5_gvsb2")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_to8gx"]
-atlas = ExtResource("5_bpfb1")
+atlas = ExtResource("5_gvsb2")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2n1bd"]
-atlas = ExtResource("5_bpfb1")
+atlas = ExtResource("5_gvsb2")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pki3c"]
-atlas = ExtResource("5_bpfb1")
+atlas = ExtResource("5_gvsb2")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7v7g7"]
@@ -65,7 +65,7 @@ animations = [{
 }]
 
 [node name="MainMenu" type="CanvasLayer"]
-script = ExtResource("1_67w5c")
+script = ExtResource("1_j0eea")
 
 [node name="Menu" type="ColorRect" parent="."]
 process_mode = 2
@@ -87,7 +87,7 @@ color = Color(0.419608, 0.670588, 0.854902, 1)
 [node name="Sprite2D" type="Sprite2D" parent="Menu/Container"]
 position = Vector2(486, 290)
 scale = Vector2(4.49609, 4.49609)
-texture = ExtResource("2_xxnwa")
+texture = ExtResource("2_tvjx2")
 
 [node name="Label" type="Label" parent="Menu/Container"]
 layout_mode = 0
@@ -96,7 +96,7 @@ offset_top = 77.0
 offset_right = 927.0
 offset_bottom = 139.0
 theme_override_colors/font_color = Color(0.2, 0.580392, 0.2, 1)
-theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 61
 text = "evergreen"
 
@@ -106,7 +106,7 @@ offset_left = 14.0
 offset_top = 203.0
 offset_right = 175.0
 offset_bottom = 264.0
-theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 25
 text = "New Game"
 
@@ -116,7 +116,7 @@ offset_left = 14.0
 offset_top = 288.0
 offset_right = 175.0
 offset_bottom = 355.0
-theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 25
 text = "Load Game"
 
@@ -126,7 +126,7 @@ offset_left = 14.0
 offset_top = 385.0
 offset_right = 175.0
 offset_bottom = 452.0
-theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 25
 text = "Controls"
 
@@ -136,7 +136,7 @@ offset_left = 14.0
 offset_top = 484.0
 offset_right = 175.0
 offset_bottom = 548.0
-theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 25
 text = "Quit"
 
@@ -176,7 +176,7 @@ offset_top = -209.0
 offset_right = 445.0
 offset_bottom = 223.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 25
 text = "Cedar's lute sooths the beasts
  [enter].
@@ -202,7 +202,7 @@ offset_top = -102.0
 offset_bottom = 117.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 25
 text = "Yellow Sap heals Cedar's wounds.
 
@@ -217,14 +217,14 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
-theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 30
 text = "Back"
 
 [node name="sap" type="Sprite2D" parent="Controls/Menu/Container"]
 position = Vector2(513, 156)
 scale = Vector2(2, 2)
-texture = ExtResource("4_fld61")
+texture = ExtResource("4_c7d1j")
 
 [node name="shroom" type="AnimatedSprite2D" parent="Controls/Menu/Container"]
 position = Vector2(520, 233)
@@ -234,7 +234,7 @@ sprite_frames = SubResource("SpriteFrames_7v7g7")
 [node name="gem" type="Sprite2D" parent="Controls/Menu/Container"]
 position = Vector2(519, 300)
 scale = Vector2(2, 2)
-texture = ExtResource("6_3absl")
+texture = ExtResource("6_kcaot")
 
 [node name="Intro" type="CanvasLayer" parent="."]
 process_mode = 2
@@ -262,7 +262,7 @@ offset_left = 445.0
 offset_top = 510.0
 offset_right = 577.0
 offset_bottom = 560.0
-theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 31
 text = "Continue"
 
@@ -276,7 +276,7 @@ offset_top = 65.0
 offset_right = 400.0
 offset_bottom = 410.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_10mjk")
+theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 25
 text = "Cedar has sensed that creatures of the Tree have grown restless.
 Surely, this must indicate something has happened.

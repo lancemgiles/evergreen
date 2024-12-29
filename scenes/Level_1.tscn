@@ -1,23 +1,23 @@
 [gd_scene load_steps=22 format=4 uid="uid://ci8cadrl72o45"]
 
-[ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="2_py3k7"]
-[ext_resource type="Texture2D" uid="uid://b8xccjh5rs41l" path="res://assets/Background/grass-at-base.png" id="3_mbgv4"]
-[ext_resource type="Texture2D" uid="uid://bebj4ommkbaj" path="res://assets/Background/tree-2-base.png" id="3_vjt8h"]
-[ext_resource type="Texture2D" uid="uid://c6ciho7pulmxx" path="res://assets/Terrain/bark-16x16-fim-02.png" id="4_0kcp8"]
-[ext_resource type="Texture2D" uid="uid://s173hncgd1iq" path="res://assets/Terrain/bark-16x16-extras.png" id="5_u1lde"]
-[ext_resource type="Texture2D" uid="uid://bj5q60yq6t203" path="res://assets/Terrain/bark-16x16x5-fim.png" id="6_nu1sh"]
-[ext_resource type="Texture2D" uid="uid://d0jgqqs3r1hr8" path="res://assets/Terrain/vines.png" id="7_4g31x"]
-[ext_resource type="Script" path="res://scripts/checkpoint_manager.gd" id="8_1chhr"]
-[ext_resource type="PackedScene" uid="uid://bo8i2h3ef2t04" path="res://scenes/checkpoint.tscn" id="9_x2y3s"]
-[ext_resource type="PackedScene" uid="uid://rcgw8842bow3" path="res://scenes/player.tscn" id="10_vsham"]
-[ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="11_5uxbh"]
-[ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="12_6b0h1"]
-[ext_resource type="PackedScene" uid="uid://bbacl0rg65cqc" path="res://scenes/walking_bouncy_enemy.tscn" id="13_5vk3y"]
-[ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="14_oswq5"]
-[ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/change_scene.tscn" id="15_unqsk"]
+[ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="1_ggmve"]
+[ext_resource type="Texture2D" uid="uid://b8xccjh5rs41l" path="res://assets/Background/grass-at-base.png" id="2_sibij"]
+[ext_resource type="Texture2D" uid="uid://bebj4ommkbaj" path="res://assets/Background/tree-2-base.png" id="3_y8bem"]
+[ext_resource type="Texture2D" uid="uid://c6ciho7pulmxx" path="res://assets/Terrain/bark-16x16-fim-02.png" id="4_v1hcu"]
+[ext_resource type="Texture2D" uid="uid://s173hncgd1iq" path="res://assets/Terrain/bark-16x16-extras.png" id="5_7tddp"]
+[ext_resource type="Texture2D" uid="uid://bj5q60yq6t203" path="res://assets/Terrain/bark-16x16x5-fim.png" id="6_3fx4j"]
+[ext_resource type="Texture2D" uid="uid://d0jgqqs3r1hr8" path="res://assets/Terrain/vines.png" id="7_1cs12"]
+[ext_resource type="Script" path="res://scripts/checkpoint_manager.gd" id="8_cp05s"]
+[ext_resource type="PackedScene" uid="uid://bo8i2h3ef2t04" path="res://scenes/checkpoint.tscn" id="9_bpyes"]
+[ext_resource type="PackedScene" uid="uid://rcgw8842bow3" path="res://scenes/player.tscn" id="10_a2bv8"]
+[ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="11_k3lva"]
+[ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="12_jurfb"]
+[ext_resource type="PackedScene" uid="uid://bbacl0rg65cqc" path="res://scenes/walking_bouncy_enemy.tscn" id="13_mtuvy"]
+[ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="14_gplyf"]
+[ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="15_51b66"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oswgq"]
-texture = ExtResource("4_0kcp8")
+texture = ExtResource("4_v1hcu")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.875, -8, -8, -5.375, -8, 1.25, 8, 0.875, 8, -8)
 1:0/0 = 0
@@ -123,7 +123,7 @@ texture = ExtResource("4_0kcp8")
 6:3/0/physics_layer_0/polygon_0/one_way = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sox4y"]
-texture = ExtResource("5_u1lde")
+texture = ExtResource("5_7tddp")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -2, 1.375, -1.875, -8, 8, -1.125, 8)
 1:0/0 = 0
@@ -178,7 +178,7 @@ texture = ExtResource("5_u1lde")
 6:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xlioa"]
-texture = ExtResource("6_nu1sh")
+texture = ExtResource("6_3fx4j")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, -1.5, -8, -1.625, -8, -3.84375, -3.9375, -8)
 1:0/0 = 0
@@ -211,7 +211,7 @@ texture = ExtResource("6_nu1sh")
 4:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6b05u"]
-texture = ExtResource("7_4g31x")
+texture = ExtResource("7_1cs12")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
@@ -245,7 +245,7 @@ repeat_times = 4
 
 [node name="Bark" type="Sprite2D" parent="Backgrounds/Bark"]
 position = Vector2(376, -249)
-texture = ExtResource("2_py3k7")
+texture = ExtResource("1_ggmve")
 
 [node name="base-grass" type="Parallax2D" parent="Backgrounds"]
 z_index = -1
@@ -253,11 +253,11 @@ scroll_scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/base-grass"]
 position = Vector2(371, 245)
-texture = ExtResource("3_mbgv4")
+texture = ExtResource("2_sibij")
 
 [node name="tree-base" type="Sprite2D" parent="."]
 position = Vector2(376, -53)
-texture = ExtResource("3_vjt8h")
+texture = ExtResource("3_y8bem")
 
 [node name="surfaces-walls" type="TileMapLayer" parent="."]
 position = Vector2(600, -603)
@@ -265,14 +265,14 @@ tile_map_data = PackedByteArray("AADg/yMAAAADAAAAAADh/yMAAAADAAAAAADi/yMAAAADAAA
 tile_set = SubResource("TileSet_kxgnk")
 
 [node name="CheckpointManager" type="Node" parent="."]
-script = ExtResource("8_1chhr")
+script = ExtResource("8_cp05s")
 
 [node name="Checkpoints" type="Node2D" parent="."]
 
-[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("9_x2y3s")]
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("9_bpyes")]
 position = Vector2(60, -602)
 
-[node name="Player" parent="." instance=ExtResource("10_vsham")]
+[node name="Player" parent="." instance=ExtResource("10_a2bv8")]
 position = Vector2(134, -68)
 speed = 150
 metadata/_edit_group_ = true
@@ -286,74 +286,74 @@ limit_right = 912
 limit_bottom = 32
 limit_smoothed = true
 
-[node name="Pits" parent="." instance=ExtResource("11_5uxbh")]
+[node name="Pits" parent="." instance=ExtResource("11_k3lva")]
 position = Vector2(408, 84)
 scale = Vector2(51.4546, -7.39888)
 metadata/danger = true
 
 [node name="Pickups" type="Node2D" parent="."]
 
-[node name="pickup12" parent="Pickups" instance=ExtResource("12_6b0h1")]
+[node name="pickup12" parent="Pickups" instance=ExtResource("12_jurfb")]
 position = Vector2(477, -1091)
 
-[node name="pickup10" parent="Pickups" instance=ExtResource("12_6b0h1")]
+[node name="pickup10" parent="Pickups" instance=ExtResource("12_jurfb")]
 position = Vector2(477, -982)
 
-[node name="pickup8" parent="Pickups" instance=ExtResource("12_6b0h1")]
+[node name="pickup8" parent="Pickups" instance=ExtResource("12_jurfb")]
 position = Vector2(477, -878)
 
-[node name="pickup15" parent="Pickups" instance=ExtResource("12_6b0h1")]
+[node name="pickup15" parent="Pickups" instance=ExtResource("12_jurfb")]
 position = Vector2(656, -658)
 pickup = 0
 
-[node name="pickup" parent="Pickups" instance=ExtResource("12_6b0h1")]
+[node name="pickup" parent="Pickups" instance=ExtResource("12_jurfb")]
 position = Vector2(352, -115)
 
-[node name="pickup16" parent="Pickups" instance=ExtResource("12_6b0h1")]
+[node name="pickup16" parent="Pickups" instance=ExtResource("12_jurfb")]
 position = Vector2(134, -551)
 pickup = 2
 
-[node name="pickup2" parent="Pickups" instance=ExtResource("12_6b0h1")]
+[node name="pickup2" parent="Pickups" instance=ExtResource("12_jurfb")]
 position = Vector2(680, -99)
 pickup = 0
 
-[node name="pickup14" parent="Pickups" instance=ExtResource("12_6b0h1")]
+[node name="pickup14" parent="Pickups" instance=ExtResource("12_jurfb")]
 position = Vector2(455, -257)
 
-[node name="pickup4" parent="Pickups" instance=ExtResource("12_6b0h1")]
+[node name="pickup4" parent="Pickups" instance=ExtResource("12_jurfb")]
 position = Vector2(252, -294)
 
-[node name="pickup7" parent="Pickups" instance=ExtResource("12_6b0h1")]
+[node name="pickup7" parent="Pickups" instance=ExtResource("12_jurfb")]
 position = Vector2(431, -579)
 
-[node name="pickup3" parent="Pickups" instance=ExtResource("12_6b0h1")]
+[node name="pickup3" parent="Pickups" instance=ExtResource("12_jurfb")]
 position = Vector2(510, -451)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="WalkingEnemy" parent="Enemies" instance=ExtResource("13_5vk3y")]
+[node name="WalkingEnemy" parent="Enemies" instance=ExtResource("13_mtuvy")]
 position = Vector2(408, -52)
 speed = 50
 distance = 118
 
-[node name="WalkingEnemy2" parent="Enemies" instance=ExtResource("13_5vk3y")]
+[node name="WalkingEnemy2" parent="Enemies" instance=ExtResource("13_mtuvy")]
 position = Vector2(600, -547)
 speed = 50
 distance = 84
 
 [node name="Bouncers" type="Node2D" parent="."]
 
-[node name="Bouncer" parent="Bouncers" instance=ExtResource("14_oswq5")]
+[node name="Bouncer" parent="Bouncers" instance=ExtResource("14_gplyf")]
 position = Vector2(244, -203)
 
-[node name="SuperBouncer" parent="Bouncers" instance=ExtResource("14_oswq5")]
+[node name="SuperBouncer" parent="Bouncers" instance=ExtResource("14_gplyf")]
 position = Vector2(405, -376)
 bounciness = 3
 
-[node name="Bouncer2" parent="Bouncers" instance=ExtResource("14_oswq5")]
+[node name="Bouncer2" parent="Bouncers" instance=ExtResource("14_gplyf")]
 position = Vector2(469, -811)
 
-[node name="ChangeScene" parent="." instance=ExtResource("15_unqsk")]
+[node name="ChangeScene" parent="." instance=ExtResource("15_51b66")]
 position = Vector2(122, -1146)
 next_level_number = "2"
 
