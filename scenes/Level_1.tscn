@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://ci8cadrl72o45"]
+[gd_scene load_steps=23 format=4 uid="uid://ci8cadrl72o45"]
 
 [ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="1_ggmve"]
 [ext_resource type="Texture2D" uid="uid://b8xccjh5rs41l" path="res://assets/Background/grass-at-base.png" id="2_sibij"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="14_gplyf"]
 [ext_resource type="PackedScene" uid="uid://cgne82pxb7rhf" path="res://scenes/small_blob.tscn" id="14_pvfjl"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="15_51b66"]
+[ext_resource type="PackedScene" uid="uid://b5xro22y5eydt" path="res://scenes/clouds.tscn" id="16_n21ph"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oswgq"]
 texture = ExtResource("4_v1hcu")
@@ -367,3 +368,13 @@ shape = SubResource("RectangleShape2D_2ksxl")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders"]
 position = Vector2(840, -579)
 shape = SubResource("RectangleShape2D_2ksxl")
+
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="Parallax2D2" parent="Clouds" instance=ExtResource("16_n21ph")]
+repeat_size = Vector2(540, 540)
+
+[node name="GPUParticles2D2" parent="Clouds/Parallax2D2" index="0"]
+position = Vector2(304, -229)
+
+[editable path="Clouds/Parallax2D2"]

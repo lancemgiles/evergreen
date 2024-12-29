@@ -1,6 +1,4 @@
-class_name WalkingBouncyEnemy
-
-extends CharacterBody2D
+class_name WalkingBouncyEnemy extends CharacterBody2D
 
 @export var speed = 100
 @export var distance = 100
