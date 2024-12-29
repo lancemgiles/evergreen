@@ -1,15 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://eyx56aykbud2"]
+[gd_scene load_steps=4 format=3 uid="uid://eyx56aykbud2"]
 
 [ext_resource type="Texture2D" uid="uid://cqrbiax1k101c" path="res://assets/Terrain/dangerous-ground.png" id="1_iqkb4"]
-[ext_resource type="Script" path="res://scripts/dangerous_tiles.gd" id="2_yd54p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1njyk"]
 texture = ExtResource("1_iqkb4")
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -4, 3.5, -3.875, 0.375, 8, 8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -4.25, -1.375, -1.5, -5.5, 4.875, -6.25, 8, 1.875, 8, 8, 4.375)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.875, -8, -7, 8, 0.5, 8, 6.875, 4.5, 2.5, 1, 6.75, -1.5, 0.25, -8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.625, -8, -4.375, -0.125, -6.75, 8, -0.25, 8, 2.25, 0.5, -0.75, -8)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.625, -8, 0.875, 2.375, 0.875, 2.375, 8, 4, 8, -3.625, 1.25, -5.125, -0.25, -8)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, -2.625, -8, 0.25, -5.625, 3.5, -8, 8, -4.375, 8, 4.75, -8, 4.875)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5, 8, -4.25, 8, 2.75, -8, 4)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.625, 8, -4.25, 8, 2.375, 2.875, 7, -0.375, 4.375, -3.875, 7, -8, 3.25)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.875, 0.625, -8, 6.25, -8, 6.125, -4, -0.25, 3.25, -8, 5.625)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.5, 8, -1.875, 1, 0.25, -8, 8, -8, 4.625, -0.75, 8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, 8, -6.75, 1.125, -2.625, -1.125, -5.5, -4.625, -0.5, -8, 6.625, -8, 6.75, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.625, -8, -4.875, 5, -0.875, 8, 5.625, 8, 6.875, 1.5)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.875, 8, -8, 0, -1.875, -6.125, 4.375, 1.25, 1.5, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -4.125, -1.25, -6.375, 0.5, -1.875, -5, -0.875, 4.25, 4.625, 8, 3)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 0.625, -8, 0.125, -2.125, 4, 3.25, -1.875, 6.375, -8, 3.5)
 
 [sub_resource type="TileSet" id="TileSet_gf01t"]
 physics_layer_0/collision_layer = 64
@@ -18,4 +42,3 @@ sources/0 = SubResource("TileSetAtlasSource_1njyk")
 
 [node name="DangerousTiles" type="TileMapLayer" groups=["Danger"]]
 tile_set = SubResource("TileSet_gf01t")
-script = ExtResource("2_yd54p")
