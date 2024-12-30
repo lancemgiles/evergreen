@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://ci8cadrl72o45"]
+[gd_scene load_steps=31 format=4 uid="uid://ci8cadrl72o45"]
 
 [ext_resource type="Texture2D" uid="uid://dtfon3x2tanos" path="res://assets/Background/grass-bg-2.png" id="1_a2nrq"]
 [ext_resource type="Texture2D" uid="uid://dgdopgwg6alwh" path="res://assets/Background/grass-and-sky-bg-2.png" id="2_wpcfq"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="15_koehh"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="16_1cc28"]
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="17_c6byy"]
+[ext_resource type="PackedScene" uid="uid://b5xro22y5eydt" path="res://scenes/clouds.tscn" id="18_tunn4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nq6yy"]
 texture = ExtResource("5_w1c4b")
@@ -486,6 +487,11 @@ position = Vector2(227, -136)
 
 [node name="Bouncer" parent="Bouncers" instance=ExtResource("17_c6byy")]
 position = Vector2(119, -1355)
+
+[node name="Overlays" type="Node2D" parent="."]
+
+[node name="Clouds" parent="Overlays" instance=ExtResource("18_tunn4")]
+repeat_size = Vector2(540, 540)
 
 [connection signal="body_entered" from="Checkpoints/Checkpoint2" to="Player" method="_on_checkpoint_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint" to="Player" method="_on_checkpoint_body_entered"]

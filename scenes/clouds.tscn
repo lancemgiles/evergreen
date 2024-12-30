@@ -37,9 +37,9 @@ turbulence_noise_scale = 10.0
 turbulence_noise_speed = Vector3(2, 5, 0)
 collision_mode = 2
 
-[node name="Parallax2D" type="Parallax2D"]
+[node name="Clouds" type="Parallax2D"]
 scroll_scale = Vector2(0.2, 0.2)
-repeat_size = Vector2(1080, 1080)
+repeat_size = Vector2(540, 540)
 repeat_times = 3
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
