@@ -366,7 +366,6 @@ tile_set = SubResource("TileSet_kxgnk")
 [node name="Player" parent="." instance=ExtResource("10_lr7ar")]
 z_index = 1
 position = Vector2(75, -56)
-speed = 150
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -413,12 +412,10 @@ autoplay = "RESET"
 
 [node name="SmallBlob" parent="Enemies" instance=ExtResource("14_oeemp")]
 position = Vector2(35, -372)
-speed = 50
 distance = 111
 
 [node name="SmallBlob2" parent="Enemies" instance=ExtResource("14_oeemp")]
 position = Vector2(67, -1277)
-speed = 50
 
 [node name="Pickups" type="Node" parent="."]
 
@@ -491,7 +488,6 @@ position = Vector2(119, -1355)
 [node name="Overlays" type="Node2D" parent="."]
 
 [node name="Clouds" parent="Overlays" instance=ExtResource("18_tunn4")]
-repeat_size = Vector2(540, 540)
 
 [connection signal="body_entered" from="Checkpoints/Checkpoint2" to="Player" method="_on_checkpoint_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint" to="Player" method="_on_checkpoint_body_entered"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccjjkqsp4tjtv"]
+[gd_scene load_steps=15 format=3 uid="uid://ccjjkqsp4tjtv"]
 
 [ext_resource type="Script" path="res://scripts/bouncer.gd" id="1_7i4r2"]
 [ext_resource type="Texture2D" uid="uid://y5lggnfwb1xg" path="res://assets/Items/bouncy-mushroom.png" id="2_enhqx"]
+[ext_resource type="Texture2D" uid="uid://cq4oyapjxpv6h" path="res://assets/Items/medium-bouncy-mushroom.png" id="2_hb2up"]
+[ext_resource type="Texture2D" uid="uid://c7qdpt3dbdbdb" path="res://assets/Items/super-bouncy-mushroom.png" id="3_prqaw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_eyg61"]
 bounce = 10.0
@@ -9,6 +11,14 @@ absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp3j0"]
 size = Vector2(14, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oasje"]
+atlas = ExtResource("2_hb2up")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk6ro"]
+atlas = ExtResource("2_hb2up")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3m481"]
 atlas = ExtResource("2_enhqx")
@@ -18,8 +28,27 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("2_enhqx")
 region = Rect2(16, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfybb"]
+atlas = ExtResource("3_prqaw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dinf"]
+atlas = ExtResource("3_prqaw")
+region = Rect2(16, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_3s7a1"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oasje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk6ro")
+}],
+"loop": true,
+"name": &"medium",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3m481")
@@ -28,7 +57,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_2qgs8")
 }],
 "loop": true,
-"name": &"default",
+"name": &"regular",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfybb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dinf")
+}],
+"loop": true,
+"name": &"super",
 "speed": 5.0
 }]
 
@@ -46,7 +86,7 @@ shape = SubResource("RectangleShape2D_tp3j0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_3s7a1")
-frame_progress = 0.704306
+animation = &"medium"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2

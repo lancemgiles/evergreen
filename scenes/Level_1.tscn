@@ -275,7 +275,6 @@ position = Vector2(60, -602)
 
 [node name="Player" parent="." instance=ExtResource("10_a2bv8")]
 position = Vector2(134, -68)
-speed = 150
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -334,12 +333,10 @@ position = Vector2(510, -451)
 
 [node name="SmallBlob" parent="Enemies" instance=ExtResource("14_pvfjl")]
 position = Vector2(410, -53)
-speed = 50
 distance = 118
 
 [node name="SmallBlob2" parent="Enemies" instance=ExtResource("14_pvfjl")]
 position = Vector2(600, -548)
-speed = 50
 distance = 84
 
 [node name="Bouncers" type="Node2D" parent="."]
@@ -347,9 +344,9 @@ distance = 84
 [node name="Bouncer" parent="Bouncers" instance=ExtResource("14_gplyf")]
 position = Vector2(244, -203)
 
-[node name="SuperBouncer" parent="Bouncers" instance=ExtResource("14_gplyf")]
+[node name="MediumBouncer" parent="Bouncers" instance=ExtResource("14_gplyf")]
 position = Vector2(405, -376)
-bounciness = 3
+version = 1
 
 [node name="Bouncer2" parent="Bouncers" instance=ExtResource("14_gplyf")]
 position = Vector2(469, -811)
@@ -372,7 +369,6 @@ shape = SubResource("RectangleShape2D_2ksxl")
 [node name="Clouds" type="Node2D" parent="."]
 
 [node name="Parallax2D2" parent="Clouds" instance=ExtResource("16_n21ph")]
-repeat_size = Vector2(540, 540)
 
 [node name="GPUParticles2D2" parent="Clouds/Parallax2D2" index="0"]
 position = Vector2(304, -229)

@@ -1,6 +1,7 @@
 class_name WalkingBouncyEnemy extends CharacterBody2D
 
-@export var speed = 100
+@export_group("Enemy Properties")
+@export var speed = 50
 @export var distance = 100
 @export var gravity = 1600
 @export var knockback_force = 20

@@ -62,3 +62,4 @@ use_kinematic_bodies = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(24, 2.5)
 shape = SubResource("RectangleShape2D_3bxk0")
+one_way_collision = true

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://2p0bufvmud6a" path="res://assets/Characters/cedar-04-portrait-48x48.png" id="4_2xdek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7dh1"]
+resource_local_to_scene = true
 size = Vector2(648, 20)
 
 [sub_resource type="Animation" id="Animation_4e88m"]

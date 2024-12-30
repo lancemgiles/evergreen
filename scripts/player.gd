@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var speed = 200
-@export var gravity = 600
-@export var jump_height = -300
+var speed = 175
+var gravity = 600
+var jump_height = -300
 
 # 1 is right, -1 is left, 0 is none
 var last_direction = 0

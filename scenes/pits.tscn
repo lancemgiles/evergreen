@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/pits.gd" id="1_awdxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_467l5"]
+resource_local_to_scene = true
 size = Vector2(961, 20)
 
 [node name="Pits" type="Area2D"]
