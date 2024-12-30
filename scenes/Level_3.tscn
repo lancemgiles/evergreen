@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dgdopgwg6alwh" path="res://assets/Background/grass-and-sky-bg-2.png" id="1_1a44v"]
 [ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="2_5idfa"]
-[ext_resource type="Texture2D" uid="uid://c6ciho7pulmxx" path="res://assets/Terrain/bark-16x16-fim-02.png" id="3_r5r7d"]
+[ext_resource type="Texture2D" uid="uid://c6ciho7pulmxx" path="res://assets/Tiles/bark-16x16-fim-02.png" id="3_r5r7d"]
 [ext_resource type="PackedScene" uid="uid://rcgw8842bow3" path="res://scenes/player.tscn" id="4_7wdxo"]
 [ext_resource type="PackedScene" uid="uid://eyx56aykbud2" path="res://scenes/dangerous_tiles.tscn" id="4_lb1ba"]
 [ext_resource type="Script" path="res://scripts/checkpoint_manager.gd" id="5_j7233"]
@@ -352,6 +352,7 @@ scale = Vector2(0.99349, 0.958807)
 texture = ExtResource("8_dr8xx")
 
 [node name="Clouds" parent="Overlays" instance=ExtResource("11_dqe7j")]
+repeat_times = 4
 
 [editable path="Pits"]
 [editable path="LevelEnd"]

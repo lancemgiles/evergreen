@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://eyx56aykbud2"]
 
-[ext_resource type="Texture2D" uid="uid://cqrbiax1k101c" path="res://assets/Terrain/dangerous-ground.png" id="1_iqkb4"]
-[ext_resource type="Texture2D" uid="uid://cc536q4bwbgrf" path="res://assets/Terrain/dangerous-ground-2.png" id="2_uceir"]
+[ext_resource type="Texture2D" uid="uid://cqrbiax1k101c" path="res://assets/Tiles/dangerous-ground.png" id="1_iqkb4"]
+[ext_resource type="Texture2D" uid="uid://cc536q4bwbgrf" path="res://assets/Tiles/dangerous-ground-2.png" id="2_uceir"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1njyk"]
 texture = ExtResource("1_iqkb4")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl8wn7qoetudv"
-path="res://.godot/imported/sunspot.png-097e5972c471d9ab687e4e3e51da03b6.ctex"
+uid="uid://nrk012rlckan"
+path="res://.godot/imported/inner-tree-particle.png-73e8adafab2a6791edc36ead76f007c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sunspot.png"
-dest_files=["res://.godot/imported/sunspot.png-097e5972c471d9ab687e4e3e51da03b6.ctex"]
+source_file="res://assets/Background/inner-tree-particle.png"
+dest_files=["res://.godot/imported/inner-tree-particle.png-73e8adafab2a6791edc36ead76f007c9.ctex"]
 
 [params]
 

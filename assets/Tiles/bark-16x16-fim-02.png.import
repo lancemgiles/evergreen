@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0jgqqs3r1hr8"
-path="res://.godot/imported/vines.png-c216e2e832f9adb1c8e912bec55f6791.ctex"
+uid="uid://c6ciho7pulmxx"
+path="res://.godot/imported/bark-16x16-fim-02.png-5a5002408106f7fe9e1970e25215db1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Terrain/vines.png"
-dest_files=["res://.godot/imported/vines.png-c216e2e832f9adb1c8e912bec55f6791.ctex"]
+source_file="res://assets/Tiles/bark-16x16-fim-02.png"
+dest_files=["res://.godot/imported/bark-16x16-fim-02.png-5a5002408106f7fe9e1970e25215db1f.ctex"]
 
 [params]
 

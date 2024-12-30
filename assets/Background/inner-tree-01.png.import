@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj5q60yq6t203"
-path="res://.godot/imported/bark-16x16x5-fim.png-adfdc666ddcf7ede4abd0ea9f9f1ba4b.ctex"
+uid="uid://bcva8wf5xijkx"
+path="res://.godot/imported/inner-tree-01.png-97f863b3baf344dd8f54d73d147cb9c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Terrain/bark-16x16x5-fim.png"
-dest_files=["res://.godot/imported/bark-16x16x5-fim.png-adfdc666ddcf7ede4abd0ea9f9f1ba4b.ctex"]
+source_file="res://assets/Background/inner-tree-01.png"
+dest_files=["res://.godot/imported/inner-tree-01.png-97f863b3baf344dd8f54d73d147cb9c7.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s173hncgd1iq"
-path="res://.godot/imported/bark-16x16-extras.png-ec1e0e47b288cb41bfabd1f593563712.ctex"
+uid="uid://bl8wn7qoetudv"
+path="res://.godot/imported/clouds-1.png-6b71c0412d369f0028bebf31e502946c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Terrain/bark-16x16-extras.png"
-dest_files=["res://.godot/imported/bark-16x16-extras.png-ec1e0e47b288cb41bfabd1f593563712.ctex"]
+source_file="res://assets/Background/clouds-1.png"
+dest_files=["res://.godot/imported/clouds-1.png-6b71c0412d369f0028bebf31e502946c.ctex"]
 
 [params]
 

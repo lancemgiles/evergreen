@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbfrcjv38tv3w"
-path="res://.godot/imported/bark-128.png-21e2d2bf1e1ad9e574e70d17a9facbbe.ctex"
+uid="uid://d0lwxlntsx4nn"
+path="res://.godot/imported/grass-particle-1.png-d66ba7c43b5b1f34171867d05d455722.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Terrain/bark-128.png"
-dest_files=["res://.godot/imported/bark-128.png-21e2d2bf1e1ad9e574e70d17a9facbbe.ctex"]
+source_file="res://assets/Tiles/grass-particle-1.png"
+dest_files=["res://.godot/imported/grass-particle-1.png-d66ba7c43b5b1f34171867d05d455722.ctex"]
 
 [params]
 

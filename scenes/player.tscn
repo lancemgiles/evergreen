@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://diou76wl3awk4" path="res://assets/Characters/cedar-04-death-fim.png" id="3_e8h23"]
 [ext_resource type="Texture2D" uid="uid://byad7o2yjqlpn" path="res://assets/Characters/cedar-04-float-fim.png" id="5_lyerg"]
 [ext_resource type="Texture2D" uid="uid://d4nrvhyepxcul" path="res://assets/Characters/cedar-04-idle-fim.png" id="6_e0v85"]
-[ext_resource type="Texture2D" uid="uid://d0lwxlntsx4nn" path="res://assets/Terrain/grass-particle-1.png" id="8_qmtpv"]
+[ext_resource type="Texture2D" uid="uid://d0lwxlntsx4nn" path="res://assets/Tiles/grass-particle-1.png" id="8_qmtpv"]
 [ext_resource type="Texture2D" uid="uid://bf1x4hl5ofl5a" path="res://assets/Characters/cedar-04-sooth-fim.png" id="10_nit4c"]
 [ext_resource type="Texture2D" uid="uid://dd0f8swb4bvbm" path="res://assets/Characters/cedar-04-walk-fim.png" id="11_wri7l"]
 [ext_resource type="Texture2D" uid="uid://diuvc6enrbam6" path="res://assets/icons/hourglass.png" id="12_4aqle"]

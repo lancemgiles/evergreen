@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqrbiax1k101c"
-path="res://.godot/imported/dangerous-ground.png-b821ced4fe4d7eda0018989337ecea54.ctex"
+uid="uid://cc536q4bwbgrf"
+path="res://.godot/imported/dangerous-ground-2.png-0b2284e4f8cfb5af7dd96a189e8e1abc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Terrain/dangerous-ground.png"
-dest_files=["res://.godot/imported/dangerous-ground.png-b821ced4fe4d7eda0018989337ecea54.ctex"]
+source_file="res://assets/Tiles/dangerous-ground-2.png"
+dest_files=["res://.godot/imported/dangerous-ground-2.png-0b2284e4f8cfb5af7dd96a189e8e1abc.ctex"]
 
 [params]
 
