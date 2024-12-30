@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5xro22y5eydt"]
 
-[ext_resource type="Texture2D" uid="uid://bl8wn7qoetudv" path="res://assets/Background/clouds-1.png" id="1_8jbia"]
+[ext_resource type="Texture2D" uid="uid://bl8wn7qoetudv" path="res://assets/overlays/clouds-1.png" id="1_8jbia"]
 
 [sub_resource type="Curve" id="Curve_b3871"]
 min_value = -200.0

@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=4 uid="uid://cm4dw5oai5k5m"]
+[gd_scene load_steps=26 format=4 uid="uid://cm4dw5oai5k5m"]
 
 [ext_resource type="Texture2D" uid="uid://dgdopgwg6alwh" path="res://assets/Background/grass-and-sky-bg-2.png" id="1_1a44v"]
+[ext_resource type="Texture2D" uid="uid://bg3456b56jpca" path="res://assets/Background/sky.png" id="1_lcre8"]
 [ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="2_5idfa"]
 [ext_resource type="Texture2D" uid="uid://c6ciho7pulmxx" path="res://assets/Tiles/bark-16x16-fim-02.png" id="3_r5r7d"]
 [ext_resource type="PackedScene" uid="uid://rcgw8842bow3" path="res://scenes/player.tscn" id="4_7wdxo"]
@@ -9,12 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://bo8i2h3ef2t04" path="res://scenes/checkpoint.tscn" id="5_rtfys"]
 [ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="6_0snni"]
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="7_jnuhv"]
-[ext_resource type="Texture2D" uid="uid://cwmxjlqhb1gh4" path="res://assets/shadow.png" id="8_dr8xx"]
+[ext_resource type="Texture2D" uid="uid://cwmxjlqhb1gh4" path="res://assets/tree-shadow.png" id="8_dr8xx"]
 [ext_resource type="PackedScene" uid="uid://cx2b3lpg0qfbe" path="res://scenes/large_blob.tscn" id="9_d6b6d"]
 [ext_resource type="PackedScene" uid="uid://b5xro22y5eydt" path="res://scenes/clouds.tscn" id="11_dqe7j"]
 [ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="11_mwaob"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="13_7detb"]
 [ext_resource type="Texture2D" uid="uid://bvwgag0uheqg0" path="res://assets/Items/portal.png" id="15_4a04h"]
+[ext_resource type="PackedScene" uid="uid://cjyn5sjgkybuh" path="res://scenes/spider.tscn" id="15_g13gf"]
+[ext_resource type="Texture2D" uid="uid://ba264xj6bj4gg" path="res://assets/Characters/spider-web-single.png" id="16_o0tfj"]
+[ext_resource type="PackedScene" uid="uid://b02cwf3032wa" path="res://scenes/dialog_trigger.tscn" id="17_deqyh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ul82"]
 texture = ExtResource("3_r5r7d")
@@ -156,7 +160,7 @@ resource_local_to_scene = true
 size = Vector2(961, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tda3"]
-size = Vector2(14, 1267)
+size = Vector2(14, 1401.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eo1ui"]
 size = Vector2(1088, 12)
@@ -169,6 +173,13 @@ size = Vector2(17, 32)
 
 [node name="Backgrounds" type="Node2D" parent="."]
 z_index = -2
+
+[node name="sky" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/sky"]
+position = Vector2(480, 146)
+texture = ExtResource("1_lcre8")
 
 [node name="GrassSky" type="Parallax2D" parent="Backgrounds"]
 scroll_scale = Vector2(0.2, 0.2)
@@ -193,7 +204,7 @@ tile_set = SubResource("TileSet_nscv5")
 position = Vector2(0, -1)
 
 [node name="DangerousTiles" parent="Obstacles" instance=ExtResource("4_lb1ba")]
-tile_map_data = PackedByteArray("AAAyAOP/AQAAAAMAAAAyAOL/AQAAAAMAAAAyAOH/AQAAAAMAAAAyAOD/AQAAAAMAAAAyAN//AQAAAAMAAAAyAN7/AQAAAAMAAAAyAN3/AQAAAAMAAAAyANz/AQAAAAMAAAAyANv/AAAEAAEAAAAyAOT/AQAAAAMAAAAyAOX/AQAAAAMAAAAyAOr/AQAAAAMAAAAyAOv/AQAAAAMAAAAyAOz/AQAAAAMAAAAyAPD/AQAAAAMAAAAyAPH/AQAAAAMAAAAyAPL/AQAAAAMAAAAyAPb/AQAAAAMAAAAyAPf/AQAAAAMAAAAyAPj/AQAAAAMAAAAyAO3/AQAAAAMAAAAyAO7/AQAAAAMAAAAyAO//AQAAAAMAAAAyAPP/AQAAAAMAAAAyAPT/AQAAAAMAAAAyAPX/AQAAAAMAAAAyAPn/AQACAAQAAAApAPn/AQAAAAQAAAApAPX/AQAAAAMAAAApAPT/AQAAAAMAAAApAPP/AQAAAAMAAAApAO//AQAAAAMAAAApAO7/AQAAAAMAAAApAOr/AQAAAAMAAAApAOn/AQAAAAMAAAApAOj/AQAAAAMAAAApAOX/AQAAAAMAAAApAOT/AQAAAAMAAAApAOP/AQACAAMAAAApAOb/AQAAAAMAAAApAOf/AQAAAAMAAAApAOv/AQAAAAMAAAApAOz/AQAAAAMAAAApAO3/AQAAAAMAAAApAPD/AQAAAAMAAAApAPH/AQAAAAMAAAApAPL/AQAAAAMAAAApAPb/AQAAAAMAAAApAPf/AQAAAAMAAAApAPj/AQAAAAMAAAAyAOb/AQAAAAMAAAAyAOf/AQAAAAMAAAAyAOj/AQAAAAMAAAAyAOn/AQAAAAMAAAAqAPn/AQABAAIAAAArAPn/AQABAAIAAAAsAPn/AQABAAIAAAAtAPn/AQABAAIAAAAuAPn/AQABAAIAAAAvAPn/AQABAAIAAAAwAPn/AQABAAIAAAAxAPn/AQABAAIAAAA=")
+tile_map_data = PackedByteArray("AAAyAOP/AQAAAAMAAAAyAOL/AQAAAAMAAAAyAOH/AQAAAAMAAAAyAOD/AQAAAAMAAAAyAN//AQAAAAMAAAAyAN7/AQAAAAMAAAAyAN3/AQAAAAMAAAAyANz/AQAAAAMAAAAyANv/AAAEAAEAAAAyAOT/AQAAAAMAAAAyAOX/AQAAAAMAAAAyAOr/AQAAAAMAAAAyAOv/AQAAAAMAAAAyAOz/AQAAAAMAAAAyAPD/AQAAAAMAAAAyAPH/AQAAAAMAAAAyAPL/AQAAAAMAAAAyAPb/AQAAAAMAAAAyAPf/AQAAAAMAAAAyAPj/AQAAAAMAAAAyAO3/AQAAAAMAAAAyAO7/AQAAAAMAAAAyAO//AQAAAAMAAAAyAPP/AQAAAAMAAAAyAPT/AQAAAAMAAAAyAPX/AQAAAAMAAAAyAPn/AQACAAQAAAApAPn/AQAAAAQAAAApAPX/AQAAAAMAAAApAPT/AQAAAAMAAAApAPP/AQAAAAMAAAApAO//AQAAAAMAAAApAO7/AQAAAAMAAAApAOr/AQAAAAMAAAApAOn/AQAAAAMAAAApAOj/AQAAAAMAAAApAOX/AQAAAAMAAAApAOT/AQAAAAMAAAApAOP/AQACAAMAAAApAOb/AQAAAAMAAAApAOf/AQAAAAMAAAApAOv/AQAAAAMAAAApAOz/AQAAAAMAAAApAO3/AQAAAAMAAAApAPD/AQAAAAMAAAApAPH/AQAAAAMAAAApAPL/AQAAAAMAAAApAPb/AQAAAAMAAAApAPf/AQAAAAMAAAApAPj/AQAAAAMAAAAyAOb/AQAAAAMAAAAyAOf/AQAAAAMAAAAyAOj/AQAAAAMAAAAyAOn/AQAAAAMAAAAqAPn/AQABAAIAAAArAPn/AQABAAIAAAAsAPn/AQABAAIAAAAtAPn/AQABAAIAAAAuAPn/AQABAAIAAAAvAPn/AQABAAIAAAAwAPn/AQABAAIAAAAxAPn/AQABAAIAAAA1AMv/AQABAAIAAAA2AMv/AQACAAQAAAA0AMv/AQABAAIAAAAzAMv/AQABAAIAAAAyAMv/AQABAAIAAAAxAMv/AQABAAIAAAAwAMv/AQABAAIAAAAvAMv/AQABAAIAAAAuAMv/AQABAAIAAAAtAMv/AQABAAIAAAAsAMv/AQABAAIAAAArAMv/AQABAAIAAAAqAMv/AQABAAIAAAApAMv/AQABAAIAAAAoAMv/AQABAAIAAAAnAMv/AQABAAIAAAAmAMv/AQABAAIAAAAlAMv/AQABAAIAAAAkAMv/AQABAAIAAAAjAMv/AQABAAIAAAAiAMv/AQABAAIAAAAhAMv/AQABAAIAAAAgAMv/AQABAAIAAAAfAMv/AQABAAIAAAAeAMv/AQABAAIAAAAdAMv/AQABAAIAAAAcAMv/AQABAAIAAAAbAMv/AQABAAIAAAAaAMv/AQABAAIAAAAZAMv/AQABAAIAAAAYAMv/AQABAAIAAAAXAMv/AQABAAIAAAAWAMv/AQABAAIAAAAVAMv/AQABAAIAAAAUAMv/AQABAAIAAAATAMv/AQABAAIAAAASAMv/AQABAAIAAAARAMv/AQABAAIAAAAQAMv/AQABAAIAAAAPAMv/AQABAAIAAAAOAMv/AQABAAIAAAANAMv/AQABAAIAAAAMAMv/AQABAAIAAAALAMv/AQABAAIAAAAKAMv/AQABAAIAAAAJAMv/AQABAAIAAAAIAMv/AQABAAIAAAAHAMv/AQAAAAQAAAA=")
 
 [node name="CheckpointManager" type="Node" parent="."]
 script = ExtResource("5_j7233")
@@ -239,15 +250,15 @@ version = 2
 collision_mask = 2
 
 [node name="Left" type="CollisionShape2D" parent="Borders"]
-position = Vector2(-87, -85)
+position = Vector2(-87, -108.375)
 shape = SubResource("RectangleShape2D_1tda3")
 
 [node name="Right" type="CollisionShape2D" parent="Borders"]
-position = Vector2(1000, -88)
+position = Vector2(1000, -131.75)
 shape = SubResource("RectangleShape2D_1tda3")
 
 [node name="Top" type="CollisionShape2D" parent="Borders"]
-position = Vector2(456, -725)
+position = Vector2(456, -812)
 shape = SubResource("RectangleShape2D_eo1ui")
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -342,7 +353,21 @@ next_level_number = "1"
 position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_b7xm6")
 
+[node name="SpiderDialog" type="Node2D" parent="."]
+
+[node name="Spider" parent="SpiderDialog" instance=ExtResource("15_g13gf")]
+position = Vector2(81, -621)
+
+[node name="Silk" type="Sprite2D" parent="SpiderDialog"]
+position = Vector2(81, -751.5)
+scale = Vector2(1, 14.1875)
+texture = ExtResource("16_o0tfj")
+
+[node name="DialogTrigger" parent="SpiderDialog" instance=ExtResource("17_deqyh")]
+position = Vector2(107, -609)
+
 [node name="Overlays" type="Node2D" parent="."]
+visible = false
 metadata/_edit_lock_ = true
 
 [node name="Shadows" type="Sprite2D" parent="Overlays"]

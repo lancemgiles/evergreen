@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nrk012rlckan"
-path="res://.godot/imported/inner-tree-particle.png-73e8adafab2a6791edc36ead76f007c9.ctex"
+uid="uid://burbu2c7gc54w"
+path="res://.godot/imported/inner-tree-shadow-01.png-41cccae135efe986b7320c3644174311.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background/inner-tree-particle.png"
-dest_files=["res://.godot/imported/inner-tree-particle.png-73e8adafab2a6791edc36ead76f007c9.ctex"]
+source_file="res://assets/overlays/inner-tree-shadow-01.png"
+dest_files=["res://.godot/imported/inner-tree-shadow-01.png-41cccae135efe986b7320c3644174311.ctex"]
 
 [params]
 

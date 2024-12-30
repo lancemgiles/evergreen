@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjyn5sjgkybuh"]
+
+[ext_resource type="Texture2D" uid="uid://edovpxw4calb" path="res://assets/Characters/spider.png" id="1_ob1y6"]
+[ext_resource type="Script" path="res://scripts/spider.gd" id="1_yvpgd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjvma"]
+atlas = ExtResource("1_ob1y6")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soi5t"]
+atlas = ExtResource("1_ob1y6")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wg47f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjvma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soi5t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Spider" type="CharacterBody2D"]
+script = ExtResource("1_yvpgd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 16, -15, 11, -20, 3, -19, -4, -8, -14, 0, -18, 9, -14, 19, -4, 21, 4, 11, 15)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wg47f")
+frame_progress = 0.495709

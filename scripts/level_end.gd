@@ -2,17 +2,14 @@ extends Area2D
 
 @export var next_level_number : String
 var next_level_path = "res://scenes/Level_2.tscn"
-var shape
 
 func _ready():
-	$UI/Menu.visible = false
 	next_level_path = "res://scenes/Level_" + str(next_level_number) + ".tscn"
-	
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		get_tree().paused = true
-		$UI/Menu.visible = true
+		$UI.visible = true
 		$AnimationPlayer.play("ui_visibility")
 		body.get_node("UI").visible = false
 		body.final_score_and_time()

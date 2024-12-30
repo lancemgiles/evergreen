@@ -443,6 +443,7 @@ texture = ExtResource("14_rwmn1")
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 
 [node name="Menu" type="ColorRect" parent="GameOver"]
 modulate = Color(1, 1, 1, 0)

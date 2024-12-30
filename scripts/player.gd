@@ -145,7 +145,7 @@ func lose_life():
 		respawn()
 	else:
 		get_tree().paused = true
-		$GameOver/Menu.visible = true
+		$GameOver.visible = true
 		$AnimationPlayer.play("ui_visibility")
 		$UI.visible = false
 		final_score_and_time()
