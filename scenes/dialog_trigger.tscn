@@ -8,6 +8,7 @@
 resource_local_to_scene = true
 
 [node name="DialogTrigger" type="Area2D"]
+process_mode = 3
 collision_mask = 2
 script = ExtResource("1_55gxp")
 
@@ -15,22 +16,23 @@ script = ExtResource("1_55gxp")
 position = Vector2(15, -7)
 shape = SubResource("RectangleShape2D_e4bpl")
 
-[node name="DialogBox" type="ColorRect" parent="CollisionShape2D"]
+[node name="DialogBox" type="ColorRect" parent="."]
+process_mode = 3
 visible = false
 z_index = 4
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -70.0
-offset_top = 17.0
-offset_right = 646.0
-offset_bottom = 217.0
+offset_left = -55.0
+offset_top = 10.0
+offset_right = 661.0
+offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.337255, 0.741176, 0.356863, 0.811765)
 
-[node name="Textbox" type="ColorRect" parent="CollisionShape2D/DialogBox"]
+[node name="Textbox" type="ColorRect" parent="DialogBox"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -45,7 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.160784, 0.466667, 0.156863, 0.886275)
 
-[node name="Label" type="Label" parent="CollisionShape2D/DialogBox/Textbox"]
+[node name="Label" type="Label" parent="DialogBox/Textbox"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 28.0
@@ -56,7 +58,7 @@ theme_override_font_sizes/font_size = 25
 text = "Text"
 autowrap_mode = 2
 
-[node name="NextButton" type="Button" parent="CollisionShape2D/DialogBox/Textbox"]
+[node name="NextButton" type="Button" parent="DialogBox/Textbox"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 120.0
@@ -67,4 +69,4 @@ theme_override_font_sizes/font_size = 25
 text = "next"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="pressed" from="CollisionShape2D/DialogBox/Textbox/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="DialogBox/Textbox/NextButton" to="." method="_on_next_button_pressed"]
