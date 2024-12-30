@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+enum UIState {MENU, PLAYING}
+var ui_state : UIState
+
 var speed = 175
 var gravity = 600
 var jump_height = -300
@@ -32,7 +35,8 @@ func _ready():
 	update_score.connect($UI/Score.update_score)
 	update_lives.connect($UI/Life.update_lives)
 	$UI/Health/Label.text = str(health)
-	$UI/Life/Label.text = str(lives)	
+	$UI/Life/Label.text = str(lives)
+	ui_state = UIState.PLAYING
 	checkpoint_manager = get_parent().get_node("CheckpointManager")
 	
 	await get_tree().create_timer(0.2).timeout
@@ -58,10 +62,11 @@ func _process(_delta):
 		$AnimatedSprite2D.flip_h = true
 	update_time_and_label()
 	
-	if get_tree().paused == true:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	elif get_tree().paused == false:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	match ui_state:
+		UIState.MENU:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		UIState.PLAYING:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _input(event):
 	if Input.is_action_pressed("pause"):
@@ -149,9 +154,10 @@ func lose_life():
 		$AnimationPlayer.play("ui_visibility")
 		$UI.visible = false
 		final_score_and_time()
+		ui_state = UIState.MENU
 		$GameOver/Menu/Container/TimeCompleted/Value.text = str(Global.final_time)
 		$GameOver/Menu/Container/Score/Value.text = str(Global.final_score)
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
 		BackgroundMusic.loop = false
 
 func respawn():
@@ -221,11 +227,13 @@ func _on_timer_timeout() -> void:
 	set_physics_process(true)	
 
 func _on_retry_button_pressed() -> void:
+	ui_state = UIState.PLAYING
 	$GameOver/Menu.visible = false
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_resume_button_pressed() -> void:
+	ui_state = UIState.PLAYING
 	get_tree().paused = false
 	$PauseMenu.visible = false
 

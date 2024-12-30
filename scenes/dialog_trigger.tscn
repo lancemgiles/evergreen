@@ -5,45 +5,47 @@
 [ext_resource type="FontFile" uid="uid://ci4hy5h1ty1og" path="res://assets/Agave/AgaveNerdFontMono-Regular.ttf" id="3_7uyom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4bpl"]
+resource_local_to_scene = true
 
 [node name="DialogTrigger" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_55gxp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(12, -7)
+position = Vector2(15, -7)
 shape = SubResource("RectangleShape2D_e4bpl")
 
-[node name="DialogBox" type="ColorRect" parent="."]
+[node name="DialogBox" type="ColorRect" parent="CollisionShape2D"]
 visible = false
+z_index = 4
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 108.0
-offset_top = 425.0
-offset_right = 1068.0
-offset_bottom = 625.0
+offset_left = -70.0
+offset_top = 17.0
+offset_right = 646.0
+offset_bottom = 217.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.337255, 0.741176, 0.356863, 0.811765)
 
-[node name="Textbox" type="ColorRect" parent="DialogBox"]
+[node name="Textbox" type="ColorRect" parent="CollisionShape2D/DialogBox"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -469.0
+offset_left = -346.0
 offset_top = -91.0
-offset_right = 471.0
+offset_right = 342.0
 offset_bottom = 89.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.160784, 0.466667, 0.156863, 0.886275)
 
-[node name="Label" type="Label" parent="DialogBox/Textbox"]
+[node name="Label" type="Label" parent="CollisionShape2D/DialogBox/Textbox"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 28.0
@@ -54,15 +56,15 @@ theme_override_font_sizes/font_size = 25
 text = "Text"
 autowrap_mode = 2
 
-[node name="NextButton" type="Button" parent="DialogBox/Textbox"]
+[node name="NextButton" type="Button" parent="CollisionShape2D/DialogBox/Textbox"]
 layout_mode = 0
-offset_left = 832.0
-offset_top = 121.0
-offset_right = 932.0
-offset_bottom = 171.0
+offset_left = 575.0
+offset_top = 120.0
+offset_right = 675.0
+offset_bottom = 170.0
 theme_override_fonts/font = ExtResource("3_7uyom")
 theme_override_font_sizes/font_size = 25
 text = "next"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="pressed" from="DialogBox/Textbox/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="CollisionShape2D/DialogBox/Textbox/NextButton" to="." method="_on_next_button_pressed"]
