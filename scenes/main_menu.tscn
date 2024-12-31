@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dfojy52nenh80"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_j0eea"]
-[ext_resource type="Texture2D" uid="uid://bjb78ayih21lt" path="res://assets/main-menu-01.png" id="2_tvjx2"]
+[ext_resource type="Texture2D" uid="uid://brqjrngxw7nbk" path="res://assets/main-menu-02.png" id="2_40rq5"]
 [ext_resource type="FontFile" uid="uid://cjeggffpppohb" path="res://assets/Agave/AgaveNerdFont-Regular.ttf" id="3_ub27k"]
 [ext_resource type="Texture2D" uid="uid://cii4w1b6jjj3g" path="res://assets/Items/sap.png" id="4_c7d1j"]
 [ext_resource type="Texture2D" uid="uid://47c3tla8c3bj" path="res://assets/Items/glowing-mushroom-01.png" id="5_gvsb2"]
@@ -86,56 +86,56 @@ color = Color(0.419608, 0.670588, 0.854902, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Menu/Container"]
 position = Vector2(486, 290)
-scale = Vector2(4.49609, 4.49609)
-texture = ExtResource("2_tvjx2")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_40rq5")
 
 [node name="Label" type="Label" parent="Menu/Container"]
 layout_mode = 0
-offset_left = 652.0
-offset_top = 77.0
-offset_right = 927.0
-offset_bottom = 139.0
-theme_override_colors/font_color = Color(0.2, 0.580392, 0.2, 1)
+offset_left = 107.0
+offset_top = 78.0
+offset_right = 382.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.264802, 0.815254, 0.26922, 1)
 theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 61
 text = "evergreen"
 
 [node name="NewButton" type="Button" parent="Menu/Container"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 203.0
-offset_right = 175.0
-offset_bottom = 264.0
+offset_left = -14.0
+offset_top = 539.0
+offset_right = 146.0
+offset_bottom = 599.0
 theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 25
 text = "New Game"
 
 [node name="LoadButton" type="Button" parent="Menu/Container"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 288.0
-offset_right = 175.0
-offset_bottom = 355.0
+offset_left = 160.0
+offset_top = 539.0
+offset_right = 320.0
+offset_bottom = 599.0
 theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 25
 text = "Load Game"
 
 [node name="ControlsButton" type="Button" parent="Menu/Container"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 385.0
-offset_right = 175.0
-offset_bottom = 452.0
+offset_left = 332.0
+offset_top = 539.0
+offset_right = 492.0
+offset_bottom = 599.0
 theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 25
 text = "Controls"
 
 [node name="QuitButton" type="Button" parent="Menu/Container"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 484.0
-offset_right = 175.0
-offset_bottom = 548.0
+offset_left = 504.0
+offset_top = 539.0
+offset_right = 664.0
+offset_bottom = 599.0
 theme_override_fonts/font = ExtResource("3_ub27k")
 theme_override_font_sizes/font_size = 25
 text = "Quit"

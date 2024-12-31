@@ -36,7 +36,6 @@ process_material = SubResource("ParticleProcessMaterial_au2mb")
 texture = ExtResource("1_bnoiw")
 lifetime = 0.8
 randomness = 0.14
-trail_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(25, 8)

@@ -174,6 +174,45 @@ size = Vector2(17, 32)
 resource_local_to_scene = true
 size = Vector2(20, 6)
 
+[sub_resource type="Animation" id="Animation_tagbd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spider:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(81, 387)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Silk:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.999993, 75.3438)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Silk:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80.5, -232.75)]
+}
+
 [sub_resource type="Animation" id="Animation_b84vy"]
 resource_name = "spider_hint"
 length = 10.0
@@ -212,45 +251,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(80.5, -212.75), Vector2(80.5, -732.503)]
-}
-
-[sub_resource type="Animation" id="Animation_tagbd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Spider:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(81, 387)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Silk:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.999993, 75.3438)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Silk:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(80.5, -232.75)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ghdbv"]
@@ -449,6 +449,7 @@ script = ExtResource("15_njigo")
 
 [node name="Spider" parent="SpiderDialog" instance=ExtResource("15_g13gf")]
 position = Vector2(81, 387)
+script = null
 
 [node name="Silk" type="Sprite2D" parent="SpiderDialog"]
 position = Vector2(80.5, -232.75)
@@ -493,6 +494,7 @@ theme_override_font_sizes/font_size = 12
 libraries = {
 "": SubResource("AnimationLibrary_ghdbv")
 }
+autoplay = "spider_hint"
 
 [node name="Overlays" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

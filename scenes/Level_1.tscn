@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://ci8cadrl72o45"]
+[gd_scene load_steps=30 format=4 uid="uid://ci8cadrl72o45"]
 
 [ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="1_ggmve"]
 [ext_resource type="Texture2D" uid="uid://b8xccjh5rs41l" path="res://assets/Background/grass-at-base.png" id="2_sibij"]
@@ -16,8 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="14_gplyf"]
 [ext_resource type="PackedScene" uid="uid://cgne82pxb7rhf" path="res://scenes/small_blob.tscn" id="14_pvfjl"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="15_51b66"]
-[ext_resource type="PackedScene" uid="uid://b5xro22y5eydt" path="res://scenes/clouds.tscn" id="16_n21ph"]
 [ext_resource type="PackedScene" uid="uid://bndr80qb7g2ly" path="res://scenes/fog.tscn" id="17_11kta"]
+[ext_resource type="Texture2D" uid="uid://bl8wn7qoetudv" path="res://assets/overlays/clouds-1.png" id="17_jcokg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oswgq"]
 texture = ExtResource("4_v1hcu")
@@ -237,6 +237,41 @@ sources/0 = SubResource("TileSetAtlasSource_oswgq")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ksxl"]
 size = Vector2(20, 1196)
 
+[sub_resource type="Curve" id="Curve_b3871"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.313333, 160.44), 0.0, 0.0, 0, 0, Vector2(0.98, 19.7802), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_l78ei"]
+curve = SubResource("Curve_b3871")
+
+[sub_resource type="Curve" id="Curve_i7cds"]
+max_value = 2.0
+_data = [Vector2(1e-05, 0.175824), 0.0, 0.0, 0, 0, Vector2(0.493333, 1.12088), 1.18343, 1.18343, 0, 0, Vector2(0.753333, 1.47253), 0.0, 0.0, 0, 0, Vector2(0.993333, 1.01099), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_65p8g"]
+curve = SubResource("Curve_i7cds")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nd7jv"]
+lifetime_randomness = 0.59
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 50.0
+gravity = Vector3(20, 20, 0)
+linear_accel_min = 0.499998
+linear_accel_max = 5.0
+linear_accel_curve = SubResource("CurveTexture_l78ei")
+scale_min = 0.25
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_65p8g")
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 10.0
+turbulence_noise_speed = Vector3(2, 5, 0)
+collision_mode = 2
+
 [node name="Level_1" type="Node2D"]
 
 [node name="Backgrounds" type="Node2D" parent="."]
@@ -373,6 +408,20 @@ shape = SubResource("RectangleShape2D_2ksxl")
 
 [node name="Clouds" type="Node2D" parent="."]
 
-[node name="Parallax2D2" parent="Clouds" instance=ExtResource("16_n21ph")]
+[node name="Parallax2D2" type="Parallax2D" parent="Clouds"]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(540, 540)
+repeat_times = 3
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Clouds/Parallax2D2"]
+modulate = Color(1, 1, 1, 0.133333)
+position = Vector2(356, -134)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_nd7jv")
+texture = ExtResource("17_jcokg")
+lifetime = 20.0
+speed_scale = 0.25
+randomness = 0.07
+collision_base_size = 73.41
 
 [node name="Fog" parent="Clouds" instance=ExtResource("17_11kta")]
