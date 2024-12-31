@@ -351,7 +351,7 @@ texture = ExtResource("15_4a04h")
 
 [node name="LevelEnd" parent="." instance=ExtResource("13_7detb")]
 position = Vector2(781, -208)
-next_level_number = "1"
+next_level_number = "4"
 
 [node name="Finishline" parent="LevelEnd" index="0"]
 position = Vector2(3.5, 0)

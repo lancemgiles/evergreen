@@ -34,6 +34,7 @@ func _ready():
 	update_health.connect($UI/Health.update_health)
 	update_score.connect($UI/Score.update_score)
 	update_lives.connect($UI/Life.update_lives)
+	update_health.emit(Global.health, Global.max_health)
 	$UI/Health/Label.text = str(health)
 	$UI/Life/Label.text = str(lives)
 	ui_state = UIState.PLAYING
@@ -41,6 +42,7 @@ func _ready():
 	
 	await get_tree().create_timer(0.2).timeout
 	update_level_label()
+	sync_stats_from_global()
 	if BackgroundMusic.is_playing() == false:
 		BackgroundMusic.play()
 
@@ -124,6 +126,7 @@ func take_damage(damage_health, damage_score):
 		health = health - damage_health
 		update_health.emit(health, max_health)
 		$AnimatedSprite2D.play("damage")
+		Global.health = health
 	if health <= 0:
 		$AnimatedSprite2D.play("death")
 
@@ -154,7 +157,9 @@ func lose_life():
 		$AnimationPlayer.play("ui_visibility")
 		$UI.visible = false
 		final_score_and_time()
+		update_score.emit(score)
 		ui_state = UIState.MENU
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		$GameOver/Menu/Container/TimeCompleted/Value.text = str(Global.final_time)
 		$GameOver/Menu/Container/Score/Value.text = str(Global.final_score)
 		
@@ -166,6 +171,7 @@ func respawn():
 	if health <= 0:
 		health += 1
 		update_health.emit(health, max_health)
+		Global.health = health
 
 func score_up(count):
 	score += count
@@ -192,11 +198,12 @@ func add_pickup(pickup):
 			$Audio/ScoreSound.play()
 			
 	if pickup == Global.Pickups.LIFE:
+		score_up(100)
+		$Audio/LifeSound.play()
 		if lives < max_lives:
 			lives += 1
 			update_lives.emit(lives, max_lives)
-			score_up(100)
-			$Audio/LifeSound.play()
+			
 
 func update_time_and_label():
 	var time_passed = (Time.get_ticks_msec() - level_start_time) / 1000.0
@@ -231,6 +238,8 @@ func _on_retry_button_pressed() -> void:
 	$GameOver/Menu.visible = false
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+	update_lives.emit(2, max_lives)
+	sync_stats_from_global()
 
 func _on_resume_button_pressed() -> void:
 	ui_state = UIState.PLAYING
@@ -238,4 +247,17 @@ func _on_resume_button_pressed() -> void:
 	$PauseMenu.visible = false
 
 func _on_quit_button_pressed() -> void:
+	Global.new_game()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func sync_stats_from_global():
+	health = Global.health
+	max_health = Global.max_health
+	update_health.emit(health, max_health)
+	
+	lives = Global.lives
+	max_lives = Global.max_lives
+	update_lives.emit(lives, max_lives)
+	
+	score = Global.score
+	update_score.emit(score)

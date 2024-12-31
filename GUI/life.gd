@@ -2,5 +2,9 @@ extends ColorRect
 
 @onready var label = $Label
 
-func update_lives(lives, _max_lives):
+func update_lives(lives, max_lives):
 	label.text = str(lives)
+	Global.lives = lives
+	Global.max_lives = max_lives
+	print("update lives")
+	print(lives)

@@ -1,39 +1,11 @@
- 
-experimenting with different tile sizes:
-
-
-same tiles with 16x16 and 16x24 character feels nice but looks a little strange - the character feels very small for the world, the jumps would be extremely large
-16x16 tiles with a 32x32 character feels nice and looks decent (keeping in mind that the player will actually be much thinner but that gives space for animation)
-16x16 tiles are too small for characters over 32x32. 32x48 cannot navigate without changes to the level. The character also looks too large on screen.
-32x32 tiles feel very large. jump would need to be recalibrated. 32x48 sprite feels too small, assuming 64x64 would be better. Zoom and jump can be corrected to accomodate this, but this begs the question why? Will larger tiles and sprites actually look better
-doing some research into the topic: larger tiles essentially force a larger character. the larger the sprite, the more complex the animation. a 32x32 sprite can change by one pixel and that be enough, not the case in 64x64. Considering my skill level in pixel art and animation, sticking to smaller sizes will be better.
-Conclusion: use 16x16 tiles, 32x32 sprites (keeping in mind that the character should be about 16 wide, but animation will vary, this will let the sprite feel less on a grid)
-
-
 features to add:
-one-way platforms (to drop down, make a scene with a static body with a collision shape set to one-way, and make a function to drop down position.y (ray cast to check the platform is a one-way))
+drop down from one-way platforms? (to drop down, make a scene with a static body with a collision shape set to one-way, and make a function to drop down position.y (ray cast to check the platform is a one-way))
 turn moving platforms into creatures that must be soothed to ride
-add lives so the player can die a few times before getting a game over, make better use of the checkpoints
-toy with gravity and jump settings, as well as speed (more speed and space to run could be fun - may need to adjust the walk animation though)
-double jump powerup
-animations for pickups and checkpoints (particle effect?)
-
-
-loading bug
-Can start a new game as expected. When trying to load:
-the game has already set the current level to be one, so it shows the instruction screen
-but it then loads level 2 but because the instruction screen isn't meant to come up, it can't be interacted with
-so when the player calls to get the current level number, it is doing this for the level it is currently in
-using an onready var doesn't seem to change this. the player enters the scene tree and I guess this happens before the global script updates the level number
-Rather than bust my ass on getting this just right, maybe I should rethink how the instruction screen works. it could be a scene that is only started from the main menu, as I don't think the controls are complex enough for someone to need more than one viewing of this. that way, I can bypass needing to check levels at all and instead tie it to the new game button or make it its own scene, and then use it's continue button to actually load the level.
-
-features to add:
-one-way platforms (to drop down, make a scene with a static body with a collision shape set to one-way, and make a function to drop down position.y (ray cast to check the platform is a one-way))
-turn moving platforms into creatures that must be soothed to ride
-double jump powerup
-another move (dash?)
-save score, health, and lives
-max lives and health increase
+double jump powerup?
+another move (dash?)?
+max lives increase
 larger creature taming mini-game? puzzle to get to an item the creature wants (Cedar can't sooth anything while carrying something, and the item is lost if he is hurt and drops it - nonessential for progression but a cool side thing to do - like to unlock a moving platform shortcut)?
 different kinds of enemies (since they will share a lot, maybe a state machine is the best way to handle them)
 traps (falling platforms, areas that cannot be moved through easily, slick areas, sticky areas)
+
+

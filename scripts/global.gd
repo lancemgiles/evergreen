@@ -9,6 +9,13 @@ enum Pickups {HEALTH, SCORE, LIFE}
 var is_jumping = false
 var is_soothing = false
 
+var health = 3
+var max_health = 3
+
+var lives = 2
+var max_lives = 3
+var score = 0
+
 var final_score
 var final_time
 
@@ -29,6 +36,15 @@ func get_current_level_number():
 func save_game():
 	var save_file = ConfigFile.new()
 	save_file.set_value("level", "current_level", "res://scenes/" + Global.current_scene_name + ".tscn")
+	
+	save_file.set_value("health", "health", health)
+	save_file.set_value("health", "max_health", max_health)
+	
+	save_file.set_value("lives", "lives", lives)
+	save_file.set_value("lives", "max_lives", max_lives)
+	
+	save_file.set_value("score", "score", score)
+	
 	var err = save_file.save(SAVE_PATH)
 	if err != OK:
 		print("An error occurred while saving the game.")
@@ -48,6 +64,15 @@ func load_game():
 		get_tree().current_scene = new_scene
 		current_scene_name = get_tree().get_current_scene().name
 		clean_scene_name(current_scene_name)
+		
+		health = save_file.get_value("health", "health", "3")
+		max_health = save_file.get_value("health", "max_health", "3")
+		
+		lives = save_file.get_value("lives", "lives", "2")
+		max_lives = save_file.get_value("lives", "max_lives", "3")
+		
+		score = save_file.get_value("score", "score", "0")
+		
 		get_tree().paused = false
 	else:
 		print("An error occurred while loading the game.")
@@ -58,3 +83,10 @@ func clean_scene_name(scene_name):
 		return scene_name.substr(0, at_position)
 	else:
 		return scene_name
+
+func new_game():
+	health = 3
+	max_health = 3
+	lives = 2
+	max_lives = 3
+	score = 0

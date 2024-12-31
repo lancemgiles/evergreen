@@ -4,3 +4,4 @@ extends ColorRect
 
 func update_score(score):
 	label.text = str(score)
+	Global.score = score

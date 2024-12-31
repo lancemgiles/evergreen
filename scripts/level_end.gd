@@ -8,6 +8,7 @@ func _ready():
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		sync_stats(body)
 		get_tree().paused = true
 		$UI.visible = true
 		$AnimationPlayer.play("ui_visibility")
@@ -28,5 +29,9 @@ func _on_quit_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_save_continue_button_2_pressed() -> void:
-	Global.save_game()
 	_on_continue_button_pressed()
+	Global.save_game()
+
+func sync_stats(player):
+	Global.health = player.health
+	Global.max_health = player.max_health

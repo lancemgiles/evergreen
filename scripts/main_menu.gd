@@ -22,6 +22,7 @@ func _on_quit_button_pressed() -> void:
 
 func _on_accept_button_pressed() -> void:
 	$Intro.hide()
+	Global.new_game()
 	get_tree().paused = false
 	set_process(true)
 	var current_scene = get_tree().current_scene
