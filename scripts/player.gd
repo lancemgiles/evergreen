@@ -45,7 +45,6 @@ func _ready():
 	update_level_label()
 	sync_stats_from_global()
 	level_start_score = score
-	print(level_start_score)
 	if BackgroundMusic.is_playing() == false:
 		BackgroundMusic.play()
 

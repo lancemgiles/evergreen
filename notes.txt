@@ -1,11 +1,10 @@
 features to add:
 
-turn moving platforms into creatures that must be soothed to ride
+
 double jump powerup?
 another move (dash?)?
 max lives increase
 larger creature taming mini-game? puzzle to get to an item the creature wants (Cedar can't sooth anything while carrying something, and the item is lost if he is hurt and drops it - nonessential for progression but a cool side thing to do - like to unlock a moving platform shortcut)?
-different kinds of enemies (since they will share a lot, maybe a state machine is the best way to handle them)
 traps (falling platforms, areas that cannot be moved through easily, slick areas, sticky areas)
 
 
