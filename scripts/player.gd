@@ -21,6 +21,7 @@ var lives = 2
 
 signal update_score(score)
 var score = 0
+var level_start_score = 0
 
 @onready var level = $UI/Level/Value
 var level_start_time = Time.get_ticks_msec()
@@ -43,6 +44,8 @@ func _ready():
 	await get_tree().create_timer(0.2).timeout
 	update_level_label()
 	sync_stats_from_global()
+	level_start_score = score
+	print(level_start_score)
 	if BackgroundMusic.is_playing() == false:
 		BackgroundMusic.play()
 
@@ -151,6 +154,7 @@ func terrain_damage():
 func lose_life():
 	lives -= 1
 	update_lives.emit(lives, max_lives)
+	score_down(100)
 	if lives >= 0:
 		respawn()
 	else:
@@ -159,17 +163,17 @@ func lose_life():
 		$AnimationPlayer.play("ui_visibility")
 		$UI.visible = false
 		final_score_and_time()
-		update_score.emit(score)
+		
 		ui_state = UIState.MENU
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		$GameOver/Menu/Container/TimeCompleted/Value.text = str(Global.final_time)
 		$GameOver/Menu/Container/Score/Value.text = str(Global.final_score)
-		
+		score = level_start_score
 		BackgroundMusic.loop = false
 
 func respawn():
 	position = checkpoint_manager.last_location
-	score_down(100)
+	
 	if health <= 0:
 		health += 1
 		update_health.emit(health, max_health)
@@ -241,6 +245,8 @@ func _on_retry_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 	update_lives.emit(2, max_lives)
+	update_score.emit(level_start_score)
+	update_health.emit(max_health, max_health)
 	sync_stats_from_global()
 
 func _on_resume_button_pressed() -> void:

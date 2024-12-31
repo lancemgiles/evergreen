@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://box430f7srlec"]
+[gd_scene load_steps=32 format=4 uid="uid://box430f7srlec"]
 
 [ext_resource type="Texture2D" uid="uid://dtfon3x2tanos" path="res://assets/Background/grass-bg-2.png" id="1_a2nrq"]
 [ext_resource type="Texture2D" uid="uid://dgdopgwg6alwh" path="res://assets/Background/grass-and-sky-bg-2.png" id="2_wpcfq"]
@@ -243,6 +243,10 @@ sources/4 = SubResource("TileSetAtlasSource_6b05u")
 sources/0 = SubResource("TileSetAtlasSource_nq6yy")
 sources/3 = SubResource("TileSetAtlasSource_h6h0r")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ptgy"]
+resource_local_to_scene = true
+size = Vector2(28.3732, 6.35231)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_clyqb"]
 
 [sub_resource type="Animation" id="Animation_bfiva"]
@@ -382,6 +386,10 @@ position = Vector2(368, 136)
 scale = Vector2(48.2146, -7.39888)
 metadata/danger = true
 
+[node name="CollisionShape2D" parent="Pits" index="0"]
+position = Vector2(0.373336, 3.71678)
+shape = SubResource("RectangleShape2D_7ptgy")
+
 [node name="CheckpointManager" type="Node" parent="."]
 script = ExtResource("12_vluxv")
 
@@ -495,4 +503,5 @@ color = Color(1, 1, 1, 0.615686)
 [connection signal="body_entered" from="Checkpoints/Checkpoint2" to="Player" method="_on_checkpoint_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint" to="Player" method="_on_checkpoint_body_entered"]
 
+[editable path="Pits"]
 [editable path="Overlays/Fog"]

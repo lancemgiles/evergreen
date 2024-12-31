@@ -1,5 +1,5 @@
 features to add:
-drop down from one-way platforms? (to drop down, make a scene with a static body with a collision shape set to one-way, and make a function to drop down position.y (ray cast to check the platform is a one-way))
+
 turn moving platforms into creatures that must be soothed to ride
 double jump powerup?
 another move (dash?)?
