@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="14_gplyf"]
 [ext_resource type="PackedScene" uid="uid://cgne82pxb7rhf" path="res://scenes/small_blob.tscn" id="14_pvfjl"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="15_51b66"]
-[ext_resource type="PackedScene" uid="uid://b5xro22y5eydt" path="res://scenes/clouds.tscn" id="16_n21ph"]
+[ext_resource type="PackedScene" uid="uid://bndr80qb7g2ly" path="res://scenes/fog.tscn" id="17_11kta"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oswgq"]
 texture = ExtResource("4_v1hcu")
@@ -368,9 +368,4 @@ shape = SubResource("RectangleShape2D_2ksxl")
 
 [node name="Clouds" type="Node2D" parent="."]
 
-[node name="Parallax2D2" parent="Clouds" instance=ExtResource("16_n21ph")]
-
-[node name="GPUParticles2D2" parent="Clouds/Parallax2D2" index="0"]
-position = Vector2(304, -229)
-
-[editable path="Clouds/Parallax2D2"]
+[node name="Fog" parent="Clouds" instance=ExtResource("17_11kta")]

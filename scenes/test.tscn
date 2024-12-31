@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c04p1c51ibwhd"]
+
+[ext_resource type="PackedScene" uid="uid://b5xro22y5eydt" path="res://scenes/clouds.tscn" id="1_voivm"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Clouds" parent="." instance=ExtResource("1_voivm")]

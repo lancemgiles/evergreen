@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://byekej5hspucu"]
+
+[ext_resource type="PackedScene" uid="uid://c04p1c51ibwhd" path="res://scenes/test.tscn" id="1_uvt2d"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_uvt2d")]
+visible = false
+
+[editable path="Node2D"]
