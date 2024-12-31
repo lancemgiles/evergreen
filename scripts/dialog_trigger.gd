@@ -42,12 +42,7 @@ func _on_body_entered(body: Node2D) -> void:
 		counter += 1
 
 func _on_next_button_pressed() -> void:
-	print("next button pressed")
 	var size = conversation.size()
-	print("conversation size:")
-	print(size)
-	print("counter:")
-	print(counter)
 	if counter >= size:
 		counter = 0
 		$".".visible = false
@@ -55,6 +50,4 @@ func _on_next_button_pressed() -> void:
 		get_tree().paused = false
 	else:
 		$DialogBox/Textbox/Label.text = conversation[counter]
-		print("conversation[counter]")
-		print(conversation[counter])
 		counter += 1
