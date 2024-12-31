@@ -85,6 +85,8 @@ func _input(event):
 		Global.is_jumping = true
 		$Audio/FloatSound.play()
 		$Effects/JumpParticles.emitting = true
+	if event.is_action_pressed("down") and is_on_floor():
+		self.position = Vector2(self.position.x, self.position.y + 3)
 	else:
 		Global.is_jumping = false
 		Global.is_soothing = false

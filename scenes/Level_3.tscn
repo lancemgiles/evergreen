@@ -12,13 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="7_jnuhv"]
 [ext_resource type="Texture2D" uid="uid://cwmxjlqhb1gh4" path="res://assets/tree-shadow.png" id="8_dr8xx"]
 [ext_resource type="PackedScene" uid="uid://cx2b3lpg0qfbe" path="res://scenes/large_blob.tscn" id="9_d6b6d"]
-[ext_resource type="PackedScene" uid="uid://b5xro22y5eydt" path="res://scenes/clouds.tscn" id="11_dqe7j"]
 [ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="11_mwaob"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="13_7detb"]
 [ext_resource type="Texture2D" uid="uid://bvwgag0uheqg0" path="res://assets/Items/portal.png" id="15_4a04h"]
 [ext_resource type="PackedScene" uid="uid://cjyn5sjgkybuh" path="res://scenes/spider.tscn" id="15_g13gf"]
 [ext_resource type="Texture2D" uid="uid://ba264xj6bj4gg" path="res://assets/Characters/spider-web-single.png" id="16_o0tfj"]
 [ext_resource type="PackedScene" uid="uid://b02cwf3032wa" path="res://scenes/dialog_trigger.tscn" id="17_deqyh"]
+[ext_resource type="PackedScene" uid="uid://bndr80qb7g2ly" path="res://scenes/fog.tscn" id="19_y283h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ul82"]
 texture = ExtResource("3_r5r7d")
@@ -406,13 +406,21 @@ metadata/_edit_lock_ = true
 
 [node name="Shadows" type="Sprite2D" parent="Overlays"]
 modulate = Color(1, 1, 1, 0.827451)
+z_index = 2
 position = Vector2(486.5, -202)
 scale = Vector2(0.99349, 0.958807)
 texture = ExtResource("8_dr8xx")
 
-[node name="Clouds" parent="Overlays" instance=ExtResource("11_dqe7j")]
-repeat_times = 4
+[node name="Fog" parent="Overlays" instance=ExtResource("19_y283h")]
+z_index = 1
+
+[node name="Parallax2D" parent="Overlays/Fog" index="0"]
+scroll_scale = Vector2(1.2, 1.2)
+
+[node name="ColorRect" parent="Overlays/Fog/Parallax2D" index="0"]
+color = Color(0.933743, 0.775045, 0.703589, 0.431373)
 
 [editable path="Pits"]
 [editable path="LevelEnd"]
 [editable path="SpiderDialog/DialogTrigger"]
+[editable path="Overlays/Fog"]
