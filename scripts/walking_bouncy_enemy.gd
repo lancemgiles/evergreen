@@ -15,8 +15,16 @@ class_name WalkingBouncyEnemy extends CharacterBody2D
 enum Mood {ANGRY, HAPPY}
 var current_mood = Mood.ANGRY
 
+enum Role {GUARD, PATROL}
+@export var role := Role.PATROL
+
 # 1 is right, -1 is left, 0 is none
 var current_direction = 0
+
+func _ready() -> void:
+	match role:
+		Role.GUARD:
+			$AnimatedSprite2D.flip_h = true
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
@@ -28,14 +36,16 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta):
-	position.x = move_to(position.x, target_x, speed * delta)
-	if position.x == target_x:
-		if target_x == start_x:
-			target_x = position.x + distance
-			$AnimatedSprite2D.flip_h = false
-		else:
-			target_x = start_x
-			$AnimatedSprite2D.flip_h = true
+	match role:
+		Role.PATROL:
+			position.x = move_to(position.x, target_x, speed * delta)
+			if position.x == target_x:
+				if target_x == start_x:
+					target_x = position.x + distance
+					$AnimatedSprite2D.flip_h = false
+				else:
+					target_x = start_x
+					$AnimatedSprite2D.flip_h = true
 
 func move_to(current_position, target_position, step_size):
 	var new_position = current_position

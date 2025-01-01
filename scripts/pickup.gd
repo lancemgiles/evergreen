@@ -5,6 +5,7 @@ extends Area2D
 @export var pickup : Global.Pickups
 
 func _ready():
+	$LifeParticles.emitting = false
 	if pickup == Global.Pickups.HEALTH:
 		$AnimatedSprite2D.play("health")
 	elif pickup == Global.Pickups.SCORE:

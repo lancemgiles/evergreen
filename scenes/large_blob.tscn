@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cx2b3lpg0qfbe"]
+[gd_scene load_steps=11 format=3 uid="uid://cx2b3lpg0qfbe"]
 
 [ext_resource type="Script" path="res://scripts/walking_bouncy_enemy.gd" id="1_dmlk0"]
 [ext_resource type="Texture2D" uid="uid://x0dydjhhldbx" path="res://assets/enemies/blob.png" id="2_sjj8g"]
@@ -48,9 +48,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gnv7"]
 size = Vector2(18, 13)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_balpn"]
-height = 22.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph0vt"]
 size = Vector2(16, 7)
 
@@ -75,9 +72,9 @@ shape = SubResource("RectangleShape2D_0gnv7")
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hitbox"]
 position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_balpn")
+polygon = PackedVector2Array(12, 7, 12, 8, -12, 8, -12, 7, -9, 4, -9, -5, -6, -10, -2, -12, 0, -13, 4, -13, 6, -15, 6, -14, 7, -13, 6, -12, 7, -10, 9, -6, 9, 4)
 
 [node name="Bounce" type="Area2D" parent="."]
 collision_mask = 2

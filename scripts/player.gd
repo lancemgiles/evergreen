@@ -7,6 +7,10 @@ var speed = 175
 var gravity = 600
 var jump_height = -300
 
+@export var coyote_frames = 6 # adjusting this can allow double jumps
+var coyote = false
+var last_floor = false
+
 # 1 is right, -1 is left, 0 is none
 var last_direction = 0
 var current_direction = 0
@@ -47,6 +51,8 @@ func _ready():
 	level_start_score = score
 	if BackgroundMusic.is_playing() == false:
 		BackgroundMusic.play()
+		
+	$CoyoteTimer.wait_time = coyote_frames / 60.0
 
 
 func _physics_process(delta):
@@ -56,6 +62,14 @@ func _physics_process(delta):
 	player_animations()
 	sooth()
 	terrain_damage()
+	
+	
+	
+	if !is_on_floor() and last_floor and !Global.is_jumping:
+		coyote = true
+		$CoyoteTimer.start()
+		
+	last_floor = is_on_floor()
 
 func _process(_delta):
 	if velocity.x > 0: # Moving right
@@ -81,7 +95,7 @@ func _input(event):
 		Global.is_soothing = true
 		$AnimatedSprite2D.play("sooth")
 		$Audio/SoothSound.play()
-	if event.is_action_pressed("jump") and is_on_floor():
+	if event.is_action_pressed("jump") and (is_on_floor() or coyote):
 		velocity.y = jump_height
 		$AnimatedSprite2D.play("jump")
 		Global.is_jumping = true
@@ -268,3 +282,7 @@ func sync_stats_from_global():
 	
 	score = Global.score
 	update_score.emit(score)
+
+
+func _on_coyote_timer_timeout() -> void:
+	coyote = false

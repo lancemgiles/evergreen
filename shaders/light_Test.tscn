@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxiv8iexkv7fi"]
+
+[ext_resource type="Texture2D" uid="uid://bk6npsonamqhy" path="res://icon.svg" id="1_qsf1o"]
+[ext_resource type="Texture2D" uid="uid://b8npb8a6elp56" path="res://assets/2d_lights_and_shadows_neutral_point_light.png" id="2_d0two"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6d3h3"]
+polygon = PackedVector2Array(42, -26, 31, -22, 21, -28, -20, -40, -22, -28, -31, -20, -39, -30, -48, -16, -43, -5, -43, 32, -4, 49, 42, 33, 41, -8, 48, -20)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(106, 64)
+occluder = SubResource("OccluderPolygon2D_6d3h3")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(106, 64)
+texture = ExtResource("1_qsf1o")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(257, 64)
+shadow_enabled = true
+texture = ExtResource("2_d0two")
+texture_scale = 6.71

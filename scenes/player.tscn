@@ -242,6 +242,7 @@ collision_layer = 2
 collision_mask = 125
 platform_on_leave = 2
 script = ExtResource("1_4osts")
+metadata/_edit_group_ = true
 
 [node name="SoothCast2D" type="ShapeCast2D" parent="."]
 enabled = false
@@ -684,7 +685,7 @@ max_results = 20
 collision_mask = 64
 collide_with_areas = true
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node2D" parent="."]
 
 [node name="FloatSound" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("18_k61v7")
@@ -716,9 +717,12 @@ stream = ExtResource("23_efoic")
 volume_db = -6.582
 area_mask = 2
 
+[node name="CoyoteTimer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOver/Menu/Container/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOver/Menu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Container/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Container/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
