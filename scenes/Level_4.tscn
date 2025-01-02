@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c4xb3tgt7yu74"]
+[gd_scene load_steps=25 format=4 uid="uid://c4xb3tgt7yu74"]
 
 [ext_resource type="Texture2D" uid="uid://bcva8wf5xijkx" path="res://assets/Background/inner-tree-01.png" id="1_rbmsn"]
 [ext_resource type="PackedScene" uid="uid://ceyiv23m45ra0" path="res://scenes/world_tiles_8x_8.tscn" id="3_uitgr"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cx2b3lpg0qfbe" path="res://scenes/large_blob.tscn" id="8_gwhbp"]
 [ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="8_nkkrh"]
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="8_qejde"]
+[ext_resource type="Texture2D" uid="uid://b8npb8a6elp56" path="res://assets/2d_lights_and_shadows_neutral_point_light.png" id="9_vw2xy"]
 [ext_resource type="PackedScene" uid="uid://bndr80qb7g2ly" path="res://scenes/fog.tscn" id="10_lyde6"]
 [ext_resource type="Texture2D" uid="uid://d0lwxlntsx4nn" path="res://assets/Tiles/grass-particle-1.png" id="11_5uvro"]
 [ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="12_0cj4g"]
@@ -141,6 +142,9 @@ limit_left = -100
 limit_top = -150
 limit_right = 3882
 limit_bottom = 570
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+texture = ExtResource("9_vw2xy")
 
 [node name="Pits" parent="." instance=ExtResource("8_nkkrh")]
 position = Vector2(-70, 558)
