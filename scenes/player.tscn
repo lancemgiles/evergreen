@@ -244,7 +244,7 @@ platform_on_leave = 2
 script = ExtResource("1_4osts")
 metadata/_edit_group_ = true
 
-[node name="SoothCast2D" type="ShapeCast2D" parent="."]
+[node name="SoothCast2D" type="ShapeCast2D" parent="." groups=["Sooth"]]
 enabled = false
 shape = SubResource("CircleShape2D_qwrd8")
 target_position = Vector2(0, 0)

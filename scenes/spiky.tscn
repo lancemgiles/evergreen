@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://db4nq28gibjkb"]
+
+[ext_resource type="Script" path="res://scripts/walking_bouncy_enemy.gd" id="1_wjt2p"]
+[ext_resource type="Texture2D" uid="uid://bqpn2afkn3aaq" path="res://assets/enemies/spiky-xl-angry.png" id="2_tfa8r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wdv7"]
+atlas = ExtResource("2_tfa8r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g8jpo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wdv7")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}]
+
+[node name="WalkingBouncyEnemy" type="CharacterBody2D"]
+script = ExtResource("1_wjt2p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g8jpo")
+animation = &"angry"
+
+[node name="CollisionAngry" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-30, 11, -27, 23, -31, 25, 29, 26, 28, 22, 31, 13, 17, 18, 31, -1, 21, -5, 24, -22, 10, -15, 10, -23, 5, -19, -3, -29, -10, -17, -26, -27, -19, -7, -30, -9, -16, 17)

@@ -66,7 +66,7 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_yft3q")
 animation = &"happy"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionWorld" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_vl0jh")
 
@@ -74,7 +74,7 @@ shape = SubResource("RectangleShape2D_vl0jh")
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionHit" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_iy1l0")
 
@@ -83,7 +83,7 @@ shape = SubResource("CapsuleShape2D_iy1l0")
 [node name="Bounce" type="Area2D" parent="."]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounce"]
+[node name="CollisionBounce" type="CollisionShape2D" parent="Bounce"]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_p0iw0")
 

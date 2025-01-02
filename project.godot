@@ -31,6 +31,7 @@ mouse_cursor/custom_image="res://assets/purple_pointer.png"
 Player=""
 Enemies=""
 Danger=""
+Sooth=""
 
 [input]
 

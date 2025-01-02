@@ -315,7 +315,6 @@ position = Vector2(60, -602)
 
 [node name="Player" parent="." instance=ExtResource("10_a2bv8")]
 position = Vector2(134, -68)
-metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(4, 0)

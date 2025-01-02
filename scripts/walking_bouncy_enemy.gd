@@ -12,7 +12,10 @@ class_name WalkingBouncyEnemy extends CharacterBody2D
 @onready var start_x = position.x
 @onready var target_x = position.x + distance
 
-enum Mood {ANGRY, HAPPY}
+enum PowerLevel {ONE, TWO}
+@export var power_level := PowerLevel.ONE
+
+enum Mood {ANGRY, HAPPY, MIDDLE}
 var current_mood = Mood.ANGRY
 
 enum Role {GUARD, PATROL}
@@ -31,6 +34,8 @@ func _physics_process(delta: float) -> void:
 	match current_mood:
 		Mood.ANGRY:
 			$AnimatedSprite2D.play("angry")
+		Mood.MIDDLE:
+			$AnimatedSprite2D.play("middle")
 		Mood.HAPPY:
 			$AnimatedSprite2D.play("happy")
 	move_and_slide()
@@ -71,7 +76,7 @@ func _on_bounce_body_entered(body: Node2D) -> void:
 		body.velocity.y = body.jump_height * bounciness
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if current_mood == Mood.ANGRY:
+	if current_mood == Mood.ANGRY or current_mood == Mood.MIDDLE:
 		if body.name == "Player":
 			body.take_damage(damage_health, damage_score)
 			if current_direction == 1:
@@ -80,3 +85,11 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 				body.position.x -= knockback_force
 			$Hitbox.collision_mask = 5
 			$Timer.start(0.8)
+
+func take_damage():
+	if power_level == PowerLevel.ONE and current_mood == Mood.ANGRY:
+		current_mood = Mood.HAPPY
+	elif power_level == PowerLevel.TWO and current_mood == Mood.ANGRY:
+		current_mood = Mood.MIDDLE
+	elif current_mood == Mood.MIDDLE:
+		current_mood = Mood.HAPPY
