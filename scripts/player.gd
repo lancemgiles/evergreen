@@ -43,6 +43,7 @@ func _ready():
 	$UI/Health/Label.text = str(health)
 	$UI/Life/Label.text = str(lives)
 	state = State.IDLE
+	
 	checkpoint_manager = get_parent().get_node("CheckpointManager")
 	
 	await get_tree().create_timer(0.2).timeout
@@ -131,9 +132,6 @@ func player_animations():
 			$AnimatedSprite2D.play("idle")
 
 func sooth():
-	var current_anime = $AnimatedSprite2D.get_animation()
-	if current_anime == "sooth":
-		pass
 	if state == State.SOOTHING:
 		$Soother.set_deferred("monitoring", true)
 
@@ -144,6 +142,8 @@ func take_damage(damage_health, damage_score):
 	score_down(damage_score)
 	$Audio/DamageSound.play()
 	if health > 0:
+		if damage_health > health:
+			damage_health = health
 		health = health - damage_health
 		update_health.emit(health, max_health)
 		$AnimatedSprite2D.play("damage")

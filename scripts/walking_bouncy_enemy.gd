@@ -4,10 +4,10 @@ class_name WalkingBouncyEnemy extends CharacterBody2D
 @export var speed = 50
 @export var distance = 100
 var gravity = 1600
-@export var knockback_force = 20
+var knockback_force = 20
 @export var bouncy = true
-@export var bounciness = 1.5
-@export var damage_health = 1
+var bounciness = 1.5
+var damage_health = 1
 var damage_score = 50
 
 @onready var start_x = position.x
@@ -17,7 +17,7 @@ enum PowerLevel {ONE, TWO}
 @export var power_level := PowerLevel.ONE
 
 enum Mood {ANGRY, HAPPY, MIDDLE}
-var current_mood = Mood.ANGRY
+var current_mood := Mood.ANGRY
 
 enum Role {GUARD, PATROL}
 @export var role := Role.PATROL
@@ -30,6 +30,16 @@ func _ready() -> void:
 	match role:
 		Role.GUARD:
 			$AnimatedSprite2D.flip_h = true
+	
+	match power_level:
+		PowerLevel.ONE:
+			damage_health = 1
+			bounciness = 1.5
+			knockback_force = 20
+		PowerLevel.TWO:
+			damage_health = 2
+			bounciness = 3.25
+			knockback_force = 64
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
@@ -40,12 +50,23 @@ func _physics_process(delta: float) -> void:
 				bouncy = true
 			else:
 				bouncy = false
+			if has_node("AngryParticles"):
+				$AngryParticles.emitting = true
 		Mood.MIDDLE:
 			$AnimatedSprite2D.play("middle")
 			bouncy = false
+			$Hitbox/CollisionAngry.disabled = true
+			if $Hitbox.has_node("CollisionMid"):
+				$Hitbox/CollisionMid.disabled = false
+			if has_node("AngryParticles"):
+				$AngryParticles.emitting = false
 		Mood.HAPPY:
 			$AnimatedSprite2D.play("happy")
 			bouncy = true
+			if $Hitbox.has_node("CollisionMid"):
+				$Hitbox/CollisionMid.disabled = true
+			if has_node("AngryParticles"):
+				$AngryParticles.emitting = false
 	move_and_slide()
 
 func _process(delta):
@@ -111,8 +132,7 @@ func _on_hurt_timer_timeout() -> void:
 	$HurtBox.collision_mask = 2
 	$Hurtbox.visible = true
 
-
-func _on_hurt_box_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.name == "Soother":
 		$HurtTimer.start(0.8)
 		$HurtBox.collision_mask = 9

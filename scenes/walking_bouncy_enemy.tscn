@@ -76,7 +76,7 @@ shape = SubResource("RectangleShape2D_vl0jh")
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionHit" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionAngry" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_iy1l0")
 
@@ -102,4 +102,4 @@ shape = SubResource("RectangleShape2D_b8r8f")
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Bounce" to="." method="_on_bounce_body_entered"]
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
-[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

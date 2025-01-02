@@ -98,8 +98,7 @@ speed = 30
 distance = 64
 
 [node name="Spiky" parent="Enemies" instance=ExtResource("10_wui1h")]
-position = Vector2(52, 469)
-role = 0
+position = Vector2(1608, 461)
 
 [node name="Pickups" type="Node2D" parent="."]
 

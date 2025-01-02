@@ -1,27 +1,58 @@
-[gd_scene load_steps=11 format=3 uid="uid://db4nq28gibjkb"]
+[gd_scene load_steps=18 format=3 uid="uid://db4nq28gibjkb"]
 
 [ext_resource type="Script" path="res://scripts/walking_bouncy_enemy.gd" id="1_wjt2p"]
+[ext_resource type="Texture2D" uid="uid://c2bq7s31mjlcg" path="res://assets/enemies/angry-particle.png" id="2_f28nv"]
 [ext_resource type="Texture2D" uid="uid://bqpn2afkn3aaq" path="res://assets/enemies/spiky-xl-angry.png" id="2_tfa8r"]
 [ext_resource type="Texture2D" uid="uid://cnm1moi0gonjq" path="res://assets/enemies/spiky-xl-happy.png" id="3_vfir5"]
 [ext_resource type="Texture2D" uid="uid://b2xw70hfykigo" path="res://assets/enemies/spiky-xl-midway.png" id="4_sljus"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7wdv7"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qa3je"]
+lifetime_randomness = 0.27
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 44.09
+gravity = Vector3(0, -80, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaxgn"]
 atlas = ExtResource("2_tfa8r")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_00b72"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u07ah"]
+atlas = ExtResource("2_tfa8r")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yd6v"]
 atlas = ExtResource("3_vfir5")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oc0dc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b36uj"]
+atlas = ExtResource("3_vfir5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0n8l"]
+atlas = ExtResource("3_vfir5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah6tk"]
+atlas = ExtResource("3_vfir5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mysrg"]
 atlas = ExtResource("4_sljus")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwnru"]
+atlas = ExtResource("4_sljus")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g8jpo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7wdv7")
+"texture": SubResource("AtlasTexture_yaxgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u07ah")
 }],
 "loop": true,
 "name": &"angry",
@@ -29,26 +60,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_00b72")
+"texture": SubResource("AtlasTexture_4yd6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b36uj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0n8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ah6tk")
 }],
 "loop": true,
 "name": &"happy",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oc0dc")
+"texture": SubResource("AtlasTexture_mysrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwnru")
 }],
 "loop": true,
 "name": &"middle",
-"speed": 5.0
+"speed": 4.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oajw"]
-size = Vector2(36, 9.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_jq85t"]
+radius = 22.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l2lvy"]
-radius = 47.5237
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxtwt"]
+radius = 39.5032
 
 [node name="Spiky" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 16
@@ -56,12 +99,18 @@ collision_mask = 3
 script = ExtResource("1_wjt2p")
 power_level = 1
 
+[node name="AngryParticles" type="GPUParticles2D" parent="."]
+visible = false
+process_material = SubResource("ParticleProcessMaterial_qa3je")
+texture = ExtResource("2_f28nv")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g8jpo")
 animation = &"happy"
 
 [node name="CollisionWorld" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-31, 22, -31, 25, 31, 26, 31, 22, 17, 18, 23, 5, 21, -5, 10, -15, 5, -19, -3, -18, -10, -17, -19, -7, -22, 4, -16, 17)
+visible = false
+polygon = PackedVector2Array(-29, 24, -30, 27, 31, 26, 31, 24, 22, 16, 23, 5, 21, -5, 17, -12, 7, -17, -6, -17, -15, -12, -19, -7, -22, 4, -22, 16)
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -70,14 +119,19 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionAngry" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PackedVector2Array(-30, 11, -27, 23, -31, 25, 29, 26, 28, 22, 31, 13, 17, 18, 31, -1, 21, -5, 24, -22, 10, -15, 10, -23, 5, -19, -3, -29, -10, -17, -26, -27, -19, -7, -30, -9, -16, 17)
+visible = false
+polygon = PackedVector2Array(-32, 8, -27, 23, -31, 25, -31, 27, 31, 26, 31, 24, 28, 22, 31, 14, 31, 11, 17, 18, 33, -1, 22, -5, 26, -24, 12, -18, 11, -25, 4, -20, -4, -31, -10, -17, -28, -28, -20, -7, -32, -10, -16, 17)
+
+[node name="CollisionMid" type="CollisionPolygon2D" parent="Hitbox"]
+visible = false
+polygon = PackedVector2Array(-30, 25, -30, 27, 31, 26, 31, 24, 21, 13, 24, 6, 22, -5, 26, -24, 11, -18, 11, -25, 4, -20, -4, -31, -10, -17, -28, -28, -20, -7, -24, 2, -21, 11)
 
 [node name="Bounce" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionBounce" type="CollisionShape2D" parent="Bounce"]
-position = Vector2(2, -13.25)
-shape = SubResource("RectangleShape2D_1oajw")
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_jq85t")
 
 [node name="HurtTimer" type="Timer" parent="."]
 
@@ -86,11 +140,11 @@ collision_layer = 128
 collision_mask = 2
 
 [node name="CollisionHurt" type="CollisionShape2D" parent="HurtBox"]
+visible = false
 position = Vector2(-0.5, -2.5)
-shape = SubResource("CircleShape2D_l2lvy")
+shape = SubResource("CircleShape2D_yxtwt")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="Bounce" to="." method="_on_bounce_body_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
-[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
