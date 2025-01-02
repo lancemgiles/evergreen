@@ -54,7 +54,6 @@ func _ready():
 		
 	$CoyoteTimer.wait_time = coyote_frames / 60.0
 
-
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	horizontal_movement()
@@ -62,13 +61,11 @@ func _physics_process(delta):
 	player_animations()
 	sooth()
 	terrain_damage()
-	
-	
-	
+
 	if !is_on_floor() and last_floor and !Global.is_jumping:
 		coyote = true
 		$CoyoteTimer.start()
-		
+
 	last_floor = is_on_floor()
 
 func _process(_delta):
@@ -106,7 +103,7 @@ func _input(event):
 	else:
 		Global.is_jumping = false
 		Global.is_soothing = false
-		$SoothCast2D.enabled = false
+		$Soother.set_deferred("monitoring", false)
 
 func horizontal_movement():
 	# if keys are pressed it will return 1 for ui_right, -1 for ui_left, and 0 for neither
@@ -119,7 +116,6 @@ func player_animations():
 		if Input.is_action_pressed("left") && Global.is_jumping == false:
 			$AnimatedSprite2D.play("walk")
 		if Input.is_action_pressed("right") && Global.is_jumping == false:
-			
 			$AnimatedSprite2D.play("walk")
 		if !Input.is_anything_pressed():
 			$AnimatedSprite2D.play("idle")
@@ -127,14 +123,8 @@ func player_animations():
 func sooth():
 	var current_anime = $AnimatedSprite2D.get_animation()
 	if current_anime == "sooth":
-		$SoothCast2D.enabled = true
-		if $SoothCast2D.is_colliding():
-			var target = $SoothCast2D.get_collider(0)
-			if target != null && target.is_in_group("Enemies"):
-				match target.current_mood:
-					target.Mood.ANGRY, target.Mood.MIDDLE:
-						target.take_damage()
-						score_up(100)
+		$Soother.set_deferred("monitoring", true)
+
 
 func take_damage(damage_health, damage_score):
 	set_physics_process(false)
@@ -245,7 +235,8 @@ func final_score_and_time():
 
 func _on_animated_sprite_2d_animation_finished():
 	set_physics_process(true)
-	$SoothCast2D.enabled = false
+	$Soother.set_deferred("monitoring", false)
+	#$SoothCast2D.enabled = false
 
 	if $AnimatedSprite2D.animation == "death":
 		lose_life()
@@ -284,6 +275,10 @@ func sync_stats_from_global():
 	score = Global.score
 	update_score.emit(score)
 
-
 func _on_coyote_timer_timeout() -> void:
 	coyote = false
+
+func _on_soother_area_entered(area: Area2D) -> void:
+	if area.name == "HurtBox":
+		var target = area.get_parent()
+		target.sooth_step()

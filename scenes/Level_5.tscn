@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ds7cjic5a3nb1"]
+[gd_scene load_steps=13 format=4 uid="uid://ds7cjic5a3nb1"]
 
 [ext_resource type="PackedScene" uid="uid://ceyiv23m45ra0" path="res://scenes/world_tiles_8x_8.tscn" id="1_6005c"]
 [ext_resource type="PackedScene" uid="uid://eyx56aykbud2" path="res://scenes/dangerous_tiles.tscn" id="2_8g68c"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cx2b3lpg0qfbe" path="res://scenes/large_blob.tscn" id="6_jmdl3"]
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="6_xrd6d"]
 [ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="10_55ijm"]
+[ext_resource type="PackedScene" uid="uid://db4nq28gibjkb" path="res://scenes/spiky.tscn" id="10_wui1h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2eu6j"]
 resource_local_to_scene = true
@@ -95,6 +96,10 @@ distance = 32
 position = Vector2(735, 123)
 speed = 30
 distance = 64
+
+[node name="Spiky" parent="Enemies" instance=ExtResource("10_wui1h")]
+position = Vector2(52, 469)
+role = 0
 
 [node name="Pickups" type="Node2D" parent="."]
 

@@ -85,6 +85,16 @@ collision_mask = 2
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_ph0vt")
 
+[node name="HurtBox" type="Area2D" parent="." groups=["Soothable"]]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_balpn")
+
+[node name="HurtTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="Bounce" to="." method="_on_bounce_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

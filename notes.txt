@@ -8,3 +8,6 @@ larger creature taming mini-game? puzzle to get to an item the creature wants (C
 traps (falling platforms, areas that cannot be moved through easily, slick areas, sticky areas)
 
 
+allowing for enemies with more than 1 hp:
+I've got the states and everything work, but the attack registers twice so the middle state is immediately eliminated. Moving to hurtboxes seems like it should help, so that each collision shape is only working on one thing, but I don't know how I can pause collision detection from my shapecast for long enough for my enemy code to run.
+

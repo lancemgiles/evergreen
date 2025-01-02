@@ -31,7 +31,7 @@ mouse_cursor/custom_image="res://assets/purple_pointer.png"
 Player=""
 Enemies=""
 Danger=""
-Sooth=""
+Soothable=""
 
 [input]
 
@@ -84,9 +84,11 @@ down={
 2d_physics/layer_2="player"
 2d_physics/layer_3="pit"
 2d_physics/layer_4="checkpoint"
-2d_physics/layer_5="enemy"
+2d_physics/layer_5="enemy hit"
 2d_physics/layer_6="item"
 2d_physics/layer_7="danger"
+2d_physics/layer_8="enemy hurt"
+2d_physics/layer_9="empty"
 
 [rendering]
 

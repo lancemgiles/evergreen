@@ -3,11 +3,12 @@ class_name WalkingBouncyEnemy extends CharacterBody2D
 @export_group("Enemy Properties")
 @export var speed = 50
 @export var distance = 100
-@export var gravity = 1600
+var gravity = 1600
 @export var knockback_force = 20
+@export var bouncy = true
 @export var bounciness = 1.5
 @export var damage_health = 1
-@export var damage_score = 50
+var damage_score = 50
 
 @onready var start_x = position.x
 @onready var target_x = position.x + distance
@@ -25,6 +26,7 @@ enum Role {GUARD, PATROL}
 var current_direction = 0
 
 func _ready() -> void:
+	current_direction = 1
 	match role:
 		Role.GUARD:
 			$AnimatedSprite2D.flip_h = true
@@ -34,10 +36,16 @@ func _physics_process(delta: float) -> void:
 	match current_mood:
 		Mood.ANGRY:
 			$AnimatedSprite2D.play("angry")
+			if power_level == PowerLevel.ONE:
+				bouncy = true
+			else:
+				bouncy = false
 		Mood.MIDDLE:
 			$AnimatedSprite2D.play("middle")
+			bouncy = false
 		Mood.HAPPY:
 			$AnimatedSprite2D.play("happy")
+			bouncy = true
 	move_and_slide()
 
 func _process(delta):
@@ -51,6 +59,8 @@ func _process(delta):
 				else:
 					target_x = start_x
 					$AnimatedSprite2D.flip_h = true
+			
+		
 
 func move_to(current_position, target_position, step_size):
 	var new_position = current_position
@@ -72,24 +82,37 @@ func _on_timer_timeout() -> void:
 	$Hitbox.collision_mask = 2
 
 func _on_bounce_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if bouncy and body.is_in_group("Player"):
 		body.velocity.y = body.jump_height * bounciness
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if current_mood == Mood.ANGRY or current_mood == Mood.MIDDLE:
-		if body.name == "Player":
-			body.take_damage(damage_health, damage_score)
-			if current_direction == 1:
-				body.position.x += knockback_force
-			elif current_direction == -1:
-				body.position.x -= knockback_force
-			$Hitbox.collision_mask = 5
-			$Timer.start(0.8)
+	match current_mood:
+		Mood.ANGRY, Mood.MIDDLE:
+			if body.name == "Player":
+				body.take_damage(damage_health, damage_score)
+				if current_direction == 1:
+					body.position.x += knockback_force
+				elif current_direction == -1:
+					body.position.x -= knockback_force
+				$Hitbox.collision_mask = 9
+				$Timer.start(0.8)
 
-func take_damage():
+func sooth_step():
+	$HurtTimer.start(0.8)
+	$HurtBox.collision_mask = 9
 	if power_level == PowerLevel.ONE and current_mood == Mood.ANGRY:
 		current_mood = Mood.HAPPY
 	elif power_level == PowerLevel.TWO and current_mood == Mood.ANGRY:
 		current_mood = Mood.MIDDLE
 	elif current_mood == Mood.MIDDLE:
 		current_mood = Mood.HAPPY
+
+func _on_hurt_timer_timeout() -> void:
+	$HurtBox.collision_mask = 2
+	$Hurtbox.visible = true
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		$HurtTimer.start(0.8)
+		$HurtBox.collision_mask = 9

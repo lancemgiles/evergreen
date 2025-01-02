@@ -25,9 +25,6 @@
 [ext_resource type="AudioStream" uid="uid://ca083il6nl1e1" path="res://assets/Audio/life_pickup.ogg" id="22_austi"]
 [ext_resource type="AudioStream" uid="uid://28bcsnbd18qk" path="res://assets/Audio/score_pickup.ogg" id="23_efoic"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qwrd8"]
-radius = 24.4
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpv2a"]
 atlas = ExtResource("2_ful4r")
 region = Rect2(0, 0, 32, 32)
@@ -237,18 +234,15 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7p0ol"]
 height = 32.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1lso4"]
+radius = 32.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 125
 platform_on_leave = 2
 script = ExtResource("1_4osts")
 metadata/_edit_group_ = true
-
-[node name="SoothCast2D" type="ShapeCast2D" parent="." groups=["Sooth"]]
-enabled = false
-shape = SubResource("CircleShape2D_qwrd8")
-target_position = Vector2(0, 0)
-collision_mask = 16
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5e53w")
@@ -719,6 +713,15 @@ area_mask = 2
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 
+[node name="SoothTimer" type="Timer" parent="."]
+
+[node name="Soother" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soother"]
+shape = SubResource("CircleShape2D_1lso4")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOver/Menu/Container/RetryButton" to="." method="_on_retry_button_pressed"]
@@ -726,3 +729,4 @@ area_mask = 2
 [connection signal="pressed" from="PauseMenu/Menu/Container/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Container/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="area_entered" from="Soother" to="." method="_on_soother_area_entered"]
