@@ -5,7 +5,7 @@ extends StaticBody2D
 enum Version {REGULAR, MEDIUM, SUPER}
 
 @export var version: Version
-
+@export var multiplier = 1.0
 var bounciness : float
 
 func _ready():
@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		body.velocity.y = body.jump_height * bounciness
+		body.velocity.y = -sqrt(2 * body.jump_height * body.gravity) * bounciness
 		
 func get_version():
 	match version:

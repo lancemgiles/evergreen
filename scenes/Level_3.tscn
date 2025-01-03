@@ -309,7 +309,6 @@ position = Vector2(598, -527)
 
 [node name="Player" parent="." instance=ExtResource("4_7wdxo")]
 position = Vector2(153, 447)
-metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -357,21 +356,15 @@ shape = SubResource("RectangleShape2D_eo1ui")
 position = Vector2(350, 465)
 speed = 30
 distance = 20
-knockback_force = 30
-bounciness = 2.0
 
 [node name="LargeBlob2" parent="Enemies" instance=ExtResource("9_d6b6d")]
 position = Vector2(496, 256)
 speed = 30
 distance = 20
-knockback_force = 30
-bounciness = 2.0
 
 [node name="LargeBlob3" parent="Enemies" instance=ExtResource("9_d6b6d")]
 position = Vector2(261, 35)
 speed = 30
-knockback_force = 30
-bounciness = 2.0
 
 [node name="Pickups" type="Node2D" parent="."]
 

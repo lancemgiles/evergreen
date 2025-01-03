@@ -67,21 +67,21 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_r3bsh")
 animation = &"angry"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionWorld" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_0gnv7")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionAngry" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CapsuleShape2D_balpn")
 
 [node name="Bounce" type="Area2D" parent="."]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounce"]
+[node name="CollisionBounce" type="CollisionShape2D" parent="Bounce"]
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_ph0vt")
 
@@ -89,12 +89,13 @@ shape = SubResource("RectangleShape2D_ph0vt")
 collision_layer = 128
 collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionWorld" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_balpn")
 
 [node name="HurtTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="Bounce" to="." method="_on_bounce_body_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]

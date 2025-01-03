@@ -374,7 +374,6 @@ tile_map_data = PackedByteArray("AAAVAAAAAQACAAMAAAAVAAEAAQAAAAMAAAAVAAIAAQAAAAM
 [node name="Player" parent="." instance=ExtResource("10_lr7ar")]
 z_index = 1
 position = Vector2(75, -56)
-metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(4, 0)
@@ -490,12 +489,15 @@ shape = SubResource("RectangleShape2D_nuno8")
 
 [node name="Bouncer3" parent="Bouncers" instance=ExtResource("17_c6byy")]
 position = Vector2(360, -250)
+multiplier = null
 
 [node name="Bouncer2" parent="Bouncers" instance=ExtResource("17_c6byy")]
 position = Vector2(227, -136)
+multiplier = null
 
 [node name="Bouncer" parent="Bouncers" instance=ExtResource("17_c6byy")]
 position = Vector2(119, -1355)
+multiplier = null
 
 [node name="Overlays" type="Node2D" parent="."]
 

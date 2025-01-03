@@ -144,6 +144,7 @@ limit_right = 3882
 limit_bottom = 570
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
+energy = 0.7
 texture = ExtResource("9_vw2xy")
 
 [node name="Pits" parent="." instance=ExtResource("8_nkkrh")]
@@ -296,7 +297,7 @@ texture = ExtResource("7_1pr6k")
 
 [node name="LevelEnd" parent="." instance=ExtResource("15_6v7eu")]
 position = Vector2(3656, -153)
-next_level_number = "1"
+next_level_number = "5"
 
 [node name="Finishline" parent="LevelEnd" index="0"]
 position = Vector2(105, 0)

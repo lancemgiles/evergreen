@@ -4,7 +4,7 @@ class_name WalkingBouncyEnemy extends CharacterBody2D
 @export var speed = 50
 @export var distance = 100
 var gravity = 1600
-var knockback_force = 20
+var knockback_strength = 20
 @export var bouncy = true
 var bounciness = 1.5
 var damage_health = 1
@@ -13,8 +13,8 @@ var damage_score = 50
 @onready var start_x = position.x
 @onready var target_x = position.x + distance
 
-enum PowerLevel {ONE, TWO}
-@export var power_level := PowerLevel.ONE
+enum PowerLevel {ZERO, ONE, TWO}
+@export var power_level := PowerLevel.ZERO
 
 enum Mood {ANGRY, HAPPY, MIDDLE}
 var current_mood := Mood.ANGRY
@@ -32,39 +32,40 @@ func _ready() -> void:
 			$AnimatedSprite2D.flip_h = true
 	
 	match power_level:
-		PowerLevel.ONE:
+		PowerLevel.ZERO:
 			damage_health = 1
 			bounciness = 1.5
-			knockback_force = 20
+			knockback_strength = 18.0
+		PowerLevel.ONE:
+			damage_health = 1
+			bounciness = 2
+			knockback_strength = 25.0
 		PowerLevel.TWO:
 			damage_health = 2
 			bounciness = 3.25
-			knockback_force = 64
+			knockback_strength = 30.0
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	match current_mood:
 		Mood.ANGRY:
 			$AnimatedSprite2D.play("angry")
-			if power_level == PowerLevel.ONE:
-				bouncy = true
-			else:
-				bouncy = false
+			bouncy = false
 			if has_node("AngryParticles"):
 				$AngryParticles.emitting = true
 		Mood.MIDDLE:
 			$AnimatedSprite2D.play("middle")
 			bouncy = false
-			$Hitbox/CollisionAngry.disabled = true
-			if $Hitbox.has_node("CollisionMid"):
-				$Hitbox/CollisionMid.disabled = false
+			$HitBox/CollisionAngry.disabled = true
+			if $HitBox.has_node("CollisionMid"):
+				$HitBox/CollisionMid.disabled = false
 			if has_node("AngryParticles"):
 				$AngryParticles.emitting = false
 		Mood.HAPPY:
 			$AnimatedSprite2D.play("happy")
 			bouncy = true
-			if $Hitbox.has_node("CollisionMid"):
-				$Hitbox/CollisionMid.disabled = true
+			if $HitBox.has_node("CollisionMid"):
+				$HitBox/CollisionMid.disabled = true
 			if has_node("AngryParticles"):
 				$AngryParticles.emitting = false
 	move_and_slide()
@@ -100,37 +101,37 @@ func move_to(current_position, target_position, step_size):
 	return new_position
 
 func _on_timer_timeout() -> void:
-	$Hitbox.collision_mask = 2
+	$HitBox.collision_mask = 2
 
 func _on_bounce_body_entered(body: Node2D) -> void:
 	if bouncy and body.is_in_group("Player"):
-		body.velocity.y = body.jump_height * bounciness
+		body.velocity.y = -sqrt(2 * body.jump_height * body.gravity) * bounciness
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	match current_mood:
 		Mood.ANGRY, Mood.MIDDLE:
 			if body.name == "Player":
 				body.take_damage(damage_health, damage_score)
-				if current_direction == 1:
-					body.position.x += knockback_force
-				elif current_direction == -1:
-					body.position.x -= knockback_force
-				$Hitbox.collision_mask = 9
+				var direction = global_position.direction_to(body.global_position)
+				var force = (direction* 100.0) * knockback_strength
+				body.knockback = force
+				$HitBox.collision_mask = 9
 				$Timer.start(0.8)
 
 func sooth_step():
 	$HurtTimer.start(0.8)
 	$HurtBox.collision_mask = 9
-	if power_level == PowerLevel.ONE and current_mood == Mood.ANGRY:
-		current_mood = Mood.HAPPY
-	elif power_level == PowerLevel.TWO and current_mood == Mood.ANGRY:
-		current_mood = Mood.MIDDLE
+	if current_mood == Mood.ANGRY:
+		match power_level:
+			PowerLevel.ZERO, PowerLevel.ONE:
+				current_mood = Mood.HAPPY
+			PowerLevel.TWO:
+				current_mood = Mood.MIDDLE
 	elif current_mood == Mood.MIDDLE:
 		current_mood = Mood.HAPPY
 
 func _on_hurt_timer_timeout() -> void:
 	$HurtBox.collision_mask = 2
-	$Hurtbox.visible = true
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.name == "Soother":
