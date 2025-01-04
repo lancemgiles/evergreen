@@ -16,5 +16,29 @@ current bugs and issues:
 
 it works but player script is getting very long, might be worth splitting states into different scripts. it is very confusing when something goes wrong.
 
-animation player is semisetup
+if the player tries to sooth while death animation is playing, the animation overlays and never stops
+-I've tried disabling input during death but that hasn't seemed to do anything
 
+there is no real cooldown after soothing, so creatures who need more than one touch are hardly different.
+-player presses enter > sooth animation starts, soother is enabled (state is soothing)
+cooldown timer should start here, where player cannot sooth again until the animation is finished (just using animation finished signal)
+-if the soother touches an enemy hurtbox, the enemy's sooth function runs, and the soother is disabled until the cooldown is over (soothing state ends, changing to any other state unless the player is damaged or dead)
+-if the soother doesn't touch an enemy hurtbox, it keeps scanning for collisions until the sooth animation finishes (state is soothing)
+when the animation finishes, the soother is disabled (if it wasn't already from a collision), the player can once again sooth (soothing state ends and transitions to appropriate state)
+----
+rethinking, it is the enemy that needs the cooldown time, so I'm doing to disable their hurtboxes set to a timer. also the on area hurtbox function was redundant
+this didn't solve anything, I've tested and the soother is making like collisions. I need to have the player's sooth cooldown not just so they can't sooth again but also so that only one collision is used
+I've done something which prevents sooths from connecting at all. I had changed from disabling the area2d to the collision shape, but even if I comment that out, it still doesn't connect anymore.
+going back to the area 2d makes it work as it was before. back at square one.
+Basically, the Soother makes several collisons at once for each press. have confirmed only one button press is being registered.
+I am trying to get at two things and maybe should treat them more distinctly. Enemies should have a cooldown time where they are immune for a little while. The player needs to a have a cooldown time between soothings , both in terms of button presses and in terms of collisions (collisions alone would resolve the issue but visually would seem odd, if they cannot begin another sooth until the first has ended then it makes sense that the collisions pause)
+
+rather than disabling the collison shape, I'm going to turn of the collision mask
+ok, not sure if it is the new stuff but I realized that whenever I tried something toher than monitoring being off, I didn't turn it back on by default and now it is working in that only one collision is being detected at a time
+THINGS SEEM TO BE WORKING HERE
+
+tangentially, I am justifying having both a sooth state and global variable because the state can change while soothing is still happening. I want soothing to continue through movement, and that is whent he global is true
+some states are more useful than others. the sooth state is not particularly useful as I understand it, because right now my states are coming from player input, which makes sense, but the player has to use the walk contrls while jumping.... and so I should actually move the states back to the animations! that is more the behaviour that I want, when I think about it. right now most of them are initialized by the animations, but change in spots unrelated. I need to stop that I think.
+
+terrain damage needs to be changed to velocities so they don't know the player through obstacles, also need to not make them jump too high
+enemy knockback.y needs to be a little stronger

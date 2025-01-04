@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://ci8cadrl72o45"]
+[gd_scene load_steps=30 format=4 uid="uid://ci8cadrl72o45"]
 
 [ext_resource type="Texture2D" uid="uid://247h2evysenv" path="res://assets/Background/tree-2.png" id="1_ggmve"]
 [ext_resource type="Texture2D" uid="uid://b8xccjh5rs41l" path="res://assets/Background/grass-at-base.png" id="2_sibij"]
@@ -14,11 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="11_k3lva"]
 [ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="12_jurfb"]
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="14_gplyf"]
-[ext_resource type="PackedScene" uid="uid://cgne82pxb7rhf" path="res://scenes/small_blob.tscn" id="14_pvfjl"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="15_51b66"]
 [ext_resource type="PackedScene" uid="uid://bndr80qb7g2ly" path="res://scenes/fog.tscn" id="17_11kta"]
 [ext_resource type="Texture2D" uid="uid://bl8wn7qoetudv" path="res://assets/overlays/clouds-1.png" id="17_jcokg"]
-[ext_resource type="PackedScene" uid="uid://b8c0uyld8i6bw" path="res://scenes/blue_moss_small.tscn" id="19_jpurk"]
+[ext_resource type="PackedScene" uid="uid://b8c0uyld8i6bw" path="res://scenes/mossball.tscn" id="19_jpurk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oswgq"]
 texture = ExtResource("4_v1hcu")
@@ -371,16 +370,12 @@ position = Vector2(510, -451)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="SmallBlob2" parent="Enemies" instance=ExtResource("14_pvfjl")]
-position = Vector2(600, -548)
-distance = 84
-
 [node name="BlueMossSmall" parent="Enemies" instance=ExtResource("19_jpurk")]
 position = Vector2(422.75, -55.25)
 distance = 118
 
 [node name="BlueMossSmall2" parent="Enemies" instance=ExtResource("19_jpurk")]
-position = Vector2(600, -548)
+position = Vector2(600, -556)
 distance = 84
 
 [node name="Bouncers" type="Node2D" parent="."]

@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
-enum State {MENU, SOOTHING, IDLE, WALKING, FLOATING, HURT}
+enum State {MENU, SOOTHING, IDLE, WALKING, FLOATING, HURT, DEAD}
 var state : State
-#states to add: coyote, knockback
+
 var speed = 175
 var gravity = 600
-var jump_height = 9 #height in 8x8 tiles
-var tilesize = 8
+var jump_height = 75 #height in pixels, about nine 8x8 tiles
 var dying = false
-
+signal sooth_landed(area)
+#var sooth_cooling_down = false
 
 @export var coyote_frames = 6 # adjusting this can allow double jumps
 var coyote = false
@@ -41,12 +41,12 @@ var checkpoint_manager
 @onready var current_level = Global.get_current_level_number()
 
 func _ready():
-	jump_height = jump_height * tilesize
 	current_direction = 1
 	update_health.connect($UI/Health.update_health)
 	update_score.connect($UI/Score.update_score)
 	update_lives.connect($UI/Life.update_lives)
 	update_health.emit(Global.health, Global.max_health)
+	sooth_landed.connect(_on_sooth_landed)
 	$UI/Health/Label.text = str(health)
 	$UI/Life/Label.text = str(lives)
 	state = State.IDLE
@@ -67,12 +67,12 @@ func _physics_process(delta):
 	player_movement(delta)
 	move_and_slide()
 	player_animations()
-	sooth()
 	terrain_damage()
-	
+	sooth()
 
 	if !is_on_floor() and last_floor and !Global.is_jumping:
 		coyote = true
+		print("coyote time")
 		$CoyoteTimer.start()
 
 	last_floor = is_on_floor()
@@ -89,24 +89,35 @@ func _process(_delta):
 	match state:
 		State.MENU:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		State.IDLE, State.WALKING, State.SOOTHING, State.FLOATING, State.HURT:
+		State.IDLE, State.WALKING, State.SOOTHING, State.FLOATING, State.HURT, State.DEAD:
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _input(event):
+	if state == State.DEAD:
+		return 0.0
 	if Input.is_action_pressed("pause"):
 		state = State.MENU
 		$PauseMenu.visible = true
 		get_tree().paused = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.is_action_just_pressed("sooth"):
-		state = State.SOOTHING
-		Global.is_soothing = true
-		$AnimatedSprite2D.play("sooth")
-		$Audio/SoothSound.play()
+		if state != State.SOOTHING:
+			print("sooth press")
+			$Soother.set_collision_mask_value(8, true)
+			#sooth_cooling_down = true
+			$SoothSprite.visible = true
+			$AnimatedSprite2D.visible = false
+			if current_direction == -1:
+				$SoothSprite.flip_h = true
+			if current_direction == 1:
+				$SoothSprite.flip_h = false
+			$AnimationPlayer.play("sooth")
+			state = State.SOOTHING
+			$Audio/SoothSound.play()
 	if event.is_action_pressed("jump") and (is_on_floor() or coyote):
-		state = State.FLOATING
 		velocity.y = -sqrt(2 * gravity * jump_height)
 		$AnimatedSprite2D.play("jump")
+		state = State.FLOATING
 		Global.is_jumping = true
 		$Audio/FloatSound.play()
 		$Effects/JumpParticles.emitting = true
@@ -115,43 +126,34 @@ func _input(event):
 	else:
 		Global.is_jumping = false
 		Global.is_soothing = false
-		$Soother.set_deferred("monitoring", false)
+		$Soother.set_collision_mask_value(8, false)
 
 func player_movement(delta):
 	var horizontal_input = Input.get_axis("left", "right")
 	velocity.x = horizontal_input * speed + knockback.x
 	velocity.y += gravity * delta
-	#if state == State.HURT:
-		#state = State.IDLE
 	if state != State.HURT:
 		knockback = Vector2.ZERO
 
 func player_animations():
 	if is_on_floor():
 		if Input.is_action_pressed("left") && Global.is_jumping == false:
-			state = State.WALKING
 			$AnimatedSprite2D.play("walk")
+			state = State.WALKING
 		if Input.is_action_pressed("right") && Global.is_jumping == false:
-			state = State.WALKING
 			$AnimatedSprite2D.play("walk")
-		if $AnimatedSprite2D.animation == "sooth":
-			await $AnimatedSprite2D.animation_finished
-			state = State.IDLE
-			$AnimationPlayer.play("idle")
+			state = State.WALKING
 		if !Input.is_anything_pressed() and !dying:
+			$AnimatedSprite2D.play("idle")
 			state = State.IDLE
-			$AnimationPlayer.play("idle")
 
 func sooth():
 	if state == State.SOOTHING:
-		$Soother.set_deferred("monitoring", true)
-		await $AnimatedSprite2D.animation_finished
-		$Soother.set_deferred("monitoring", false)
+		$Soother.set_collision_mask_value(8, true)
 
 func take_damage(damage_health, damage_score):
-	state = State.HURT
 	set_physics_process(false)
-	$Timer.start()
+	$DamageTimer.start()
 	score_down(damage_score)
 	$Audio/DamageSound.play()
 	if health > 0:
@@ -159,8 +161,14 @@ func take_damage(damage_health, damage_score):
 		if health < 0: health = 0
 		update_health.emit(health, max_health)
 		$AnimatedSprite2D.play("damage")
+		state = State.HURT
 	if health <= 0:
-		died.emit()
+		dying = true
+		$AnimatedSprite2D.visible = false
+		$SoothSprite.visible = false
+		$DeathSprite.visible = true
+		$AnimationPlayer.play("death")
+		state = State.DEAD
 
 func terrain_damage():
 	if $HurtCast.is_colliding():
@@ -188,10 +196,9 @@ func lose_life():
 		get_tree().paused = true
 		$GameOver.visible = true
 		$AnimationPlayer.play("ui_visibility")
+		state = State.MENU
 		$UI.visible = false
 		final_score_and_time()
-		
-		state = State.MENU
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		$GameOver/Menu/Container/TimeCompleted/Value.text = str(Global.final_time)
 		$GameOver/Menu/Container/Score/Value.text = str(Global.final_score)
@@ -199,13 +206,13 @@ func lose_life():
 		BackgroundMusic.loop = false
 
 func respawn():
-	$AnimationPlayer.play("idle")
+	$AnimatedSprite2D.play("idle")
+	state = State.IDLE
 	position = checkpoint_manager.last_location
 	
 	if health <= 0:
 		health += 1
 		update_health.emit(health, max_health)
-		Global.health = health
 
 func score_up(count):
 	score += count
@@ -256,10 +263,6 @@ func final_score_and_time():
 	Global.final_score = score
 	Global.final_time = round_time
 
-func _on_timer_timeout() -> void:
-	set_physics_process(true)
-	state = State.IDLE
-
 func _on_retry_button_pressed() -> void:
 	state = State.IDLE
 	$GameOver/Menu.visible = false
@@ -295,17 +298,37 @@ func _on_coyote_timer_timeout() -> void:
 	coyote = false
 
 func _on_soother_area_entered(area: Area2D) -> void:
-	state = State.IDLE
-	if area.name == "HurtBox":
-		var target = area.get_parent()
-		target.sooth_step()
-		score_up(100)
-
-func _on_died() -> void:
-	dying = true
-	$AnimationPlayer.play("death")
+	print("soother entered")
+	if area.name == "HurtBox" and $AnimationPlayer.current_animation == "sooth":
+		sooth_landed.emit(area)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death":
 		dying = false
-		state = State.IDLE
+		$AnimatedSprite2D.visible = true
+		$DeathSprite.visible = false
+		# state = State.IDLE #see if this is allowing player to leave death state
+	if anim_name == "sooth":
+		$Soother.set_collision_mask_value(8, false)
+		#state = State.IDLE
+		Global.is_soothing = false
+		$SoothSprite.visible = false
+		$AnimatedSprite2D.visible = true
+		#$AnimatedSprite2D.play("idle")
+		
+func _on_sooth_landed(area):
+	print("sooth landed")
+	$Soother.set_collision_mask_value(8, false)
+	var target_body = area.get_parent()
+	if target_body.current_mood != target_body.Mood.HAPPY:
+		target_body.sooth_step()
+		score_up(100)
+
+
+func _on_sooth_timer_timeout() -> void:
+	$Soother.set_collision_mask_value(8, false)
+	#sooth_cooling_down = false
+
+
+func _on_damage_timer_timeout() -> void:
+	set_physics_process(true)

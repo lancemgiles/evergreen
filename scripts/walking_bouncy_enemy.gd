@@ -10,6 +10,9 @@ var bounciness = 1.5
 var damage_health = 1
 var damage_score = 50
 
+var guard_timer : Timer
+var guard_shift = 4
+
 @onready var start_x = position.x
 @onready var target_x = position.x + distance
 
@@ -27,9 +30,11 @@ var current_direction = 0
 
 func _ready() -> void:
 	current_direction = 1
-	match role:
-		Role.GUARD:
-			$AnimatedSprite2D.flip_h = true
+	guard_timer = Timer.new()
+	guard_timer.autostart = true
+	guard_timer.wait_time = guard_shift
+	guard_timer.timeout.connect(_on_guard_timer_timeout)
+	self.add_child(guard_timer)
 	
 	match power_level:
 		PowerLevel.ZERO:
@@ -56,16 +61,16 @@ func _physics_process(delta: float) -> void:
 		Mood.MIDDLE:
 			$AnimatedSprite2D.play("middle")
 			bouncy = false
-			$HitBox/CollisionAngry.disabled = true
+			$HitBox/CollisionAngry.set_deferred("disabled", true)
 			if $HitBox.has_node("CollisionMid"):
-				$HitBox/CollisionMid.disabled = false
+				$HitBox/CollisionMid.set_deferred("disabled", false)
 			if has_node("AngryParticles"):
 				$AngryParticles.emitting = false
 		Mood.HAPPY:
 			$AnimatedSprite2D.play("happy")
 			bouncy = true
 			if $HitBox.has_node("CollisionMid"):
-				$HitBox/CollisionMid.disabled = true
+				$HitBox/CollisionMid.set_deferred("disabled", true)
 			if has_node("AngryParticles"):
 				$AngryParticles.emitting = false
 	move_and_slide()
@@ -81,8 +86,6 @@ func _process(delta):
 				else:
 					target_x = start_x
 					$AnimatedSprite2D.flip_h = true
-			
-		
 
 func move_to(current_position, target_position, step_size):
 	var new_position = current_position
@@ -101,11 +104,14 @@ func move_to(current_position, target_position, step_size):
 	return new_position
 
 func _on_timer_timeout() -> void:
-	$HitBox.collision_mask = 2
+	$HitBox.set_collision_mask_value(2, true)
 
 func _on_bounce_body_entered(body: Node2D) -> void:
-	if bouncy and body.is_in_group("Player"):
-		body.velocity.y = -sqrt(2 * body.jump_height * body.gravity) * bounciness
+	if body.is_in_group("Player"):
+		if bouncy:
+			body.velocity.y = -sqrt(2 * body.jump_height * body.gravity) * bounciness
+		if current_mood != Mood.HAPPY:
+			body.velocity.y = -sqrt(2 * knockback_strength * body.gravity)
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	match current_mood:
@@ -115,12 +121,12 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 				var direction = global_position.direction_to(body.global_position)
 				var force = (direction* 100.0) * knockback_strength
 				body.knockback = force
-				$HitBox.collision_mask = 9
+				$HitBox.set_collision_mask_value(2, false)
 				$Timer.start(0.8)
 
 func sooth_step():
 	$HurtTimer.start(0.8)
-	$HurtBox.collision_mask = 9
+	$HurtBox.set_collision_mask_value(8, false)
 	if current_mood == Mood.ANGRY:
 		match power_level:
 			PowerLevel.ZERO, PowerLevel.ONE:
@@ -131,9 +137,12 @@ func sooth_step():
 		current_mood = Mood.HAPPY
 
 func _on_hurt_timer_timeout() -> void:
-	$HurtBox.collision_mask = 2
+	$HurtBox.set_collision_mask_value(2, true)
 
-func _on_hurt_box_area_entered(area: Area2D) -> void:
-	if area.name == "Soother":
-		$HurtTimer.start(0.8)
-		$HurtBox.collision_mask = 9
+func _on_guard_timer_timeout():
+	if role == Role.GUARD:
+		if $AnimatedSprite2D.flip_h == true:
+			$AnimatedSprite2D.flip_h = false
+		elif $AnimatedSprite2D.flip_h == false:
+			$AnimatedSprite2D.flip_h = true
+		guard_timer.start(guard_shift)

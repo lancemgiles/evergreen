@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://c4xb3tgt7yu74"]
+[gd_scene load_steps=26 format=4 uid="uid://c4xb3tgt7yu74"]
 
 [ext_resource type="Texture2D" uid="uid://bcva8wf5xijkx" path="res://assets/Background/inner-tree-01.png" id="1_rbmsn"]
 [ext_resource type="PackedScene" uid="uid://ceyiv23m45ra0" path="res://scenes/world_tiles_8x_8.tscn" id="3_uitgr"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bndr80qb7g2ly" path="res://scenes/fog.tscn" id="10_lyde6"]
 [ext_resource type="Texture2D" uid="uid://d0lwxlntsx4nn" path="res://assets/Tiles/grass-particle-1.png" id="11_5uvro"]
 [ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="12_0cj4g"]
+[ext_resource type="PackedScene" uid="uid://b8c0uyld8i6bw" path="res://scenes/mossball.tscn" id="12_2gvqe"]
 [ext_resource type="Texture2D" uid="uid://c7t7dq1ecyc2d" path="res://assets/Tiles/leaf-platform.png" id="12_lep5m"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="15_6v7eu"]
 
@@ -144,7 +145,7 @@ limit_right = 3882
 limit_bottom = 570
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
-energy = 0.7
+energy = 0.5
 texture = ExtResource("9_vw2xy")
 
 [node name="Pits" parent="." instance=ExtResource("8_nkkrh")]
@@ -182,14 +183,12 @@ position = Vector2(302, 480)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="LargeBlob" parent="Enemies" instance=ExtResource("8_gwhbp")]
-position = Vector2(376, 242)
-speed = 10
-distance = 10
+[node name="MossBall" parent="Enemies" instance=ExtResource("12_2gvqe")]
+position = Vector2(373.236, 237.278)
 role = 0
 
-[node name="LargeBlob4" parent="Enemies" instance=ExtResource("8_gwhbp")]
-position = Vector2(1028, 356)
+[node name="MossBall2" parent="Enemies" instance=ExtResource("12_2gvqe")]
+position = Vector2(1027.44, 351.114)
 speed = 10
 distance = 64
 

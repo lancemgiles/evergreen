@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://dbnfvq0xc1nuk" path="res://scenes/pits.tscn" id="11_ag4oh"]
 [ext_resource type="Script" path="res://scripts/checkpoint_manager.gd" id="12_vluxv"]
 [ext_resource type="PackedScene" uid="uid://bvwa1tp82rkm0" path="res://scenes/moving_platform.tscn" id="13_k08p0"]
-[ext_resource type="PackedScene" uid="uid://cgne82pxb7rhf" path="res://scenes/small_blob.tscn" id="14_oeemp"]
 [ext_resource type="PackedScene" uid="uid://dukjq6ijh5oi3" path="res://scenes/pickup.tscn" id="15_koehh"]
 [ext_resource type="PackedScene" uid="uid://dldqfgp2a8lih" path="res://scenes/level_end.tscn" id="16_1cc28"]
+[ext_resource type="PackedScene" uid="uid://b8c0uyld8i6bw" path="res://scenes/mossball.tscn" id="16_uufw4"]
 [ext_resource type="PackedScene" uid="uid://ccjjkqsp4tjtv" path="res://scenes/bouncer.tscn" id="17_c6byy"]
 [ext_resource type="PackedScene" uid="uid://bndr80qb7g2ly" path="res://scenes/fog.tscn" id="18_41ijq"]
 
@@ -421,12 +421,12 @@ autoplay = "RESET"
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="SmallBlob" parent="Enemies" instance=ExtResource("14_oeemp")]
-position = Vector2(35, -372)
+[node name="MossBall" parent="Enemies" instance=ExtResource("16_uufw4")]
+position = Vector2(43, -380)
 distance = 111
 
-[node name="SmallBlob2" parent="Enemies" instance=ExtResource("14_oeemp")]
-position = Vector2(67, -1277)
+[node name="MossBall2" parent="Enemies" instance=ExtResource("16_uufw4")]
+position = Vector2(38, -1257)
 
 [node name="Pickups" type="Node" parent="."]
 
